@@ -819,3 +819,8 @@ require('lspconfig').typst_lsp.setup{
     }
 }
 EOF
+
+" copilot
+nmap <leader>ze :Copilot enable<CR>
+nmap <leader>zd :Copilot disable<CR>
+nmap <leader>zs :Copilot status<CR>

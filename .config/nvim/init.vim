@@ -163,6 +163,10 @@ call togglebg#map("<F5>")
 :nnoremap <TAB> :nohlsearch<CR><TAB>
 
 
+" cursorline and column
+" set cursorline
+" set cursorcolumn
+
 " 80 char line
 set colorcolumn=80
 " highlight ColorColumn ctermbg=0 guibg=darkgrey

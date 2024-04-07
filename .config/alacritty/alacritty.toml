@@ -1,0 +1,33 @@
+import = ["/home/sandro/.config/alacritty/themes/themes/gruvbox_dark.toml"]
+
+[font]
+size = 10
+
+[font.bold]
+family = "Source Code Pro"
+style = "Bold"
+
+[font.bold_italic]
+family = "Source Code Pro"
+style = "Bold Italic"
+
+[font.italic]
+family = "Source Code Pro"
+style = "Regular Italic"
+
+[font.normal]
+family = "Source Code Pro"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 1
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F"
+mods = "Shift|Control"
+
+[window.dimensions]
+columns = 80
+lines = 24

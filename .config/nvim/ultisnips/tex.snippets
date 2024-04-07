@@ -1,0 +1,141 @@
+priority -50
+
+#Formating text: italic, bold, underline, small capital, emphase ..
+snippet ita "italic text" iw
+\\textit{${1:${VISUAL:text}}}${0}
+endsnippet
+
+snippet bf "bold face text" iw
+\\textbf{${1:${VISUAL:text}}}${0}
+endsnippet
+
+snippet under "underline text" iw
+\\underline{${1:${VISUAL:text}}}${0}
+endsnippet
+
+snippet over "overline text" iw
+\\overline{${1:${VISUAL:text}}}${0}
+endsnippet
+
+snippet emp "emphasize text" iw
+\\emph{${1:${VISUAL:text}}}${0}
+endsnippet
+
+snippet sc "small caps text" iw
+\\textsc{${1:${VISUAL:text}}}${0}
+endsnippet
+
+
+extends texmath
+
+snippet hat "\hat{}" iw
+\hat{${1:operand}}$0
+endsnippet
+
+snippet func "f(x)" iw
+${1:name}(${2:operands})$0
+endsnippet
+
+snippet alp "\alpha" iw
+\alpha$0
+endsnippet
+
+snippet bet "\beta" iw
+\beta$0
+endsnippet
+
+snippet gam "\gamma" iw
+\gamma$0
+endsnippet
+
+snippet del "\delta" iw
+\delta$0
+endsnippet
+
+snippet eps "\epsilon" iw
+\epsilon$0
+endsnippet
+
+snippet Gamma "\Gamma" iw
+\Gamma$0
+endsnippet
+
+snippet Sigma "\Sigma" iw
+\Sigma$0
+endsnippet
+
+snippet equiv "\equiv" iw
+\equiv$0
+endsnippet
+
+snippet rarr "\rightarrow" iw
+\rightarrow$0
+endsnippet
+
+snippet br "()" iw
+(${1:content})$0
+endsnippet
+
+snippet cbr "{}" iw
+{${1:content}}$0
+endsnippet
+
+snippet ieq "$$" iw
+\$${1:equation}\$$0
+endsnippet
+
+snippet sum "\sum^{}_{}" iw
+\\sum^{${1:n}}_{${2:i=1}} ${0}
+endsnippet
+
+snippet set "\{\}" iw
+\\\{${1:elements}\\\}$0
+endsnippet
+
+snippet mcal "\mathcal{}" iw
+\mathcal{${1:content}}$0
+endsnippet
+
+snippet mbb "\mathcal{}" iw
+\mathcal{${1:content}}$0
+endsnippet
+
+snippet igr "\includegraphics[width=\linewidth]{}" iw
+\includegraphics[linewidth=\linewidth]{${1:content}}$0
+endsnippet
+
+snippet inf "\infty" iw
+\infty$0
+endsnippet
+
+snippet limes "\lim\limits_{a \to b}" iw
+\lim\limits_{$1 \to $2}$0
+endsnippet
+
+snippet align "\begin{align}...\end{align}" iw
+\begin{align}
+	$1
+\end{align}
+$0
+endsnippet
+
+snippet align* "\begin{align*}...\end{align*}" iw
+\begin{align*}
+	$1
+\end{align*}
+$0
+endsnippet
+
+snippet FT "\mathcal{F}\{...\}" iw
+\mathcal{F}\big\\{$1\big\\}$0
+endsnippet
+
+snippet FT-1 "\mathcal{F}^{-1}\{...\}" iw
+\mathcal{F}^{-1}\\{$1\\}$0
+endsnippet
+
+snippet pow "{a}^{b}" iw
+{$1}^{$2}$0
+endsnippet
+
+# vim:ft=snippets:

@@ -1,4 +1,4 @@
-import = ["/home/sandro/.config/alacritty/themes/themes/gruvbox_dark.toml"]
+import = ["/home/sandro/.config/alacritty/themes/gruvbox_dark.toml"]
 
 [font]
 size = 10

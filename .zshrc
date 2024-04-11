@@ -138,6 +138,12 @@ view_pdf() {
     nohup evince $1 > /dev/null 2>&1 &
 }
 
+alacritty_theme() {
+    FILE="${HOME}/.config/alacritty/alacritty.toml"
+    THEME=$1
+    sed -i --follow-symlinks "s/themes\/.*\.toml/themes\/${THEME}.toml/g" $FILE
+}
+
 alias v="nvim"
 alias t="tmux"
 alias e="eza"
@@ -146,3 +152,4 @@ alias m="aerc"
 alias hx="helix"
 alias recmd5="~/projects/recmd5/recmd5.sh"
 alias view="view_pdf"
+alias theme="alacritty_theme"

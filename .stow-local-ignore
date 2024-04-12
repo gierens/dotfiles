@@ -1,10 +1,10 @@
 \.git
 \.gitignore
 \.gitmodules
+\.github
+^/submods
 
 ^/README.*
 ^/LICENSE
 
 ^/Makefile
-
-^/submods

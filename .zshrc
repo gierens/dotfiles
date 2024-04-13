@@ -144,6 +144,12 @@ alacritty_theme() {
     sed -i --follow-symlinks "s/themes\/.*\.toml/themes\/${THEME}.toml/g" $FILE
 }
 
+aerc_theme() {
+    FILE="${HOME}/.config/aerc/aerc.conf"
+    THEME=$1
+    sed -i --follow-symlinks "s/^styleset-name=.*$/styleset-name=${THEME}/g" $FILE
+}
+
 alias v="nvim"
 alias t="tmux"
 alias e="eza"

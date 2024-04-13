@@ -150,6 +150,27 @@ aerc_theme() {
     sed -i --follow-symlinks "s/^styleset-name=.*$/styleset-name=${THEME}/g" $FILE
 }
 
+theme() {
+    if [ -z "$1" ]; then
+        echo "No theme given"
+        return 1
+    fi
+    if [ "$1" != "light" ] && [ "$1" != "dark" ]; then
+        echo "Invalid theme, must be 'light' or 'dark'"
+        return 1
+    fi
+    case $1 in
+        light)
+            alacritty_theme "alabaster"
+            aerc_theme "gruvbox-light"
+            ;;
+        dark)
+            alacritty_theme "gruvbox_dark"
+            aerc_theme "gruvbox-dark"
+            ;;
+    esac
+}
+
 alias v="nvim"
 alias t="tmux"
 alias e="eza"
@@ -158,4 +179,3 @@ alias m="aerc"
 alias hx="helix"
 alias recmd5="~/projects/recmd5/recmd5.sh"
 alias view="view_pdf"
-alias theme="alacritty_theme"

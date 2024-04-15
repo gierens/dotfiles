@@ -171,6 +171,13 @@ theme() {
     esac
 }
 
+git_quick_add() {
+    for f in $(git ls-files --modified --exclude-standard --others)
+    do
+        git add $f; git commit --sign --message "feat($(dirname $f)): add $(basename $f)"
+    done
+}
+
 alias v="nvim"
 alias t="tmux"
 alias e="eza"

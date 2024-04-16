@@ -130,6 +130,9 @@ bindkey '^x^e' edit-command-line
 # zle -N edit-command-line
 # bindkey -M vicmd v edit-command-line
 
+# configure less pager
+LESS="FRX"
+
 view_pdf() {
     if [ -z "$1" ]; then
         echo "No file given"

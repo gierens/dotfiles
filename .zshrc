@@ -164,7 +164,7 @@ theme() {
     fi
     case $1 in
         light)
-            alacritty_theme "alabaster"
+            alacritty_theme "gruvbox_material_medium_light"
             aerc_theme "gruvbox-light"
             ;;
         dark)

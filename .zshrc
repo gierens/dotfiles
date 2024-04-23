@@ -130,6 +130,9 @@ bindkey '^x^e' edit-command-line
 # zle -N edit-command-line
 # bindkey -M vicmd v edit-command-line
 
+# load vim gruvbox colors
+~/.local/share/nvim/plugged/gruvbox/gruvbox_256palette.sh
+
 # configure less pager
 LESS="FRX"
 

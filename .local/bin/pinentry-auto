@@ -1,0 +1,13 @@
+#!/bin/sh
+set -Ceu
+
+case "${PINENTRY_USER_DATA-}" in
+*USE_CURSES=1*)
+	exec pinentry-curses "$@"
+	;;
+*USE_TTY=1*)
+	exec pinentry-tty "$@"
+	;;
+esac
+
+exec pinentry-gnome3 "$@"

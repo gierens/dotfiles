@@ -108,6 +108,9 @@ export HISTSIZE=1000000000
 export SAVEHIST=1000000000
 setopt EXTENDED_HISTORY
 
+# Pinentry
+export PINENTRY_USER_DATA=USE_CURSES=1
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 

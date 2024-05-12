@@ -489,12 +489,12 @@ nmap <leader>gs :Git status<CR>
 nmap <leader>gA :Git add %<CR>
 nmap <leader>gAA :Git add .<CR>
 nmap <leader>gR :Git restore --staged %<CR>
-nmap <leader>gc :Git commit --sign<CR>
-nmap <leader>gC :Git commit --amend<CR>
+nmap <leader>gc :Git commit --sign --gpg-sign<CR>
+nmap <leader>gC :Git commit --sign --gpg-sign --amend<CR>
 nmap <leader>gp :Git push<CR>
 " nmap <leader>gF :Git push --force<CR>
 nmap <leader>gP :Git pull<CR>
-nmap <leader>gm :Git merge --signoff --no-ff 
+nmap <leader>gm :Git merge --signoff --gpg-sign --no-ff 
 nmap <leader>gb :Git branch 
 nmap <leader>gB :Git blame<CR>
 nmap <leader>gd :Git diff<CR>

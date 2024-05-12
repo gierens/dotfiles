@@ -1,0 +1,4 @@
+#!/bin/sh
+
+set -- --pinentry-mode loopback "$@"
+exec /usr/bin/gpg "$@"

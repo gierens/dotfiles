@@ -9,7 +9,7 @@
 	repo = /home/sandro/projects/eza
 [commit]
 	gpgsign = true
-	signingkey = FB36571A786556B9A9505F228BDDD371F9684CEA
+	signingkey = 8BDDD371F9684CEA
 [gpg]
 	program = /home/sandro/.local/bin/git-gpg
 [format]

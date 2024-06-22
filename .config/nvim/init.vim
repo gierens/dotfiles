@@ -828,3 +828,6 @@ EOF
 nmap <leader>ze :Copilot enable<CR>
 nmap <leader>zd :Copilot disable<CR>
 nmap <leader>zs :Copilot status<CR>
+
+" kernel tab mode
+nmap <leader>kt :set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab<CR>

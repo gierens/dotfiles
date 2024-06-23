@@ -1,6 +1,12 @@
 [user]
 	email = sandro@gierens.de
 	name = Sandro-Alessio Gierens
+[sendemail]
+    smtpserver = smtp.ionos.de
+    smtpserverport = 465
+    smtpencryption = ssl
+    smtpuser = sandro@gierens.de
+    from = Sandro-Alessio Gierens <sandro@gierens.de>
 [credential "https://github.com"]
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]

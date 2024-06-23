@@ -139,6 +139,10 @@ Plug 'chrisbra/unicode.vim'
 " colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
+
+" codesnap
+Plug 'mistricky/codesnap.nvim', { 'do': 'make' }
+
 call plug#end()
 
 " transparent background
@@ -831,3 +835,21 @@ nmap <leader>zs :Copilot status<CR>
 
 " kernel tab mode
 nmap <leader>kt :set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab<CR>
+
+" codesnap
+lua <<EOF
+require("codesnap").setup({
+  save_path = '~/pictures/Screenshots/',
+  mac_window_bar = true,
+  title = "",
+  code_font_family = "CaskaydiaCove Nerd Font",
+  watermark_font_family = "Pacifico",
+  watermark = "",
+  bg_theme = "",
+  bg_color = "#ffffff",
+  breadcrumbs_separator = "/",
+  has_breadcrumbs = false,
+  has_line_number = false,
+  min_width = 0
+})
+EOF

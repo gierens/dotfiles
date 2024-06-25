@@ -204,3 +204,5 @@ alias hx="helix"
 alias recmd5="~/projects/recmd5/recmd5.sh"
 alias view="view_pdf"
 alias gitgraph="git log --graph --oneline --all --decorate"
+
+export GPG_TTY=$(tty)

@@ -195,6 +195,14 @@ cp_latest_screenshot() {
     cp "$(ls -t $(xdg-user-dir PICTURES)/Screenshots/* | head -n 1)" $1
 }
 
+mv_latest_screenshot() {
+    if [ -z "$1" ]; then
+        echo "No destination given"
+        return 1
+    fi
+    mv "$(ls -t $(xdg-user-dir PICTURES)/Screenshots/* | head -n 1)" $1
+}
+
 alias v="nvim"
 alias t="tmux"
 alias e="eza"

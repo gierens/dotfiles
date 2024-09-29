@@ -44,6 +44,7 @@ Plug 'iamcco/coc-cspell-dicts'
 Plug 'Yggdroot/indentLine'
 Plug 'fannheyward/coc-texlab'
 Plug 'neoclide/coc-java'
+Plug 'josa42/coc-go'
 Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'weirongxu/coc-explorer'
 " Plug 'neoclide/coc-highlight'

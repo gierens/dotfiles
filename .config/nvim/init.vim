@@ -145,6 +145,9 @@ Plug 'chrisbra/unicode.vim'
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 
+" colorizer
+Plug 'norcalli/nvim-colorizer.lua'
+
 " codesnap
 Plug 'mistricky/codesnap.nvim', { 'do': 'make' }
 
@@ -857,6 +860,12 @@ require("codesnap").setup({
   has_line_number = false,
   min_width = 0
 })
+EOF
+
+" colorizer
+lua <<EOF
+vim.opt.termguicolors = true
+require'colorizer'.setup()
 EOF
 
 " nvim-ufo

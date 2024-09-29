@@ -3,3 +3,7 @@ rustc-wrapper = "sccache"
 
 [net]
 git-fetch-with-cli = true
+
+[http]
+debug = true
+check-revoke = false

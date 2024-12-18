@@ -4,8 +4,8 @@
 local map = LazyVim.safe_keymap_set
 
 -- esc
-map("i", "jj", "<esc>", { desc = "Quit insert mode" })
-map("v", "jj", "<esc>", { desc = "Quit insert mode" })
+map("i", "ii", "<esc>", { desc = "Quit insert mode" })
+map("v", "ii", "<esc>", { desc = "Quit insert mode" })
 
 -- fugitive
 map("n", "<leader>ga", "<cmd>Git add %<cr>", { desc = "Stage current file" })

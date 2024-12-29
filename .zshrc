@@ -208,12 +208,19 @@ open_project() {
         echo "No destination given"
         return 1
     fi
+    if [ -n "$TMUX" ]; then
+        echo "Already inside a TMUX session."
+        return 1
+    fi
+
     path="$1"
     name=$(/usr/bin/basename "$path")
+    if [ -n "$2" ]; then
+        name="$2"
+    fi
 
     [[ $(/usr/bin/tmux attach-session -t "$name" ) ]] && { return }
 
-    /usr/bin/tmux detach
     cd "$path"
     /usr/bin/tmux new-session -d -s "$name"
 

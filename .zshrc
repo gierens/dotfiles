@@ -203,6 +203,29 @@ mv_latest_screenshot() {
     mv "$(ls -t $(xdg-user-dir PICTURES)/Screenshots/* | head -n 1)" $1
 }
 
+open_project() {
+    if [ -z "$1" ]; then
+        echo "No destination given"
+        return 1
+    fi
+    path="$1"
+    name=$(/usr/bin/basename "$path")
+
+    [[ $(/usr/bin/tmux attach-session -t "$name" ) ]] && { return }
+
+    /usr/bin/tmux detach
+    cd "$path"
+    /usr/bin/tmux new-session -d -s "$name"
+
+    /usr/bin/tmux rename-window -t "$name" "nvim"
+    /usr/bin/tmux send-keys -t "$name" "nvim ." C-m
+
+    /usr/bin/tmux new-window -t "$name"
+    /usr/bin/tmux rename-window -t "$name" "bash"
+
+    /usr/bin/tmux attach-session -t "$name"
+}
+
 alias v="nvim"
 alias t="tmux"
 alias e="eza"
@@ -211,6 +234,7 @@ alias m="aerc"
 alias z="zig"
 alias zl="zola"
 alias hx="helix"
+alias o="open_project"
 alias recmd5="~/projects/recmd5/recmd5.sh"
 alias view="view_pdf"
 alias gitgraph="git log --graph --oneline --all --decorate"

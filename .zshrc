@@ -213,15 +213,15 @@ open_project() {
         return 1
     fi
 
-    path="$1"
-    name=$(/usr/bin/basename "$path")
+    dir="$1"
+    name=$(/usr/bin/basename "$dir")
     if [ -n "$2" ]; then
         name="$2"
     fi
 
-    [[ $(/usr/bin/tmux attach-session -t "$name" ) ]] && { return }
+    [[ $(/usr/bin/tmux attach-session -t "$name" 2>/dev/null ) ]] && { return }
 
-    cd "$path"
+    cd "$dir"
     /usr/bin/tmux new-session -d -s "$name"
 
     /usr/bin/tmux rename-window -t "$name" "nvim"

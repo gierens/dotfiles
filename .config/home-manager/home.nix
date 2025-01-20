@@ -4,7 +4,16 @@
   home.username = "gierens";
   home.homeDirectory = "/home/gierens";
   home.stateVersion = "24.11";
+
   programs.home-manager.enable = true;
+
+  programs.tmux = {
+    enable = true;
+    extraConfig = builtins.readFile ~/.config/tmux/tmux.conf;
+    plugins = with pkgs; [
+      tmuxPlugins.nord
+    ];
+  };
 
   home.packages = with pkgs; [
     stdenv
@@ -30,7 +39,6 @@
     # fping
     # fio
     # vim
-    # tmux
     # tree
     # rsync
     # ncdu

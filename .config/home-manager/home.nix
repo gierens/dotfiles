@@ -14,7 +14,6 @@
     htop
     btop
     ncurses
-    home-manager
     stow
     eza
     gnumake

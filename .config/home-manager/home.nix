@@ -1,8 +1,9 @@
-  # the Home Manager release notes for a list of state version                                                                                                                                                                          [0/1520]
-  # changes in each release.
-  home.stateVersion = "22.05";
+{ config, pkgs, ... }:
 
-  # Let Home Manager install and manage itself.
+{
+  home.username = "gierens";
+  home.homeDirectory = "/home/gierens";
+  home.stateVersion = "24.11";
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [

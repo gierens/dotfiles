@@ -8,57 +8,60 @@
   home.packages = with pkgs; [
     stdenv
     neovim
-    htop
-    mtr
-    iperf
-    fping
-    stress
-    stress-ng
-    hdparm
-    smartmontools
-    ioping
-    fping
-    fio
-    vim
-    neovim
-    tmux
-    tree
-    rsync
-    ncdu
-    wipe
-    iotop
-    minicom
-    lshw
-    curl
-    git
-    acl
-    lsof
-    tcptrack
-    unzip
-    nmap
-    netcat
-    tcpdump
-    gdb
-    nodejs
     fzf
     ripgrep
-    gcc
-    # pkg-config
-    pkgconfig
-    gnumake
-    libelf
-    bc
-    flex
-    bison
-    ninja
-    glib
-    glibc
-    glibc.static
-    nix-index
-    tunctl
-    bridge-utils
-    iptables
-    nixos-generators
+    htop
+    btop
     ncurses
+    home-manager
+    stow
+    eza
+    gnumake
+    # curl
+    # git
+    # mtr
+    # iperf
+    # fping
+    # stress
+    # stress-ng
+    # hdparm
+    # smartmontools
+    # ioping
+    # fping
+    # fio
+    # vim
+    # tmux
+    # tree
+    # rsync
+    # ncdu
+    # wipe
+    # iotop
+    # minicom
+    # lshw
+    # acl
+    # lsof
+    # tcptrack
+    # unzip
+    # nmap
+    # netcat
+    # tcpdump
+    # gdb
+    # nodejs
+    # gcc
+    # # pkg-config
+    # pkgconfig
+    # libelf
+    # bc
+    # flex
+    # bison
+    # ninja
+    # glib
+    # glibc
+    # glibc.static
+    # nix-index
+    # tunctl
+    # bridge-utils
+    # iptables
+    # nixos-generators
   ];
 }

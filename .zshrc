@@ -139,6 +139,11 @@ bindkey '^x^e' edit-command-line
 # configure less pager
 LESS="FRX"
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
 view_pdf() {
     if [ -z "$1" ]; then
         echo "No file given"

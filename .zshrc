@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-if [[ $(date +%H) -ge 7 && $(date +%H) -lt 17 ]]; then
+if [[ $(date +%H) -ge 8 && $(date +%H) -lt 18 ]]; then
     ZSH_THEME="agnoster-light"
 else
     ZSH_THEME="agnoster"

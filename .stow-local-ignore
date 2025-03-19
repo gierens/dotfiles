@@ -3,6 +3,7 @@
 \.gitmodules
 \.github
 ^/submods
+^/nix
 
 ^/README.*
 ^/LICENSE

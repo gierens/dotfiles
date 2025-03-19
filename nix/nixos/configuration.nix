@@ -22,6 +22,9 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+
+    # Import home-manager's NixOS module
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   nixpkgs = {
@@ -61,7 +64,7 @@
       nix-path = config.nix.nixPath;
     };
     # Opinionated: disable channels
-    channel.enable = false;
+    # channel.enable = false;
 
     # Opinionated: make flake registry and nix path match flake inputs
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
@@ -159,6 +162,7 @@
     git
     chromium
     pinentry-curses
+    inputs.home-manager.packages.${pkgs.system}.default
   ];
 
   # This setups a SSH server. Very important if you're setting up a headless system.
@@ -217,4 +221,11 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.11"; # Did you read the comment?
 
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      # Import your home-manager configuration
+      sandro = import ../home-manager/home.nix;
+    };
+  };
 }

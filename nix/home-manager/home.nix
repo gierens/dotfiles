@@ -46,7 +46,7 @@
   };
   home = {
     username = "sandro";
-    homeDirectory = "/home/sandro/";
+    homeDirectory = "/home/sandro";
   };
 
   # Add stuff for your user as you see fit:

@@ -230,7 +230,7 @@
     extraSpecialArgs = { inherit inputs outputs; };
     users = {
       # Import your home-manager configuration
-      sandro = import ../../home-manager/home.nix;
+      sandro = import ../../home/home.nix;
     };
   };
 }

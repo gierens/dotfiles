@@ -217,6 +217,10 @@ open_project() {
         echo "Already inside a TMUX session."
         return 1
     fi
+    if [ ! -d "$1" ]; then
+        echo "Path does not exist or is no directory."
+        return 1
+    fi
 
     dir="$1"
     name=$(basename "$dir")

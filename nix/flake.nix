@@ -22,6 +22,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     ...
   } @ inputs: let
@@ -71,10 +72,11 @@
           ./hosts/citadel/configuration.nix
         ];
       };
-      liara = nixpkgs.lib.nixosSystem {
+      liara = nixpkgs-unstable.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = { inherit inputs outputs; };
         modules = [
+          { nixpkgs.config.pkgs = import nixpkgs-unstable { system = "aarch64-linux"; }; }
           ./hosts/liara/configuration.nix
         ];
       };

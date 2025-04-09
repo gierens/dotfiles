@@ -219,23 +219,23 @@ open_project() {
     fi
 
     dir="$1"
-    name=$(/usr/bin/basename "$dir")
+    name=$(basename "$dir")
     if [ -n "$2" ]; then
         name="$2"
     fi
 
-    [[ $(/usr/bin/tmux attach-session -t "$name" 2>/dev/null ) ]] && { return }
+    [[ $(tmux attach-session -t "$name" 2>/dev/null ) ]] && { return }
 
     cd "$dir"
-    /usr/bin/tmux new-session -d -s "$name"
+    tmux new-session -d -s "$name"
 
-    /usr/bin/tmux rename-window -t "$name" "nvim"
-    /usr/bin/tmux send-keys -t "$name" "nvim ." C-m
+    tmux rename-window -t "$name" "nvim"
+    tmux send-keys -t "$name" "nvim ." C-m
 
-    /usr/bin/tmux new-window -t "$name"
-    /usr/bin/tmux rename-window -t "$name" "bash"
+    tmux new-window -t "$name"
+    tmux rename-window -t "$name" "bash"
 
-    /usr/bin/tmux attach-session -t "$name"
+    tmux attach-session -t "$name"
 }
 
 alias v="nvim"

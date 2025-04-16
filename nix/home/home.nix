@@ -49,6 +49,31 @@
     homeDirectory = "/home/sandro";
   };
 
+  dconf.settings = {
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/files/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/browser/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal" = {
+      binding = "<Super>t";
+      command = "alacritty";
+      name = "terminal";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/files" = {
+      binding = "<Super>f";
+      command = "nautilus";
+      name = "files";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/browser" = {
+      binding = "<Super>b";
+      command = "chromium";
+      name = "browser";
+    };
+  };
+
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [

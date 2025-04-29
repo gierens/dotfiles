@@ -28,7 +28,7 @@
     ./apple-silicon-support
 
     # Import home-manager's NixOS module
-    # inputs.home-manager.nixosModules.home-manager
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   # nixpkgs = {
@@ -188,7 +188,7 @@
     gnome-tweaks
     openssl
     pkg-config
-    # inputs.home-manager.packages.${pkgs.system}.default
+    inputs.home-manager.packages.${pkgs.system}.default
   ];
 
   environment.gnome.excludePackages = (with pkgs; [
@@ -279,12 +279,12 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.05"; # Did you read the comment?
 
-  # home-manager = {
-  #   extraSpecialArgs = { inherit inputs outputs; };
-  #   users = {
-  #     # Import your home-manager configuration
-  #     sandro = import ../../home/home.nix;
-  #   };
-  # };
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      # Import your home-manager configuration
+      sandro = import ../../home/home.nix;
+    };
+  };
 }
 

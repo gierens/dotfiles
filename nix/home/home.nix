@@ -106,19 +106,6 @@
     nmap # A utility for network discovery and security auditing
     ipcalc  # it is a calculator for the IPv4/v6 addresses
 
-    # misc
-    cowsay
-    file
-    which
-    tree
-    gnused
-    gnutar
-    gawk
-    zstd
-    gnupg
-    pinentry-all
-    gcc
-
     # nix related
     #
     # it provides the command `nom` works just like `nix`
@@ -145,6 +132,47 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+
+    # misc
+    cowsay
+    file
+    which
+    tree
+    gnused
+    gnutar
+    gawk
+    zstd
+    gnupg
+    pinentry-all
+    gcc
+    codecrafters-cli
+    stdenv
+    neovim
+    fzf
+    htop
+    btop
+    ncurses
+    stow
+    eza
+    gnumake
+    pass
+    aerc
+    # browserpass
+    brave
+    zsh-z
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    gh
+    evince
+    slack-cli
+    rustup
+    sccache
+    # clang
+    mold
+    mariadb-client
+    llvm
+    libllvm
+    vlc
   ];
 
   # Let home Manager install and manage itself.

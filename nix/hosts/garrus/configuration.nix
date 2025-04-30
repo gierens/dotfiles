@@ -87,9 +87,6 @@
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   networking.hostId = "2c72b314";
 
-  # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";

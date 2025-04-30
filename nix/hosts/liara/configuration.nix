@@ -20,6 +20,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     ../common
+    ../common/desktop.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -101,31 +102,6 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-  };
-
-  fonts.packages = [] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
-  
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
-
   services.udev.extraRules = builtins.readFile ./50-zsa.rules;
 
   hardware.asahi.useExperimentalGPUDriver = true;
@@ -150,11 +126,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    alacritty
     zsh
     git
     htop
-    chromium
     curl
     wget
     tmux
@@ -163,37 +137,13 @@
     stow
     ripgrep
     fzf
-    kitty
     waybar
-    networkmanagerapplet
     wireguard-tools
     pinentry-all
-    gdm
-    gnome-tweaks
     openssl
     pkg-config
     inputs.home-manager.packages.${pkgs.system}.default
   ];
-
-  environment.gnome.excludePackages = (with pkgs; [
-    atomix # puzzle game
-    cheese # webcam tool
-    epiphany # web browser
-    evince # document viewer
-    geary # email reader
-    gedit # text editor
-    gnome-characters
-    gnome-music
-    gnome-photos
-    gnome-terminal
-    gnome-tour
-    gnome-maps
-    gnome-calculator
-    hitori # sudoku game
-    iagno # go game
-    tali # poker game
-    totem # video player
-  ]);
 
   environment.variables = {
     PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig";

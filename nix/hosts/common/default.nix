@@ -1,6 +1,7 @@
 {
   imports = [ 
     ./users.nix
+    # ./desktop.nix
   ];
 
   networking.domain = "gierens.de";

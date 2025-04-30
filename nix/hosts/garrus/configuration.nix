@@ -20,6 +20,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     ../common
+    ../common/desktop.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -99,24 +100,9 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  fonts.packages = [] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerdfonts);
-
   # ZFS services
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;

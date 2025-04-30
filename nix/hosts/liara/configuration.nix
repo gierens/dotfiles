@@ -144,18 +144,6 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.defaultUserShell = pkgs.zsh;
-  users.users.sandro = {
-    isNormalUser = true;
-    extraGroups = [
-      "docker"
-      "wheel"
-      "plugdev"
-    ];
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBevyJ5i0237DNoS29F9aii2AJwrSxXNz3hP61hWXfRl sandro@reaper.gierens.de" ];
-    packages = with pkgs; [
-      tree
-    ];
-  };
 
   programs.zsh.enable = true;
   programs.firefox.enable = true;

@@ -100,7 +100,7 @@
     };
   };
 
-  networking.hostName = "citadel"; # Define your hostname.
+  networking.hostName = "n7"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
@@ -165,7 +165,7 @@
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
   };
-    
+
   systemd.targets.sleep.enable = false;
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;

@@ -65,11 +65,11 @@
           ./hosts/garrus/configuration.nix
         ];
       };
-      citadel = nixpkgs.lib.nixosSystem {
+      n7 = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
-          ./hosts/citadel/configuration.nix
+          ./hosts/n7/configuration.nix
         ];
       };
       liara = nixpkgs-unstable.lib.nixosSystem {
@@ -93,7 +93,7 @@
           ./home/home.nix
         ];
       };
-      "sandro@citadel" = home-manager.lib.homeManagerConfiguration {
+      "sandro@n7" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [

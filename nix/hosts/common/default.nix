@@ -1,4 +1,9 @@
 {
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [ 
     ./users.nix
     # ./desktop.nix

@@ -89,7 +89,7 @@
         ssh = {
           enable = true;
           port = 2222;
-          hostKeys = [ /etc/nixos/id_ed25519 ];
+          hostKeys = [ /etc/nixos/id_ed25519_boot_unlock ];
           authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBevyJ5i0237DNoS29F9aii2AJwrSxXNz3hP61hWXfRl sandro@reaper.gierens.de" ];
         };
         postCommands = ''

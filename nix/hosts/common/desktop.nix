@@ -50,13 +50,19 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     alacritty
-    chromium
     kitty
     networkmanagerapplet
     gdm
     gnome-tweaks
     keymapp
   ];
+
+  programs.chromium = {
+    enable = true;
+    extensions = [
+      "dbepggeogbaibhgnhndojpepiihcmeb" # vimium
+    ];
+  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";

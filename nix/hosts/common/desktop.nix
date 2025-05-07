@@ -55,6 +55,7 @@
     networkmanagerapplet
     gdm
     gnome-tweaks
+    keymapp
   ];
 
   # Configure keymap in X11

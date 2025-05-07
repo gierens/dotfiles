@@ -17,6 +17,7 @@
 
   environment.systemPackages = with pkgs; [
     pinentry-curses
+    wireguard-tools
   ];
 
   programs.gnupg.agent = {

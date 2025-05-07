@@ -138,7 +138,6 @@
     ripgrep
     fzf
     waybar
-    wireguard-tools
     openssl
     pkg-config
     inputs.home-manager.packages.${pkgs.system}.default

@@ -125,6 +125,11 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+  };
+  hardware.pulseaudio.extraConfig = "default-sample-channels=6";
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -146,6 +151,7 @@
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    alsa-utils
     inputs.home-manager.packages.${pkgs.system}.default
   ];
 

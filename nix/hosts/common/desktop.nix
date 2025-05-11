@@ -55,14 +55,8 @@
     gdm
     gnome-tweaks
     keymapp
+    chromium
   ];
-
-  programs.chromium = {
-    enable = true;
-    extensions = [
-      "dbepggeogbaibhgnhndojpepiihcmeb" # vimium
-    ];
-  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";

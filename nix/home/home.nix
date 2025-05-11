@@ -223,6 +223,14 @@
   home.file."${config.home.homeDirectory}/.config/nvim".source =
   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/nvim";
 
+  programs.chromium = {
+    enable = true;
+    package = pkgs.chromium;
+    extensions = [
+      { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium
+    ];
+  };
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 

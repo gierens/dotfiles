@@ -229,6 +229,7 @@
     extensions = [
       { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium
       # { id = "naepdomgkenhinolocfifgehidddafch"; } # browserpass: installed in hosts/common/desktop
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
     ];
   };
 

@@ -172,7 +172,6 @@
     mariadb-client
     llvm
     libllvm
-    vlc
   ];
 
   # Let home Manager install and manage itself.

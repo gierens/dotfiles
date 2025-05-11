@@ -228,6 +228,7 @@
     package = pkgs.chromium;
     extensions = [
       { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium
+      # { id = "naepdomgkenhinolocfifgehidddafch"; } # browserpass: installed in hosts/common/desktop
     ];
   };
 

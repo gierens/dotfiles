@@ -56,6 +56,8 @@
     gnome-tweaks
     keymapp
     chromium
+    mpv
+    dconf-editor
   ];
 
   programs.browserpass.enable = true;

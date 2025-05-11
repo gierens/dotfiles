@@ -58,6 +58,11 @@
     chromium
     mpv
     dconf-editor
+    # TODO: there are cli clients as well
+    signal-desktop
+    slack
+    spotify
+    qbittorrent
   ];
 
   programs.browserpass.enable = true;

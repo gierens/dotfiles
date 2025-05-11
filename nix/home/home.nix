@@ -52,6 +52,13 @@
   };
 
   dconf.settings = {
+    "org/gnome/desktop/wm/keybindings" = {
+      close = [ "<Ctrl>q" ];
+      switch-applications = [];
+      switch-applications-backward = [];
+      switch-windows = [ "<Super>Tab" ];
+      switch-windows-backward = [ "<Super><Shift>Tab" ];
+    };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"

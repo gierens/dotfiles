@@ -151,7 +151,6 @@
     zstd
     gnupg
     pinentry-all
-    gcc
     codecrafters-cli
     stdenv
     neovim
@@ -174,7 +173,9 @@
     slack-cli
     rustup
     sccache
-    # clang
+    (hiPrio gcc)
+    clang
+    clang-tools
     mold
     mariadb-client
     llvm

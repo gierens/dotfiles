@@ -1,15 +1,7 @@
 # dotfiles
-Well, as the name says, dotfiles! I'm using stow for managing them.
-And yes, I know, my neovim config is in Vimscript. I haven't had the time
-to migrate it to Lua. Deal with it! :D
 
-## Usage
-To install or update the configuration run:
-```bash
-make
-```
-
-To remove it again use:
-```bash
-make clean
-```
+## 🚧🚧🚧 CAREFUL! CONSTRUCTION SITE! 🚧🚧🚧
+I'm currently moving from Arch to NixOS, so this repo is still in some
+intermediate state, with old unused config lying around and heavy
+refactoring going on, particularly in the `./nix/` folder which is going
+to be moved to `./` at some point.

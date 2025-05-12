@@ -73,4 +73,33 @@
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   fonts.packages = [] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerdfonts);
+
+  xdg.mime = {
+    enable = true;
+    defaultApplications = {
+      "text/plain" = "nvim.desktop";
+      "application/zip" = "org.gnome.FileRoller.desktop";
+      "application/rar" = "org.gnome.FileRoller.desktop";
+      "application/7z" = "org.gnome.FileRoller.desktop";
+      "application/*tar" = "org.gnome.FileRoller.desktop";
+      "inode/directory" = "org.gnome.Nautilus.desktop";
+      "application/pdf" = "org.gnome.Evince.desktop";
+      "image/*" = "org.gnome.Loupe.desktop";
+      "video/*" = "mpv.desktop";
+      "audio/*" = "mpv.desktop";
+      "text/html" = "chromium-browser.desktop";
+      "x-scheme-handler/http" = "chromium-browser.desktop";
+      "x-scheme-handler/https" = "chromium-browser.desktop";
+      "x-scheme-handler/ftp" = "chromium-browser.desktop";
+      "x-scheme-handler/chrome" = "chromium-browser.desktop";
+      "x-scheme-handler/about" = "chromium-browser.desktop";
+      "x-scheme-handler/unknown" = "chromium-browser.desktop";
+      "application/x-extension-htm" = "chromium-browser.desktop";
+      "application/x-extension-html" = "chromium-browser.desktop";
+      "application/x-extension-shtml" = "chromium-browser.desktop";
+      "application/xhtml+xml" = "chromium-browser.desktop";
+      "application/x-extension-xhtml" = "chromium-browser.desktop";
+      "application/x-extension-xht" = "chromium-browser.desktop";
+    };
+  };
 }

@@ -63,6 +63,7 @@
     slack
     spotify
     qbittorrent
+    evince
   ];
 
   programs.browserpass.enable = true;

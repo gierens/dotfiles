@@ -2,6 +2,7 @@
   inputs,
   lib,
   pkgs,
+  config,
   ...
 }: {
   services.zrepl = {
@@ -10,15 +11,15 @@
     settings = {
       jobs = [
         {
-          name = "reaper_root_to_zr1";
+          name = "${config.networking.hostName}_root_to_zr1";
           type = "push";
           connect = {
             type = "tls";
-            address = "zr1.gierens.de:8888";
+            address = "zr1.${config.networking.domain}:8888";
             ca = "/etc/zrepl/ca.crt";
-            cert = "/etc/zrepl/reaper.gierens.de.crt";
-            key = "/etc/zrepl/reaper.gierens.de.key";
-            server_cn = "zr1.gierens.de";
+            cert = "/etc/zrepl/${config.networking.hostName}.${config.networking.domain}.crt";
+            key = "/etc/zrepl/${config.networking.hostName}.${config.networking.domain}.key";
+            server_cn = "zr1.${config.networking.domain}";
           };
           filesystems = {
             "zpool<" = true;

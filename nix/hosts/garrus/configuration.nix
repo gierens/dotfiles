@@ -129,7 +129,6 @@
     eza
     tmux
     git
-    chromium
     inputs.home-manager.packages.${pkgs.system}.default
   ];
 

@@ -180,6 +180,7 @@
     mariadb-client
     llvm
     libllvm
+    openstackclient-full
   ];
 
   # Let home Manager install and manage itself.

@@ -176,6 +176,7 @@
     (hiPrio gcc)
     clang
     clang-tools
+    nil
     mold
     mariadb-client
     llvm

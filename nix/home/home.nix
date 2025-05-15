@@ -215,7 +215,14 @@
 
     # set some aliases, feel free to add more or remove some
     shellAliases = {
+      v = "nvim";
+      t = "tmux";
       e = "eza";
+      c = "cargo";
+      m = "aerc";
+      z = "zig";
+      x = "exit";
+      gitgraph="git log --graph --oneline --all --decorate";
       urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
       urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
       recmd5 = "/home/sandro/projects/recmd5/recmd5.sh";

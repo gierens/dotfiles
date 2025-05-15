@@ -181,6 +181,8 @@
     mariadb-client
     llvm
     libllvm
+    pyright
+    ruff
     openstackclient-full
   ];
 

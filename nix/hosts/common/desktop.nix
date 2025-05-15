@@ -62,6 +62,7 @@
     signal-desktop
     slack
     spotify
+    spotifyd
     qbittorrent
     evince
     xclip

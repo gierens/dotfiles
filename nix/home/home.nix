@@ -216,6 +216,7 @@
     # set some aliases, feel free to add more or remove some
     shellAliases = {
       v = "nvim";
+      g = "git";
       t = "tmux";
       e = "eza";
       c = "cargo";

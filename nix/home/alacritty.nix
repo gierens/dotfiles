@@ -5,10 +5,6 @@
     # custom settings
     settings = {
       env.TERM = "xterm-256color";
-      font = {
-        size = 10;
-        # draw_bold_text_with_bright_colors = true;
-      };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
       window.dimensions = {
@@ -21,9 +17,6 @@
           mods = "Shift|Control";
           action = "ToggleFullscreen";
         }
-      ];
-      general.import = [
-        (pkgs.alacritty-theme.outPath + "/gruvbox_dark.toml")
       ];
     };
   };

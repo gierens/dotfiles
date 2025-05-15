@@ -28,6 +28,8 @@
 
     # Import home-manager's NixOS module
     inputs.home-manager.nixosModules.home-manager
+
+    inputs.stylix.nixosModules.stylix
   ];
 
   nixpkgs = {
@@ -116,8 +118,19 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-
-  
+  stylix = {
+    enable = true;
+    image = ../../assets/gruvbox-dark-blue.png;
+    polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
+  };
+  specialisation.day.configuration = {
+    stylix = {
+      image = lib.mkForce ../../assets/gruvbox-light-blue.png;
+      polarity = lib.mkForce "light";
+      base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/gruvbox-light-soft.yaml";
+    };
+  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";

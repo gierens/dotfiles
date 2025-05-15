@@ -64,6 +64,7 @@
     spotify
     qbittorrent
     evince
+    xclip
   ];
 
   programs.browserpass.enable = true;

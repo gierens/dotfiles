@@ -18,6 +18,12 @@
   environment.systemPackages = with pkgs; [
     pinentry-curses
     wireguard-tools
+    (pkgs.texlive.combine {
+    inherit (pkgs.texlive)
+      scheme-full
+      # tikz
+      ;
+    })
   ];
 
   programs.gnupg.agent = {

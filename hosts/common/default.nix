@@ -9,6 +9,8 @@
     # ./desktop.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   networking.domain = "gierens.de";
 
   time.timeZone = "Europe/Berlin";

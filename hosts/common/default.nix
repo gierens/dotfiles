@@ -33,4 +33,6 @@
     enableSSHSupport = true;
     pinentryPackage = pkgs.pinentry-curses;
   };
+
+  services.resolved.enable = true;
 }

@@ -140,6 +140,7 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+    ncdu
 
     # misc
     cowsay

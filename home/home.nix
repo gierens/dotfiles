@@ -86,6 +86,8 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
+    unstable.neovim
+
     neofetch
     nnn # terminal file manager
 
@@ -155,7 +157,6 @@
     pinentry-all
     codecrafters-cli
     stdenv
-    neovim
     fzf
     htop
     btop

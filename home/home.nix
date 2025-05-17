@@ -232,6 +232,22 @@
               git add $f; git commit --sign --message "feat($(dirname $f)): add $(basename $f)"
           done
       }
+
+      cp_latest_screenshot() {
+          if [ -z "$1" ]; then
+              echo "No destination given"
+              return 1
+          fi
+          cp "$(ls -t $(xdg-user-dir PICTURES)/Screenshots/* | head -n 1)" $1
+      }
+
+      mv_latest_screenshot() {
+          if [ -z "$1" ]; then
+              echo "No destination given"
+              return 1
+          fi
+          mv "$(ls -t $(xdg-user-dir PICTURES)/Screenshots/* | head -n 1)" $1
+      }
     '';
 
     # set some aliases, feel free to add more or remove some

@@ -225,6 +225,13 @@
           fi
           nohup evince $1 > /dev/null 2>&1 &
       }
+
+      git_quick_add() {
+          for f in $(git ls-files --modified --exclude-standard --others)
+          do
+              git add $f; git commit --sign --message "feat($(dirname $f)): add $(basename $f)"
+          done
+      }
     '';
 
     # set some aliases, feel free to add more or remove some

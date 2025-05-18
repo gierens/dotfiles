@@ -187,6 +187,7 @@
     pyright
     ruff
     openstackclient-full
+    hyperfine
   ];
 
   # Let home Manager install and manage itself.

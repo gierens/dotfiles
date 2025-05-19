@@ -188,6 +188,7 @@
     ruff
     openstackclient-full
     hyperfine
+    python3
   ];
 
   # Let home Manager install and manage itself.

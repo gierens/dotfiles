@@ -1,4 +1,7 @@
 {
+  pkgs,
+  ...
+}: {
   users.users.sandro = {
     isNormalUser = true;
     extraGroups = [
@@ -14,5 +17,6 @@
     # packages = with pkgs; [
     #   # tree
     # ];
+    shell = pkgs.bash;
   };
 }

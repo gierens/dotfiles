@@ -189,6 +189,7 @@
     openstackclient-full
     hyperfine
     python3
+    unstable.zig
   ];
 
   # Let home Manager install and manage itself.

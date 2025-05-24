@@ -194,6 +194,41 @@
     qemu
     OVMF
     killall
+
+    # suggestions:
+    # - fish
+    # - nushell
+    # - ripgrep
+    # - fd
+    # - bat
+    # - eza
+    # - zoxide
+    # - xh
+    # - zellij
+    # - gitui
+    # - du-dust
+    # - dua
+    # - starship
+    # - yazi
+    # - hyperfine
+    # - evil-helix
+    # - bacon
+    # - cargo-info
+    # - fselect
+    # - ncspot
+    # - rusty-man
+    # - delta
+    # - ripgrep-all
+    # - tokei
+    # - wiki-tui
+    # - just
+    # - mask
+    # - mprocs
+    # - presenterm
+    # - kondo
+    # - bob-nvim
+    # - rtx
+    # - espanso
   ];
 
   # Let home Manager install and manage itself.

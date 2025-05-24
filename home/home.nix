@@ -143,6 +143,7 @@
     pciutils # lspci
     usbutils # lsusb
     ncdu
+    smartmontools
 
     # misc
     cowsay

@@ -189,7 +189,11 @@
     openstackclient-full
     hyperfine
     python3
-    unstable.zig
+    unstable.zig_0_13
+    zls
+    qemu
+    OVMF
+    killall
   ];
 
   # Let home Manager install and manage itself.

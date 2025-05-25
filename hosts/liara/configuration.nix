@@ -3,8 +3,6 @@
 {
   inputs,
   outputs,
-  lib,
-  config,
   pkgs,
   ...
 }: {
@@ -57,9 +55,9 @@
   #   };
   # };
 
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
+  nix =
+    # let flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs; in 
+  {
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";

@@ -204,7 +204,7 @@
     # - bat
     # - eza
     # - zoxide
-    # - xh
+    xh      # http client
     # - zellij
     # - gitui
     # - du-dust
@@ -220,7 +220,7 @@
     # - rusty-man
     # - delta
     # - ripgrep-all
-    tokei
+    tokei   # count loc
     # - wiki-tui
     # - just
     # - mask

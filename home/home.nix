@@ -18,8 +18,9 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    ./tmux.nix
     ./alacritty.nix
+    ./git.nix
+    ./tmux.nix
   ];
 
   nixpkgs = {
@@ -228,13 +229,6 @@
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  # basic configuration of git, please change to your own
-  programs.git = {
-    enable = true;
-    userName = "Sandro-Alessio Gierens";
-    userEmail = "sandro@gierens.de";
-  };
 
   # starship - an customizable prompt for any shell
   programs.starship = {

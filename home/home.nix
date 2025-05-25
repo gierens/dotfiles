@@ -188,7 +188,6 @@
     pyright
     ruff
     openstackclient-full
-    hyperfine
     python3
     unstable.zig_0_13
     zls
@@ -201,17 +200,17 @@
     # - nushell
     # - ripgrep
     # - fd
-    # - bat
+    bat     # cat with wings
     # - eza
     # - zoxide
     xh      # http client
-    # - zellij
+    # - zellij  # tmux alternative
     # - gitui
     # - du-dust
     # - dua
     # - starship
     # - yazi
-    # - hyperfine
+    hyperfine   # cli benchmark tool
     # - evil-helix
     # - bacon
     # - cargo-info

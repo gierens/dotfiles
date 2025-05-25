@@ -172,6 +172,7 @@
     qemu
     OVMF
     killall
+    bc
 
     # TODO: suggestions:
     # - fish

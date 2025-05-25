@@ -107,11 +107,14 @@
     hyperfine   # cli benchmark tool
     jq          # json processor
     just        # make alternative
-    ncspot      # spotify tui
     ripgrep     # grep alternative
     tokei       # count loc
     xh          # http client
     yq-go       # yaml processor
+
+    # cli clients
+    ncspot      # spotify tui
+    wiki-tui    # wikipedia tui
 
     # networking tools
     mtr # A network diagnostic tool
@@ -215,7 +218,6 @@
     # - fselect # find with SQL like queries
     # - rusty-man # rust docs as man page
     # - ripgrep-all
-    # - wiki-tui # wikipedia tui
     # - mask # make alternative
     # - mprocs # command parallelization
     # - presenterm # tui markdown presentations

@@ -98,12 +98,16 @@
     p7zip
 
     # utils
-    ripgrep # recursively searches directories for a regex pattern
-    jq # A lightweight and flexible command-line JSON processor
-    yq-go # yaml processor https://github.com/mikefarah/yq
-    eza # A modern replacement for ‘ls’
-    fzf # A command-line fuzzy finder
-    fd
+    bat         # cat replacement
+    eza         # ls replacement
+    fd          # find replacement
+    fzf         # fuzzy finder
+    hyperfine   # cli benchmark tool
+    jq          # json processor
+    ripgrep     # grep replacement
+    tokei       # count loc
+    xh          # http client
+    yq-go       # yaml processor
 
     # networking tools
     mtr # A network diagnostic tool
@@ -127,6 +131,7 @@
     glow # markdown previewer in terminal
     pandoc
 
+    htop
     btop  # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
@@ -158,12 +163,8 @@
     pinentry-all
     codecrafters-cli
     stdenv
-    fzf
-    htop
-    btop
     ncurses
     stow
-    eza
     gnumake
     pass
     aerc
@@ -200,17 +201,13 @@
     # - nushell
     # - ripgrep
     # - fd
-    bat     # cat with wings
-    # - eza
     # - zoxide
-    xh      # http client
     # - zellij  # tmux alternative
     # - gitui
     # - du-dust
     # - dua
     # - starship
     # - yazi
-    hyperfine   # cli benchmark tool
     # - evil-helix
     # - bacon
     # - cargo-info
@@ -219,7 +216,6 @@
     # - rusty-man
     # - delta
     # - ripgrep-all
-    tokei   # count loc
     # - wiki-tui
     # - just
     # - mask

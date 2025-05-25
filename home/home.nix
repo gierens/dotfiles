@@ -203,25 +203,25 @@
     # TODO: suggestions:
     # - fish
     # - nushell
-    # - zoxide
+    # - zoxide # cd alternative
     # - zellij  # tmux alternative
-    # - gitui
-    # - du-dust
-    # - dua
-    # - yazi
-    # - evil-helix
+    # - gitui # git tui
+    # - du-dust # du alternative
+    # - dua # du alternative
+    # - yazi # terminal file manager
+    # - evil-helix # helix with vim bindings
     # - bacon   # background code checker
-    # - cargo-info
-    # - fselect
-    # - rusty-man
+    # - cargo-info # show crate information
+    # - fselect # find with SQL like queries
+    # - rusty-man # rust docs as man page
     # - ripgrep-all
-    # - wiki-tui
-    # - mask
-    # - mprocs
-    # - presenterm
-    # - kondo
-    # - bob-nvim
-    # - rtx
+    # - wiki-tui # wikipedia tui
+    # - mask # make alternative
+    # - mprocs # command parallelization
+    # - presenterm # tui markdown presentations
+    # - kondo # build artifact cleaner
+    # - bob-nvim # neovim version manager
+    # - rtx # some runtime???
     # - espanso # text expander
   ];
 

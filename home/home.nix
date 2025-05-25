@@ -53,6 +53,9 @@
   };
 
   dconf.settings = {
+    "org/gnome/mutter" = {
+      workspaces-only-on-primary = false;
+    };
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Ctrl>q" ];
       switch-applications = [];

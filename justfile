@@ -1,3 +1,6 @@
+rebuild:
+    sudo nixos-rebuild switch
+
 setup:
     sed -i "s/127.0.0.1/$(pass zr1-ip-addr)/g" ./hosts/common/zrepl.nix
 

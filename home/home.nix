@@ -220,7 +220,7 @@
     # - rusty-man
     # - delta
     # - ripgrep-all
-    # - tokei
+    tokei
     # - wiki-tui
     # - just
     # - mask

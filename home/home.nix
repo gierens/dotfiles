@@ -84,6 +84,7 @@
     # cli clients
     ncspot      # spotify tui
     wiki-tui    # wikipedia tui
+    rusty-man   # rust docs as man page
 
     # networking tools
     mtr # A network diagnostic tool
@@ -185,7 +186,6 @@
     # - bacon   # background code checker
     # - cargo-info # show crate information
     # - fselect # find with SQL like queries
-    # - rusty-man # rust docs as man page
     # - ripgrep-all
     # - mask # make alternative
     # - mprocs # command parallelization

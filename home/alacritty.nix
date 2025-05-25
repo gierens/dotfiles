@@ -23,7 +23,7 @@
         }
       ];
       general.import = [
-        (pkgs.alacritty-theme.outPath + "/gruvbox_dark.toml")
+        (pkgs.alacritty-theme.outPath + "/share/alacritty-theme/gruvbox_dark.toml")
       ];
     };
   };

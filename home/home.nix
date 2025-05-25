@@ -98,16 +98,18 @@
     p7zip
 
     # utils
-    bat         # cat replacement
-    eza         # ls replacement
-    fd          # find replacement
+    bat         # cat alternative
+    eza         # ls alternative
+    fd          # find alternative
     fzf         # fuzzy finder
     hyperfine   # cli benchmark tool
     jq          # json processor
-    ripgrep     # grep replacement
+    ripgrep     # grep alternative
     tokei       # count loc
     xh          # http client
     yq-go       # yaml processor
+    just        # make alternative
+    delta       # diff alternative
 
     # networking tools
     mtr # A network diagnostic tool
@@ -196,7 +198,7 @@
     OVMF
     killall
 
-    # suggestions:
+    # TODO: suggestions:
     # - fish
     # - nushell
     # - ripgrep
@@ -206,25 +208,22 @@
     # - gitui
     # - du-dust
     # - dua
-    # - starship
     # - yazi
     # - evil-helix
-    # - bacon
+    # - bacon   # background code checker
     # - cargo-info
     # - fselect
     # - ncspot
     # - rusty-man
-    # - delta
     # - ripgrep-all
     # - wiki-tui
-    # - just
     # - mask
     # - mprocs
     # - presenterm
     # - kondo
     # - bob-nvim
     # - rtx
-    # - espanso
+    # - espanso # text expander
   ];
 
   # Let home Manager install and manage itself.

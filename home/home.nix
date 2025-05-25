@@ -100,17 +100,18 @@
 
     # utils
     bat         # cat alternative
+    delta       # diff alternative
     eza         # ls alternative
     fd          # find alternative
     fzf         # fuzzy finder
     hyperfine   # cli benchmark tool
     jq          # json processor
+    just        # make alternative
+    ncspot      # spotify tui
     ripgrep     # grep alternative
     tokei       # count loc
     xh          # http client
     yq-go       # yaml processor
-    just        # make alternative
-    delta       # diff alternative
 
     # networking tools
     mtr # A network diagnostic tool
@@ -202,8 +203,6 @@
     # TODO: suggestions:
     # - fish
     # - nushell
-    # - ripgrep
-    # - fd
     # - zoxide
     # - zellij  # tmux alternative
     # - gitui
@@ -214,7 +213,6 @@
     # - bacon   # background code checker
     # - cargo-info
     # - fselect
-    # - ncspot
     # - rusty-man
     # - ripgrep-all
     # - wiki-tui

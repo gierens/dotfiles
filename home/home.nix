@@ -214,7 +214,9 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
-    # TODO add your custom bashrc here
+    historySize = 1000000;
+    historyFileSize = 1000000;
+
     bashrcExtra = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin"
 

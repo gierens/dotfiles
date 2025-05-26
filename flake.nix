@@ -79,11 +79,12 @@
           ./hosts/n7/configuration.nix
         ];
       };
-      liara = nixpkgs-unstable.lib.nixosSystem {
+    # liara = nixpkgs-unstable.lib.nixosSystem {
+      liara = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = { inherit inputs outputs; };
         modules = [
-          { nixpkgs.config.pkgs = import nixpkgs-unstable { system = "aarch64-linux"; }; }
+          # { nixpkgs.config.pkgs = import nixpkgs-unstable { system = "aarch64-linux"; }; }
           ./hosts/liara/configuration.nix
         ];
       };

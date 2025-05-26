@@ -1,6 +1,12 @@
 rebuild:
     sudo nixos-rebuild switch
 
+list-generations:
+    sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+
+collect-garbage:
+    sudo nix-collect-garbage --delete-older-than 30d
+
 setup:
     sed -i "s/127.0.0.1/$(pass zr1-ip-addr)/g" ./hosts/common/zrepl.nix
 

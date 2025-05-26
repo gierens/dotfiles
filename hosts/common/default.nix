@@ -18,13 +18,6 @@
   environment.systemPackages = with pkgs; [
     pinentry-curses
     wireguard-tools
-    # TODO: this should not be installed by default
-    (pkgs.texlive.combine {
-    inherit (pkgs.texlive)
-      scheme-full
-      # tikz
-      ;
-    })
   ];
 
   virtualisation.docker.enable = true;

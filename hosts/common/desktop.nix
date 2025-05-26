@@ -59,12 +59,13 @@
     dconf-editor
     # TODO: there are cli clients as well
     signal-desktop
-    slack
-    spotify
     spotifyd
     qbittorrent
     evince
     xclip
+  ] ++ lib.optionals (pkgs.system == "x86_64-linux") [
+      slack
+      spotify
   ];
 
   programs.browserpass.enable = true;

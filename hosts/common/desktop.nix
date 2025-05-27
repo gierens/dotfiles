@@ -63,6 +63,7 @@
     qbittorrent
     evince
     xclip
+    wl-clipboard # required for pass
   ] ++ lib.optionals (pkgs.system == "x86_64-linux") [
       slack
       spotify

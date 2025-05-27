@@ -83,7 +83,6 @@
     # cli clients
     ncspot      # spotify tui
     wiki-tui    # wikipedia tui
-    rusty-man   # rust docs as man page
 
     # networking tools
     mtr # A network diagnostic tool
@@ -125,6 +124,16 @@
     usbutils # lsusb
     ncdu
     smartmontools
+
+    # rust related
+    unstable.cargo-deny
+    unstable.cargo-machete
+    unstable.cargo-spellcheck
+    unstable.mdbook
+    unstable.rustup
+    unstable.sccache
+    unstable.sqlx-cli
+    unstable.rusty-man   # rust docs as man page
 
     # misc
     cowsay

@@ -134,8 +134,20 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
+    extraConfig.pipewire-pulse = {
+      # See: https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Guide-Upmixing
+      "40-upmix" = {
+        "stream.properties" = {
+          "channelmix.upmix"      = true;
+          "channelmix.upmix-method" = "psd";
+          "channelmix.lfe-cutoff" = 120;
+          "channelmix.fc-cutoff" = 12000;
+          "channelmix.rear-delay" = 12.0;
+        };
+      };
+    };
   };
-  hardware.pulseaudio.extraConfig = "default-sample-channels=6";
+  services.pulseaudio.extraConfig = "default-sample-channels=6";
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;

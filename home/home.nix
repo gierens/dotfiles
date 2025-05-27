@@ -67,18 +67,18 @@
     p7zip
 
     # utils
-    bat         # cat alternative
-    delta       # diff alternative
-    eza         # ls alternative
-    fd          # find alternative
-    fzf         # fuzzy finder
-    hyperfine   # cli benchmark tool
-    jq          # json processor
-    just        # make alternative
-    ripgrep     # grep alternative
-    tokei       # count loc
-    xh          # http client
-    yq-go       # yaml processor
+    bat          # cat alternative
+    delta        # diff alternative
+    unstable.eza # ls alternative
+    fd           # find alternative
+    fzf          # fuzzy finder
+    hyperfine    # cli benchmark tool
+    jq           # json processor
+    just         # make alternative
+    ripgrep      # grep alternative
+    tokei        # count loc
+    xh           # http client
+    yq-go        # yaml processor
 
     # cli clients
     ncspot      # spotify tui

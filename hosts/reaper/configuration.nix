@@ -138,7 +138,7 @@
       # See: https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Guide-Upmixing
       "40-upmix" = {
         "stream.properties" = {
-          "channelmix.upmix"      = true;
+          "channelmix.upmix" = true;
           "channelmix.upmix-method" = "psd";
           "channelmix.lfe-cutoff" = 120;
           "channelmix.fc-cutoff" = 12000;

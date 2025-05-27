@@ -105,6 +105,7 @@
     hugo # static site generator
     glow # markdown previewer in terminal
     pandoc
+    unstable.presenterm # tui markdown presentations
 
     htop
     btop  # replacement of htop/nmon
@@ -161,8 +162,6 @@
     gh
     evince
     slack-cli
-    rustup
-    sccache
     (hiPrio gcc)
     clang
     clang-tools
@@ -198,7 +197,6 @@
     # - ripgrep-all
     # - mask # make alternative
     # - mprocs # command parallelization
-    # - presenterm # tui markdown presentations
     # - kondo # build artifact cleaner
     # - bob-nvim # neovim version manager
     # - rtx # some runtime???

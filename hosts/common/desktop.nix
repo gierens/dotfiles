@@ -50,6 +50,7 @@
   environment.systemPackages = with pkgs; [
     alacritty
     kitty
+    ghostty
     networkmanagerapplet
     gdm
     gnome-tweaks

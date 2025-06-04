@@ -181,6 +181,9 @@
     OVMF
     killall
     bc
+    dpkg
+    catimg
+    bunyan-rs
 
     # TODO: suggestions:
     # - fish

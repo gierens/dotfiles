@@ -184,6 +184,7 @@
     dpkg
     catimg
     bunyan-rs
+    tcpdump
 
     # TODO: suggestions:
     # - fish

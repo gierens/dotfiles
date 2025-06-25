@@ -185,6 +185,7 @@
     catimg
     bunyan-rs
     tcpdump
+    iamb
 
     # TODO: suggestions:
     # - fish

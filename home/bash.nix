@@ -91,6 +91,7 @@
       urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
       urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
       recmd5 = "/home/sandro/projects/recmd5/recmd5.sh";
+      chkmd5 = "md5sum --quiet -c checksums.md5";
       yubipi = "curl -k https://yubipi.gierens.de -H \"X-Auth-Token: $(pass yubipi)\" 2>/dev/null | jq -r .otp | xclip";
     };
   };

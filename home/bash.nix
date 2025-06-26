@@ -74,6 +74,36 @@
 
           tmux attach-session -t "$name"
       }
+
+      ssh_multi() {
+          if [ -z "$TMUX" ]; then
+             echo "Please call this from withing a tmux session."
+             return 1
+          fi
+
+          local HOSTS=$*
+
+          if [ -z "$HOSTS" ]; then
+             echo -n "Please provide of list of hosts separated by spaces [ENTER]: "
+             read HOSTS
+          fi
+
+          # Example for predefined lists:
+          # [ "$HOSTS" = "nodes" ] && HOSTS=$(echo admin@10.3.3.{1..10})
+          [ "$HOSTS" = "deb" ] && HOSTS="d11 d12 u20 u22 u24"
+
+          local hosts=( $HOSTS )
+          local target="sshm $HOSTS"
+
+          tmux rename-window "$target"
+          tmux send-keys -t :"$target" "ssh ''${hosts[0]}" C-m
+          unset hosts[0];
+          for i in "''${hosts[@]}"; do
+              tmux split-window -t :"$target" -h "ssh $i"
+              tmux select-layout -t :"$target" tiled > /dev/null
+          done
+          tmux set-window-option -t :"$target"  synchronize-panes on > /dev/null
+      }
     '';
 
     # set some aliases, feel free to add more or remove some
@@ -94,6 +124,7 @@
       recmd5 = "/home/sandro/projects/recmd5/recmd5.sh";
       chkmd5 = "md5sum --quiet -c checksums.md5";
       yubipi = "curl -k https://yubipi.gierens.de -H \"X-Auth-Token: $(pass yubipi)\" 2>/dev/null | jq -r .otp | xclip";
+      sshm = "ssh_multi";
     };
   };
 }

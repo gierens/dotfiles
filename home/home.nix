@@ -186,6 +186,8 @@
     bunyan-rs
     tcpdump
     iamb
+    dioxus-cli
+    wasm-bindgen-cli
 
     # TODO: suggestions:
     # - fish

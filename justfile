@@ -1,5 +1,9 @@
 rebuild:
-    sudo nixos-rebuild switch
+    if [ "$(hostname)" == "liara" ]; then \
+        sudo nixos-rebuild switch --impure; \
+    else \
+        sudo nixos-rebuild switch; \
+    fi
 
 list-generations:
     sudo nix-env --list-generations --profile /nix/var/nix/profiles/system

@@ -65,10 +65,10 @@
     evince
     xclip
     wl-clipboard # required for pass
-    zoom-us
   ] ++ lib.optionals (pkgs.system == "x86_64-linux") [
-      slack
-      spotify
+    slack
+    spotify
+    zoom-us
   ];
 
   programs.browserpass.enable = true;

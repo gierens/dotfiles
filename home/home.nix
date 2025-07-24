@@ -155,6 +155,7 @@
     gnumake
     pass
     aerc
+    aba
     # browserpass
     brave
     zsh-z

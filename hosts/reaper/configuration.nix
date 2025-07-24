@@ -84,6 +84,8 @@
   ];
   boot.kernelParams = [
     "ixgbe.allow_unsupported_sfp=1"
+    # TODO: remove when not needed anymore
+    "kvm_intel.enable_apicv=0"
   ];
 
   networking = {

@@ -78,8 +78,13 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelModules = [ "igb" "ixgbe" ];
-  boot.kernelParams = [ "ixgbe.allow_unsupported_sfp=1" ];
+  boot.kernelModules = [
+    "igb"
+    "ixgbe"
+  ];
+  boot.kernelParams = [
+    "ixgbe.allow_unsupported_sfp=1"
+  ];
 
   networking = {
     hostName = "reaper";

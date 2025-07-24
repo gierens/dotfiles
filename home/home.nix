@@ -188,6 +188,7 @@
     iamb
     dioxus-cli
     wasm-bindgen-cli
+    yt-dlp
 
     # TODO: suggestions:
     # - fish

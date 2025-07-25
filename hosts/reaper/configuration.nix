@@ -135,6 +135,8 @@
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.samsung-unified-linux-driver ];
 
+  hardware.sane.enable = true;
+
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR

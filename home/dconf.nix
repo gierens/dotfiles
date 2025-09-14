@@ -13,6 +13,13 @@
       switch-windows = [ "<Super>Tab" ];
       switch-windows-backward = [ "<Super><Shift>Tab" ];
     };
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = [
+        "terminate:ctrl_alt_bksp"
+        "lv3:rwin_switch"
+        "compose:ralt"
+      ];
+    };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"

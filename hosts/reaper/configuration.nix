@@ -179,6 +179,7 @@
     wget
     git
     alsa-utils
+    openrgb-with-all-plugins
     inputs.home-manager.packages.${pkgs.system}.default
   ];
 

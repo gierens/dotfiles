@@ -243,7 +243,7 @@
 
   programs.chromium = {
     enable = true;
-    package = pkgs.chromium;
+    package = (pkgs.chromium.override { enableWideVine = true; });
     extensions = [
       { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium
       # { id = "naepdomgkenhinolocfifgehidddafch"; } # browserpass: installed in hosts/common/desktop

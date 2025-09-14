@@ -55,7 +55,7 @@
     gdm
     gnome-tweaks
     keymapp
-    chromium
+    (chromium.override { enableWideVine = true; })
     mpv
     dconf-editor
     # TODO: there are cli clients as well

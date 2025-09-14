@@ -5,6 +5,9 @@ rebuild:
         sudo nixos-rebuild switch; \
     fi
 
+update:
+    nix flake update
+
 list-generations:
     sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 

@@ -101,8 +101,6 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  services.udev.extraRules = builtins.readFile ./50-zsa.rules;
-
   hardware.asahi.useExperimentalGPUDriver = true;
 
   # Enable touchpad support (enabled default in most desktopManager).

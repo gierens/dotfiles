@@ -77,6 +77,8 @@
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
+  services.udev.extraRules = builtins.readFile ./50-zsa.rules;
+
   fonts.packages = [] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   xdg.mime = {

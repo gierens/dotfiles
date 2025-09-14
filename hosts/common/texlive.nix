@@ -8,5 +8,6 @@
       scheme-full
       ;
     })
+    pkgs.texlab
   ];
 }

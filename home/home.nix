@@ -247,7 +247,8 @@
     extensions = [
       { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium
       # { id = "naepdomgkenhinolocfifgehidddafch"; } # browserpass: installed in hosts/common/desktop
-      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+      # { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin: not supported anymore
+      { id = "lgblnfidahcdcjddiepkckcfdhpknnjh"; } # stands adblocker
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
       { id = "inlikjemeeknofckkjolnjbpehgadgge"; } # distill
     ];

@@ -15,7 +15,7 @@
         server_cn = "zr1.${config.networking.domain}";
       };
       filesystems = {
-        "tank<" = true;
+        "tank/software<" = true;
       };
       send = {
         raw = true;

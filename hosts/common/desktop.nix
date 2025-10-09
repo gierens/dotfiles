@@ -65,6 +65,7 @@
     evince
     xclip
     wl-clipboard # required for pass
+    inkscape
   ] ++ lib.optionals (pkgs.system == "x86_64-linux") [
     slack
     spotify

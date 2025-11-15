@@ -108,6 +108,7 @@
     glow # markdown previewer in terminal
     pandoc
     unstable.presenterm # tui markdown presentations
+    python312Packages.weasyprint
 
     htop
     btop  # replacement of htop/nmon

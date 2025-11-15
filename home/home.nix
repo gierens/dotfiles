@@ -138,6 +138,7 @@
     unstable.sccache
     unstable.sqlx-cli
     unstable.rusty-man   # rust docs as man page
+    unstable.cargo-expand
 
     # misc
     cowsay

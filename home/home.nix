@@ -254,6 +254,7 @@
       { id = "lgblnfidahcdcjddiepkckcfdhpknnjh"; } # stands adblocker
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
       { id = "inlikjemeeknofckkjolnjbpehgadgge"; } # distill
+      { id = "laankejkbhbdhmipfmgcngdelahlfoji"; } # stayfocusd
     ];
   };
 

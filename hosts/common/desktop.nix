@@ -62,6 +62,7 @@
     signal-desktop
     spotifyd
     qbittorrent
+    libreoffice
     evince
     xclip
     wl-clipboard # required for pass

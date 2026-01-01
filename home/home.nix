@@ -81,6 +81,7 @@
     tokei        # count loc
     xh           # http client
     yq-go        # yaml processor
+    xxd          # hex and binary dump utitlity
 
     # cli clients
     ncspot      # spotify tui

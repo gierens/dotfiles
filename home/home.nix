@@ -173,7 +173,7 @@
     clang-tools
     nil
     mold
-    mariadb-client
+    mariadb.client
     llvm
     libllvm
     pyright

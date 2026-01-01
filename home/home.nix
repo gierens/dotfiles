@@ -200,6 +200,10 @@
     iamb
     yt-dlp
 
+    # NOTE: might be relevant later
+    # taskwarrior3
+    # unstable.todoist
+
     # TODO: suggestions:
     # - fish
     # - nushell

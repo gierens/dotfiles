@@ -103,6 +103,9 @@
     # with more details log output
     nix-output-monitor
     nix-tree
+    # NOTE: could be relevant at some point
+    # nix-prefetch-git
+    # nix-prefetch-github
 
     # productivity
     hugo # static site generator

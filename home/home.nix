@@ -180,7 +180,7 @@
     ruff
     openstackclient-full
     python3
-    unstable.zig_0_13
+    unstable.zig_0_14
     zls
     qemu
     OVMF

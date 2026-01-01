@@ -152,7 +152,7 @@
     zstd
     gnupg
     pinentry-all
-    codecrafters-cli
+    unstable.codecrafters-cli
     stdenv
     ncurses
     stow

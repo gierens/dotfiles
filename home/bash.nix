@@ -119,6 +119,8 @@
       x = "exit";
       hg = "history | grep";
       # TODO: remove this when not needed anymore
+      td = "/home/sandro/projects/todoist/todoist";
+      # TODO: remove this when not needed anymore
       ohg = "cat ~/.zsh_history | grep";
       gitgraph="git log --graph --oneline --all --decorate";
       urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";

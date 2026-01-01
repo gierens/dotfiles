@@ -131,7 +131,6 @@
     smartmontools
 
     # rust related
-    unstable.cargo-deny
     unstable.cargo-machete
     unstable.cargo-spellcheck
     unstable.mdbook
@@ -140,6 +139,9 @@
     unstable.sqlx-cli
     unstable.rusty-man   # rust docs as man page
     unstable.cargo-expand
+    # NOTE: these we currently install directly via cargo install to get the latest version
+    # unstable.cargo-audit
+    # unstable.cargo-deny
 
     # misc
     cowsay

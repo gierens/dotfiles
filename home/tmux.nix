@@ -10,6 +10,8 @@
     escapeTime = 0;
     # Force tmux to use /tmp for sockets (WSL2 compat)
     # secureSocket = false;
+    # TODO: doesn't appear work
+    # keyMode = "vi";
 
     plugins = with pkgs; [
       tmuxPlugins.power-theme

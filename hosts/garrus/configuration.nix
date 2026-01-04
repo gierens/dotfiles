@@ -130,7 +130,7 @@
     eza
     tmux
     git
-    inputs.home-manager.packages.${pkgs.system}.default
+    inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # This setups a SSH server. Very important if you're setting up a headless system.

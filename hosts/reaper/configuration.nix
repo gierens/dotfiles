@@ -182,7 +182,7 @@
     git
     alsa-utils
     openrgb-with-all-plugins
-    inputs.home-manager.packages.${pkgs.system}.default
+    inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

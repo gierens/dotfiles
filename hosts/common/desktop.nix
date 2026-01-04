@@ -71,7 +71,7 @@
     inkscape
     gnomeExtensions.night-theme-switcher
     # TODO: is there an extension to control volume per application or for the current application
-  ] ++ lib.optionals (pkgs.system == "x86_64-linux") [
+  ] ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
     slack
     spotify
     zoom-us

@@ -147,7 +147,7 @@
     tmux
     htop
     # inputs.helix.packages."${pkgs.system}".helix
-    inputs.home-manager.packages.${pkgs.system}.default
+    inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
   environment.variables.EDITOR = "nvim";
 

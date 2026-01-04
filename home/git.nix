@@ -2,9 +2,11 @@
 {
   programs.git = {
     enable = true;
-    userName = "Sandro-Alessio Gierens";
-    userEmail = "sandro@gierens.de";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Sandro-Alessio Gierens";
+        email = "sandro@gierens.de";
+      };
       core = {
         pager = "delta";
       };

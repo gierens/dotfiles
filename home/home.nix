@@ -175,7 +175,7 @@
     gh
     evince
     slack-cli
-    (hiPrio gcc)
+    (lib.hiPrio gcc)
     clang
     clang-tools
     nil

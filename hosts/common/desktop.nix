@@ -43,6 +43,8 @@
     iagno # go game
     tali # poker game
     totem # video player
+    showtime # new video player
+    decibels # new audio player
   ]);
 
   # List packages installed in system profile. To search, run:

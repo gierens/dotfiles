@@ -23,6 +23,7 @@
     ../common/desktop.nix
     ../common/texlive.nix
     ../common/zrepl.nix
+    ../common/zwift.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix

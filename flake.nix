@@ -8,6 +8,8 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    zwift.url = "github:netbrain/zwift";
+
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -24,6 +26,7 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
+    zwift,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -61,6 +64,7 @@
       reaper = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
+          zwift.nixosModules.zwift
           # > Our main nixos configuration file <
           ./hosts/reaper/configuration.nix
         ];

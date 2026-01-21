@@ -132,6 +132,7 @@
     usbutils # lsusb
     ncdu
     smartmontools
+    dmidecode
 
     # rust related
     unstable.cargo-machete

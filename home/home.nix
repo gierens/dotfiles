@@ -200,6 +200,7 @@
     tcpdump
     iamb
     yt-dlp
+    openldap
 
     # NOTE: might be relevant later
     # taskwarrior3

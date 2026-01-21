@@ -201,6 +201,7 @@
     iamb
     yt-dlp
     openldap
+    openssl
 
     # NOTE: might be relevant later
     # taskwarrior3

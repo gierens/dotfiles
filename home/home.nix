@@ -133,6 +133,7 @@
     ncdu
     smartmontools
     dmidecode
+    msr-tools
 
     # rust related
     unstable.cargo-machete

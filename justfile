@@ -16,6 +16,7 @@ collect-garbage:
 
 setup:
     sed -i "s/127.0.0.1/$(pass zr1-ip-addr)/g" ./hosts/common/zrepl.nix
+    cp -r .leetcode ~/
 
 theme-dark:
     sed -i "s/gruvbox_light/gruvbox_dark/g" ./home/alacritty.nix

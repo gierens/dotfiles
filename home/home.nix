@@ -149,6 +149,7 @@
     # unstable.cargo-audit
     # unstable.cargo-deny
     # wasm-bindgen-cli
+    unstable.leetcode-cli
 
     # misc
     cowsay

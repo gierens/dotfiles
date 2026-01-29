@@ -115,7 +115,7 @@
     python312Packages.weasyprint
 
     htop
-    btop  # replacement of htop/nmon
+    btop-cuda  # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
 

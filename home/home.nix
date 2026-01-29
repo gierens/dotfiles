@@ -150,6 +150,7 @@
     # unstable.cargo-deny
     # wasm-bindgen-cli
     unstable.leetcode-cli
+    cargo-leet
 
     # misc
     cowsay

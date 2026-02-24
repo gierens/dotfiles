@@ -151,6 +151,7 @@
     # wasm-bindgen-cli
     unstable.leetcode-cli
     cargo-leet
+    unstable.cargo-bootimage
 
     # misc
     cowsay

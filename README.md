@@ -1,6 +1,6 @@
 # dotfiles
 
 ## 🚧🚧🚧 CAREFUL! CONSTRUCTION SITE! 🚧🚧🚧
-I'm currently moving from Arch to NixOS, so this repo is still in some
-intermediate state, with old unused config lying around and heavy
-refactoring going on.
+I have moved from Arch to NixOS some time ago, so this repo is still in some
+intermediate state, with, here and there, maybe unidiomatic use of Nix, old
+unused configs still lying around, and regular refactoring going on.

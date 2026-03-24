@@ -14,7 +14,7 @@
         diffFilter = "delta --color-only";
       };
       delta = {
-        navigate = true;  # use n and N to move between diff sections
+        navigate = true; # use n and N to move between diff sections
         dark = true;
         side-by-side = true;
         line-numbers = true;

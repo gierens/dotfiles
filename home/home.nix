@@ -6,7 +6,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -69,33 +70,33 @@
     p7zip
 
     # utils
-    bat          # cat alternative
-    delta        # diff alternative
+    bat # cat alternative
+    delta # diff alternative
     unstable.eza # ls alternative
-    fd           # find alternative
-    fzf          # fuzzy finder
-    hyperfine    # cli benchmark tool
-    jq           # json processor
-    just         # make alternative
-    ripgrep      # grep alternative
-    tokei        # count loc
-    xh           # http client
-    yq-go        # yaml processor
-    xxd          # hex and binary dump utitlity
+    fd # find alternative
+    fzf # fuzzy finder
+    hyperfine # cli benchmark tool
+    jq # json processor
+    just # make alternative
+    ripgrep # grep alternative
+    tokei # count loc
+    xh # http client
+    yq-go # yaml processor
+    xxd # hex and binary dump utitlity
 
     # cli clients
-    ncspot      # spotify tui
-    wiki-tui    # wikipedia tui
+    ncspot # spotify tui
+    wiki-tui # wikipedia tui
 
     # networking tools
     mtr # A network diagnostic tool
     iperf3
-    dnsutils  # `dig` + `nslookup`
+    dnsutils # `dig` + `nslookup`
     ldns # replacement of `dig`, it provide the command `drill`
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
-    ipcalc  # it is a calculator for the IPv4/v6 addresses
+    ipcalc # it is a calculator for the IPv4/v6 addresses
 
     # nix related
     #
@@ -115,7 +116,7 @@
     python312Packages.weasyprint
 
     htop
-    btop-cuda  # replacement of htop/nmon
+    btop-cuda # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
 
@@ -142,7 +143,7 @@
     unstable.rustup
     unstable.sccache
     unstable.sqlx-cli
-    unstable.rusty-man   # rust docs as man page
+    unstable.rusty-man # rust docs as man page
     unstable.cargo-expand
     dioxus-cli
     # NOTE: these we currently install directly via cargo install to get the latest version

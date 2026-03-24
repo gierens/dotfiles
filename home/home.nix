@@ -249,17 +249,17 @@
   };
 
   home.file."${config.home.homeDirectory}/.config/nvim".source =
-  config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/nvim";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/nvim";
 
   # TODO: use home-manager to configure aerc
   home.file."${config.home.homeDirectory}/.config/aerc/aerc.conf".source =
-  config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/aerc/aerc.conf";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/aerc/aerc.conf";
   home.file."${config.home.homeDirectory}/.config/aerc/binds.conf".source =
-  config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/aerc/binds.conf";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/aerc/binds.conf";
   home.file."${config.home.homeDirectory}/.config/aerc/stylesets".source =
-  config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/aerc/stylesets";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/aerc/stylesets";
   home.file."${config.home.homeDirectory}/.config/aerc/templates".source =
-  config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/aerc/templates";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/aerc/templates";
 
   programs.chromium = {
     enable = true;

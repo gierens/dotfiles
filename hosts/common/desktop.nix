@@ -85,7 +85,18 @@
 
   services.udev.extraRules = builtins.readFile ./50-zsa.rules;
 
-  fonts.packages = [] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages = with pkgs; [
+    roboto
+    noto-fonts
+    fira
+    font-awesome
+    source-sans
+    source-sans-pro
+    hanken-grotesk
+    corefonts
+    vista-fonts
+  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.fontconfig.enable = true;
 
   xdg.mime = {
     enable = true;

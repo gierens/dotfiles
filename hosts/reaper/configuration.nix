@@ -269,8 +269,6 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  hardware.nvidia-container-toolkit.enable = true;
-
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
     users = {

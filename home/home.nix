@@ -196,6 +196,7 @@
     zls
     qemu
     OVMF
+    xorriso
     killall
     bc
     dpkg
@@ -208,6 +209,7 @@
     openssl
     arduino-cli
     arduino-ide
+    typst
 
     # NOTE: might be relevant later
     # taskwarrior3

@@ -272,6 +272,7 @@
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
       { id = "inlikjemeeknofckkjolnjbpehgadgge"; } # distill
       { id = "laankejkbhbdhmipfmgcngdelahlfoji"; } # stayfocusd
+      { id = "kbdngfhhepjodhilpfmnfbfiogachdkp"; } # no content warning youtube
     ];
   };
 

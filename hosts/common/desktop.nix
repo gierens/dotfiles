@@ -71,6 +71,8 @@
     inkscape
     gnomeExtensions.night-theme-switcher
     # TODO: is there an extension to control volume per application or for the current application
+    cron
+    libnotify
   ] ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
     slack
     spotify
@@ -84,6 +86,9 @@
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   services.udev.extraRules = builtins.readFile ./50-zsa.rules;
+
+  # TODO: also add crontab jobs
+  services.cron.enable = true;
 
   fonts.packages = with pkgs; [
     roboto

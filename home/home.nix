@@ -206,6 +206,8 @@
     yt-dlp
     openldap
     openssl
+    arduino-cli
+    arduino-ide
 
     # NOTE: might be relevant later
     # taskwarrior3

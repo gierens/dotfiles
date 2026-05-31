@@ -208,8 +208,6 @@
     yt-dlp
     openldap
     openssl
-    arduino-cli
-    arduino-ide
     typst
 
     # NOTE: might be relevant later
@@ -236,6 +234,9 @@
     # - bob-nvim # neovim version manager
     # - rtx # some runtime???
     # - espanso # text expander
+  ] ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
+    arduino-cli
+    arduino-ide
   ];
 
   # Let home Manager install and manage itself.

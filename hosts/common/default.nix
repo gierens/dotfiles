@@ -1,8 +1,9 @@
 {
   pkgs,
   ...
-}: {
-  imports = [ 
+}:
+{
+  imports = [
     ./users.nix
     # ./desktop.nix
   ];
@@ -18,6 +19,8 @@
   environment.systemPackages = with pkgs; [
     pinentry-curses
     wireguard-tools
+    openvpn
+    pass
   ];
 
   virtualisation.docker.enable = true;

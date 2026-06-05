@@ -173,6 +173,7 @@
     stow
     gnumake
     pass
+    pwgen
     aerc
     aba
     # browserpass

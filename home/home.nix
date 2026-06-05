@@ -217,6 +217,10 @@
     openssl
     typst
     weechat
+    unstable.calcurse
+    gcalcli
+    khal
+    vdirsyncer
 
     # NOTE: might be relevant later
     # taskwarrior3

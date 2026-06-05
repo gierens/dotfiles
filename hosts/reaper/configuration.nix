@@ -275,7 +275,7 @@
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    # This is the last version supporting the GTX 1080 Ti.
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
       version = "580.159.04";
       sha256_64bit = "sha256-weZnYbCI0Xs632y2l53przi+JoTRArABoXbc+vq9yh4=";

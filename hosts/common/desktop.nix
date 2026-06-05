@@ -77,6 +77,7 @@
     slack
     spotify
     zoom-us
+    discord
   ];
 
   programs.browserpass.enable = true;

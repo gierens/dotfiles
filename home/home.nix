@@ -216,6 +216,10 @@
     openldap
     openssl
     typst
+    qrrs
+    xournalpp
+    unstable.stockfish
+    unstable.chess-tui
     weechat
     unstable.calcurse
     gcalcli

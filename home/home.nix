@@ -60,7 +60,8 @@
     unstable.tree-sitter
     unstable.neovim
 
-    neofetch
+    # TODO: this doesn't work on 26.05 anymore, look for alternative
+    # neofetch
     nnn # terminal file manager
 
     # archives
@@ -151,7 +152,8 @@
     # unstable.cargo-deny
     # wasm-bindgen-cli
     unstable.leetcode-cli
-    cargo-leet
+    # TODO: build fails for some reason, figure out why.
+    # cargo-leet
     unstable.cargo-bootimage
 
     # misc

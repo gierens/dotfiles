@@ -41,7 +41,7 @@
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
+  in rec {
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
@@ -99,6 +99,23 @@
           ./hosts/liara/configuration.nix
         ];
       };
+      rpi3 = nixpkgs.lib.nixosSystem {
+        # system = "aarch64-linux";
+        specialArgs = { inherit inputs outputs; };
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
+          {
+            nixpkgs.config.allowUnsupportedSystem = true;
+            nixpkgs.hostPlatform.system = "aarch64-linux";
+            nixpkgs.buildPlatform.system = "x86_64-linux";
+          }
+          ./hosts/rpi3/configuration.nix
+        ];
+      };
+    };
+
+    images = {
+      rpi3 = nixosConfigurations.rpi3.config.system.build.sdImage;
     };
 
     # Standalone home-manager configuration entrypoint
@@ -137,6 +154,14 @@
         ];
       };
       "sandro@liara" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          # > Our main home-manager configuration file <
+          ./home/home.nix
+        ];
+      };
+      "sandro@rpi3" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [

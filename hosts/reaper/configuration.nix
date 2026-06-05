@@ -96,6 +96,9 @@
     # TODO: remove when not needed anymore
     # "kvm_intel.enable_apicv=0"
   ];
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+  ];
 
   networking = {
     hostName = "reaper";

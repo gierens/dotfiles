@@ -212,6 +212,7 @@
     openldap
     openssl
     typst
+    weechat
 
     # NOTE: might be relevant later
     # taskwarrior3

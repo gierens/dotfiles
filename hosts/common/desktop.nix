@@ -73,6 +73,7 @@
     # TODO: is there an extension to control volume per application or for the current application
     cron
     libnotify
+    drawio
   ] ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
     slack
     spotify

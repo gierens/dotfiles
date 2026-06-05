@@ -187,11 +187,15 @@
     (lib.hiPrio gcc)
     clang
     clang-tools
+    gdb
+    gef
+    nasm
     nil
     mold
     mariadb.client
     llvm
     libllvm
+    lldb
     pyright
     ruff
     openstackclient-full

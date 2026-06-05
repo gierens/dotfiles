@@ -69,6 +69,13 @@
           ./hosts/reaper/configuration.nix
         ];
       };
+      legion = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          # > Our main nixos configuration file <
+          ./hosts/legion/configuration.nix
+        ];
+      };
       garrus = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
@@ -98,6 +105,14 @@
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
       "sandro@reaper" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          # > Our main home-manager configuration file <
+          ./home/home.nix
+        ];
+      };
+      "sandro@legion" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [

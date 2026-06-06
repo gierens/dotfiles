@@ -155,6 +155,10 @@
     cargo-leet
     unstable.cargo-bootimage
 
+    # verus related
+    z3_4_12_5
+    # rustup # see above
+
     # misc
     cowsay
     file

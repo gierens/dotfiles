@@ -58,6 +58,7 @@
     gnome-tweaks
     keymapp
     (chromium.override { enableWideVine = true; })
+    tor-browser
     mpv
     dconf-editor
     # TODO: there are cli clients as well

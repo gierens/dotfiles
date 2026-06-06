@@ -152,8 +152,7 @@
     # unstable.cargo-deny
     # wasm-bindgen-cli
     unstable.leetcode-cli
-    # TODO: build fails for some reason, figure out why.
-    # cargo-leet
+    cargo-leet
     unstable.cargo-bootimage
 
     # misc

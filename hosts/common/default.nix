@@ -21,7 +21,11 @@
     wireguard-tools
     openvpn
     pass
+    clamav
   ];
+
+  services.clamav.daemon.enable = true;
+  services.clamav.updater.enable = true;
 
   virtualisation.docker.enable = true;
 

@@ -4,4 +4,5 @@ pkgs: {
   # example = pkgs.callPackage ./example { };
   cargo-leet = pkgs.callPackage ./cargo-leet.nix { };
   z3_4_12_5 = pkgs.callPackage ./z3 { };
+  vargo = pkgs.callPackage ./vargo.nix { };
 }

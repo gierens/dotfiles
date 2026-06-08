@@ -158,6 +158,8 @@
     # verus related
     z3_4_12_5
     # rustup # see above
+    verus
+    verus-analyzer
 
     # misc
     cowsay

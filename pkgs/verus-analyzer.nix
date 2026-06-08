@@ -35,6 +35,10 @@ rustPlatform.buildRustPackage {
 
   doCheck = false;
 
+  postInstall = ''
+    mv $out/bin/rust-analyzer $out/bin/verus-analyzer
+  '';
+
   meta = {
     description = "A Verus compiler front-end for IDEs (derived from rust-analyzer)";
     homepage = "https://github.com/verus-lang/verus-analyzer";

@@ -74,7 +74,7 @@ rustPlatform.buildRustPackage {
     mkdir -p $out/{share,bin,lib/rustlib/${target}/lib}
     cp -r target-verus/release/* $out/share/
     mkdir -p $out/{bin,"lib/rustlib/${target}/lib"}
-    ln -s $out/share/{cargo-verus,verus,rust_verify} $out/bin/
+    ln -s $out/share/{cargo-verus,verus,rust_verify,z3} $out/bin/
     ln -s $out/share/*.so $out/lib/
     ln -s $out/share/*.rlib "$out/lib/rustlib/${target}/lib/"
   '';

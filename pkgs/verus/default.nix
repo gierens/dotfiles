@@ -26,7 +26,7 @@ rustPlatform.buildRustPackage {
   pname = "verus";
   version = version;
   src = fetchFromGitHub {
-    owner = "vers-lang";
+    owner = "verus-lang";
     repo = "verus";
     rev = "release/${version}";
     sha256 = sha256;

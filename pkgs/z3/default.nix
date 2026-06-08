@@ -12,7 +12,6 @@
   ocaml ? null,
   findlib ? null,
   zarith ? null,
-  writeScript,
   replaceVars,
 }:
 
@@ -41,14 +40,15 @@ let
 
       strictDeps = true;
 
-      nativeBuildInputs =
-        [ python3Packages.python ]
-        ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames
-        ++ lib.optional javaBindings jdk
-        ++ lib.optionals ocamlBindings [
-          ocaml
-          findlib
-        ];
+      nativeBuildInputs = [
+        python3Packages.python
+      ]
+      ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames
+      ++ lib.optional javaBindings jdk
+      ++ lib.optionals ocamlBindings [
+        ocaml
+        findlib
+      ];
       propagatedBuildInputs = [ python3Packages.setuptools ] ++ lib.optionals ocamlBindings [ zarith ];
       enableParallelBuilding = true;
 
@@ -85,37 +85,35 @@ let
         ./test-z3 -a
       '';
 
-      postInstall =
-        ''
-          mkdir -p $dev $lib
-          mv $out/lib $lib/lib
-          mv $out/include $dev/include
-        ''
-        + lib.optionalString pythonBindings ''
-          mkdir -p $python/lib
-          mv $lib/lib/python* $python/lib/
-          ln -sf $lib/lib/libz3${stdenv.hostPlatform.extensions.sharedLibrary} $python/${python3Packages.python.sitePackages}/z3/lib/libz3${stdenv.hostPlatform.extensions.sharedLibrary}
-        ''
-        + lib.optionalString javaBindings ''
-          mkdir -p $java/share/java
-          mv com.microsoft.z3.jar $java/share/java
-          moveToOutput "lib/libz3java.${stdenv.hostPlatform.extensions.sharedLibrary}" "$java"
-        '';
+      postInstall = ''
+        mkdir -p $dev $lib
+        mv $out/lib $lib/lib
+        mv $out/include $dev/include
+      ''
+      + lib.optionalString pythonBindings ''
+        mkdir -p $python/lib
+        mv $lib/lib/python* $python/lib/
+        ln -sf $lib/lib/libz3${stdenv.hostPlatform.extensions.sharedLibrary} $python/${python3Packages.python.sitePackages}/z3/lib/libz3${stdenv.hostPlatform.extensions.sharedLibrary}
+      ''
+      + lib.optionalString javaBindings ''
+        mkdir -p $java/share/java
+        mv com.microsoft.z3.jar $java/share/java
+        moveToOutput "lib/libz3java.${stdenv.hostPlatform.extensions.sharedLibrary}" "$java"
+      '';
 
       doInstallCheck = true;
       installCheckPhase = ''
         $out/bin/z3 -version 2>&1 | grep -F "Z3 version $version"
       '';
 
-      outputs =
-        [
-          "out"
-          "lib"
-          "dev"
-        ]
-        ++ lib.optional pythonBindings "python"
-        ++ lib.optional javaBindings "java"
-        ++ lib.optional ocamlBindings "ocaml";
+      outputs = [
+        "out"
+        "lib"
+        "dev"
+      ]
+      ++ lib.optional pythonBindings "python"
+      ++ lib.optional javaBindings "java"
+      ++ lib.optional ocamlBindings "ocaml";
 
       meta = with lib; {
         description = "High-performance theorem prover and SMT solver";
@@ -149,15 +147,15 @@ let
   # replace @dir@ in the path of the given list of patches
   fixupPatches = dir: map (patch: replaceVars patch { dir = dir; });
 in
-  common {
-    version = "4.12.5";
-    sha256 = "sha256-Qj9w5s02OSMQ2qA7HG7xNqQGaUacA1d4zbOHynq5k+A=";
-    patches =
-      fixupPatches "math" [
-        ./lower-bound-typo.diff
-        static-matrix-patch
-      ]
-      ++ [
-        static-matrix-def-patch
-      ];
-  }
+common {
+  version = "4.12.5";
+  sha256 = "sha256-Qj9w5s02OSMQ2qA7HG7xNqQGaUacA1d4zbOHynq5k+A=";
+  patches =
+    fixupPatches "math" [
+      ./lower-bound-typo.diff
+      static-matrix-patch
+    ]
+    ++ [
+      static-matrix-def-patch
+    ];
+}

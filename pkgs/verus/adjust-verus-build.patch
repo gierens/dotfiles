@@ -1,0 +1,12 @@
+diff --git a/source/verus/build.rs b/source/verus/build.rs
+index 28052aa4e..76030e2de 100644
+--- a/source/verus/build.rs
++++ b/source/verus/build.rs
+@@ -4,7 +4,6 @@ fn main() {
+     let output = match std::process::Command::new("rustup")
+         .arg("show")
+         .arg("active-toolchain")
+-        .env_remove("RUSTUP_TOOLCHAIN")
+         .stderr(std::process::Stdio::inherit())
+         .output()
+         .map_err(|x| format!("could not execute rustup ({})", x))

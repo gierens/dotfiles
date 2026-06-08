@@ -1,0 +1,38 @@
+diff --git a/source/Cargo.lock b/source/Cargo.lock
+index 34acc201d..839a43c28 100644
+--- a/source/Cargo.lock
++++ b/source/Cargo.lock
+@@ -752,7 +752,6 @@ dependencies = [
+ [[package]]
+ name = "getopts"
+ version = "0.2.21"
+-source = "git+https://github.com/utaal/getopts.git?branch=parse-partial#1ba7b831cfa9ebf9dea584ba43c71ea49613267f"
+ dependencies = [
+  "unicode-width 0.1.14",
+ ]
+diff --git a/source/air/Cargo.toml b/source/air/Cargo.toml
+index 4a1bebd3c..1c5338443 100644
+--- a/source/air/Cargo.toml
++++ b/source/air/Cargo.toml
+@@ -8,7 +8,7 @@ edition = "2018"
+ # Note: do not add any dependencies on rustc -- AIR deliberately abstracts away from rustc's internals
+ [dependencies]
+ sise = "0.6.0"
+-getopts = { git = "https://github.com/utaal/getopts.git", branch = "parse-partial" }
++getopts = { path = "../../getopts-parse-partial" }
+ smt-scope = { version = "0.1.7", features = ["analysis"] }
+ petgraph = "0.6"
+ serde = { version = "1", features = ["derive", "rc"] }
+diff --git a/source/rust_verify/Cargo.toml b/source/rust_verify/Cargo.toml
+index eabc04a66..62684af57 100644
+--- a/source/rust_verify/Cargo.toml
++++ b/source/rust_verify/Cargo.toml
+@@ -16,7 +16,7 @@ hex = "0.4.3"
+ sise = "0.6.0"
+ num-bigint = "0.4.4"
+ num-format = "0.4.0"
+-getopts = { git = "https://github.com/utaal/getopts.git", branch = "parse-partial" }
++getopts = { path = "../../getopts-parse-partial" }
+ regex = "1"
+ internals_interface = { path = "../tools/internals_interface" }
+ indicatif = "0.17.7"

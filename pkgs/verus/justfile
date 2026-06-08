@@ -1,0 +1,11 @@
+generate-getopts-patch: && clean
+    mkdir -p orig new
+    git clone https://github.com/utaal/getopts --branch parse-partial new/getopts-parse-partial
+    rm -rf new/getopts-parse-partial/.git
+    diff -ruN orig/ new/ > add-getopts-parse-partial.patch; true
+
+apply-getopts-patch:
+    patch -s -p0 < add-getopts-parse-partial.patch
+
+clean:
+    rm -rf orig new

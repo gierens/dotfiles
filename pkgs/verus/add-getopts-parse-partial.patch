@@ -1,0 +1,3017 @@
+diff -ruN orig/getopts-parse-partial/Cargo.toml new/getopts-parse-partial/Cargo.toml
+--- orig/getopts-parse-partial/Cargo.toml	1970-01-01 01:00:00.000000000 +0100
++++ new/getopts-parse-partial/Cargo.toml	2026-06-06 22:41:38.431353014 +0200
+@@ -0,0 +1,25 @@
++[package]
++
++name = "getopts"
++version = "0.2.21" # don't forget to update html_root_url
++authors = ["The Rust Project Developers"]
++license = "MIT/Apache-2.0"
++readme = "README.md"
++repository = "https://github.com/rust-lang/getopts"
++documentation = "https://doc.rust-lang.org/getopts"
++homepage = "https://github.com/rust-lang/getopts"
++description = """
++getopts-like option parsing.
++"""
++categories = ["command-line-interface"]
++
++[dependencies]
++unicode-width = "0.1.5"
++std = { version = "1.0", package = "rustc-std-workspace-std", optional = true }
++core = { version = "1.0", package = "rustc-std-workspace-core", optional = true }
++
++[dev-dependencies]
++log = "0.4"
++
++[features]
++rustc-dep-of-std = ['unicode-width/rustc-dep-of-std', 'std', 'core']
+diff -ruN orig/getopts-parse-partial/.github/workflows/main.yml new/getopts-parse-partial/.github/workflows/main.yml
+--- orig/getopts-parse-partial/.github/workflows/main.yml	1970-01-01 01:00:00.000000000 +0100
++++ new/getopts-parse-partial/.github/workflows/main.yml	2026-06-06 22:41:38.431353014 +0200
+@@ -0,0 +1,15 @@
++name: CI
++on: [push, pull_request]
++jobs:
++  test:
++    name: Test
++    runs-on: ubuntu-latest
++    strategy:
++      matrix:
++        rust: [stable, beta, nightly]
++    steps:
++    - uses: actions/checkout@master
++    - name: Install Rust
++      run: rustup update ${{ matrix.rust }} && rustup default ${{ matrix.rust }}
++    - run: cargo test
++    - run: cargo doc
+diff -ruN orig/getopts-parse-partial/.gitignore new/getopts-parse-partial/.gitignore
+--- orig/getopts-parse-partial/.gitignore	1970-01-01 01:00:00.000000000 +0100
++++ new/getopts-parse-partial/.gitignore	2026-06-06 22:41:38.431353014 +0200
+@@ -0,0 +1,6 @@
++# Cargo
++/target
++/Cargo.lock
++
++#IDE
++.vscode
+\ No newline at end of file
+diff -ruN orig/getopts-parse-partial/LICENSE-APACHE new/getopts-parse-partial/LICENSE-APACHE
+--- orig/getopts-parse-partial/LICENSE-APACHE	1970-01-01 01:00:00.000000000 +0100
++++ new/getopts-parse-partial/LICENSE-APACHE	2026-06-06 22:41:38.431353014 +0200
+@@ -0,0 +1,201 @@
++                              Apache License
++                        Version 2.0, January 2004
++                     http://www.apache.org/licenses/
++
++TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
++
++1. Definitions.
++
++   "License" shall mean the terms and conditions for use, reproduction,
++   and distribution as defined by Sections 1 through 9 of this document.
++
++   "Licensor" shall mean the copyright owner or entity authorized by
++   the copyright owner that is granting the License.
++
++   "Legal Entity" shall mean the union of the acting entity and all
++   other entities that control, are controlled by, or are under common
++   control with that entity. For the purposes of this definition,
++   "control" means (i) the power, direct or indirect, to cause the
++   direction or management of such entity, whether by contract or
++   otherwise, or (ii) ownership of fifty percent (50%) or more of the
++   outstanding shares, or (iii) beneficial ownership of such entity.
++
++   "You" (or "Your") shall mean an individual or Legal Entity
++   exercising permissions granted by this License.
++
++   "Source" form shall mean the preferred form for making modifications,
++   including but not limited to software source code, documentation
++   source, and configuration files.
++
++   "Object" form shall mean any form resulting from mechanical
++   transformation or translation of a Source form, including but
++   not limited to compiled object code, generated documentation,
++   and conversions to other media types.
++
++   "Work" shall mean the work of authorship, whether in Source or
++   Object form, made available under the License, as indicated by a
++   copyright notice that is included in or attached to the work
++   (an example is provided in the Appendix below).
++
++   "Derivative Works" shall mean any work, whether in Source or Object
++   form, that is based on (or derived from) the Work and for which the
++   editorial revisions, annotations, elaborations, or other modifications
++   represent, as a whole, an original work of authorship. For the purposes
++   of this License, Derivative Works shall not include works that remain
++   separable from, or merely link (or bind by name) to the interfaces of,
++   the Work and Derivative Works thereof.
++
++   "Contribution" shall mean any work of authorship, including
++   the original version of the Work and any modifications or additions
++   to that Work or Derivative Works thereof, that is intentionally
++   submitted to Licensor for inclusion in the Work by the copyright owner
++   or by an individual or Legal Entity authorized to submit on behalf of
++   the copyright owner. For the purposes of this definition, "submitted"
++   means any form of electronic, verbal, or written communication sent
++   to the Licensor or its representatives, including but not limited to
++   communication on electronic mailing lists, source code control systems,
++   and issue tracking systems that are managed by, or on behalf of, the
++   Licensor for the purpose of discussing and improving the Work, but
++   excluding communication that is conspicuously marked or otherwise
++   designated in writing by the copyright owner as "Not a Contribution."
++
++   "Contributor" shall mean Licensor and any individual or Legal Entity
++   on behalf of whom a Contribution has been received by Licensor and
++   subsequently incorporated within the Work.
++
++2. Grant of Copyright License. Subject to the terms and conditions of
++   this License, each Contributor hereby grants to You a perpetual,
++   worldwide, non-exclusive, no-charge, royalty-free, irrevocable
++   copyright license to reproduce, prepare Derivative Works of,
++   publicly display, publicly perform, sublicense, and distribute the
++   Work and such Derivative Works in Source or Object form.
++
++3. Grant of Patent License. Subject to the terms and conditions of
++   this License, each Contributor hereby grants to You a perpetual,
++   worldwide, non-exclusive, no-charge, royalty-free, irrevocable
++   (except as stated in this section) patent license to make, have made,
++   use, offer to sell, sell, import, and otherwise transfer the Work,
++   where such license applies only to those patent claims licensable
++   by such Contributor that are necessarily infringed by their
++   Contribution(s) alone or by combination of their Contribution(s)
++   with the Work to which such Contribution(s) was submitted. If You
++   institute patent litigation against any entity (including a
++   cross-claim or counterclaim in a lawsuit) alleging that the Work
++   or a Contribution incorporated within the Work constitutes direct
++   or contributory patent infringement, then any patent licenses
++   granted to You under this License for that Work shall terminate
++   as of the date such litigation is filed.
++
++4. Redistribution. You may reproduce and distribute copies of the
++   Work or Derivative Works thereof in any medium, with or without
++   modifications, and in Source or Object form, provided that You
++   meet the following conditions:
++
++   (a) You must give any other recipients of the Work or
++       Derivative Works a copy of this License; and
++
++   (b) You must cause any modified files to carry prominent notices
++       stating that You changed the files; and
++
++   (c) You must retain, in the Source form of any Derivative Works
++       that You distribute, all copyright, patent, trademark, and
++       attribution notices from the Source form of the Work,
++       excluding those notices that do not pertain to any part of
++       the Derivative Works; and
++
++   (d) If the Work includes a "NOTICE" text file as part of its
++       distribution, then any Derivative Works that You distribute must
++       include a readable copy of the attribution notices contained
++       within such NOTICE file, excluding those notices that do not
++       pertain to any part of the Derivative Works, in at least one
++       of the following places: within a NOTICE text file distributed
++       as part of the Derivative Works; within the Source form or
++       documentation, if provided along with the Derivative Works; or,
++       within a display generated by the Derivative Works, if and
++       wherever such third-party notices normally appear. The contents
++       of the NOTICE file are for informational purposes only and
++       do not modify the License. You may add Your own attribution
++       notices within Derivative Works that You distribute, alongside
++       or as an addendum to the NOTICE text from the Work, provided
++       that such additional attribution notices cannot be construed
++       as modifying the License.
++
++   You may add Your own copyright statement to Your modifications and
++   may provide additional or different license terms and conditions
++   for use, reproduction, or distribution of Your modifications, or
++   for any such Derivative Works as a whole, provided Your use,
++   reproduction, and distribution of the Work otherwise complies with
++   the conditions stated in this License.
++
++5. Submission of Contributions. Unless You explicitly state otherwise,
++   any Contribution intentionally submitted for inclusion in the Work
++   by You to the Licensor shall be under the terms and conditions of
++   this License, without any additional terms or conditions.
++   Notwithstanding the above, nothing herein shall supersede or modify
++   the terms of any separate license agreement you may have executed
++   with Licensor regarding such Contributions.
++
++6. Trademarks. This License does not grant permission to use the trade
++   names, trademarks, service marks, or product names of the Licensor,
++   except as required for reasonable and customary use in describing the
++   origin of the Work and reproducing the content of the NOTICE file.
++
++7. Disclaimer of Warranty. Unless required by applicable law or
++   agreed to in writing, Licensor provides the Work (and each
++   Contributor provides its Contributions) on an "AS IS" BASIS,
++   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
++   implied, including, without limitation, any warranties or conditions
++   of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
++   PARTICULAR PURPOSE. You are solely responsible for determining the
++   appropriateness of using or redistributing the Work and assume any
++   risks associated with Your exercise of permissions under this License.
++
++8. Limitation of Liability. In no event and under no legal theory,
++   whether in tort (including negligence), contract, or otherwise,
++   unless required by applicable law (such as deliberate and grossly
++   negligent acts) or agreed to in writing, shall any Contributor be
++   liable to You for damages, including any direct, indirect, special,
++   incidental, or consequential damages of any character arising as a
++   result of this License or out of the use or inability to use the
++   Work (including but not limited to damages for loss of goodwill,
++   work stoppage, computer failure or malfunction, or any and all
++   other commercial damages or losses), even if such Contributor
++   has been advised of the possibility of such damages.
++
++9. Accepting Warranty or Additional Liability. While redistributing
++   the Work or Derivative Works thereof, You may choose to offer,
++   and charge a fee for, acceptance of support, warranty, indemnity,
++   or other liability obligations and/or rights consistent with this
++   License. However, in accepting such obligations, You may act only
++   on Your own behalf and on Your sole responsibility, not on behalf
++   of any other Contributor, and only if You agree to indemnify,
++   defend, and hold each Contributor harmless for any liability
++   incurred by, or claims asserted against, such Contributor by reason
++   of your accepting any such warranty or additional liability.
++
++END OF TERMS AND CONDITIONS
++
++APPENDIX: How to apply the Apache License to your work.
++
++   To apply the Apache License to your work, attach the following
++   boilerplate notice, with the fields enclosed by brackets "[]"
++   replaced with your own identifying information. (Don't include
++   the brackets!)  The text should be enclosed in the appropriate
++   comment syntax for the file format. We also recommend that a
++   file or class name and description of purpose be included on the
++   same "printed page" as the copyright notice for easier
++   identification within third-party archives.
++
++Copyright [yyyy] [name of copyright owner]
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++	http://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
+diff -ruN orig/getopts-parse-partial/LICENSE-MIT new/getopts-parse-partial/LICENSE-MIT
+--- orig/getopts-parse-partial/LICENSE-MIT	1970-01-01 01:00:00.000000000 +0100
++++ new/getopts-parse-partial/LICENSE-MIT	2026-06-06 22:41:38.431353014 +0200
+@@ -0,0 +1,25 @@
++Copyright (c) 2014 The Rust Project Developers
++
++Permission is hereby granted, free of charge, to any
++person obtaining a copy of this software and associated
++documentation files (the "Software"), to deal in the
++Software without restriction, including without
++limitation the rights to use, copy, modify, merge,
++publish, distribute, sublicense, and/or sell copies of
++the Software, and to permit persons to whom the Software
++is furnished to do so, subject to the following
++conditions:
++
++The above copyright notice and this permission notice
++shall be included in all copies or substantial portions
++of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
++ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
++TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
++PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
++SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
++CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
++IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
++DEALINGS IN THE SOFTWARE.
+diff -ruN orig/getopts-parse-partial/README.md new/getopts-parse-partial/README.md
+--- orig/getopts-parse-partial/README.md	1970-01-01 01:00:00.000000000 +0100
++++ new/getopts-parse-partial/README.md	2026-06-06 22:41:38.431353014 +0200
+@@ -0,0 +1,19 @@
++getopts
++===
++
++A Rust library for option parsing for CLI utilities.
++
++[Documentation](https://docs.rs/getopts)
++
++## Usage
++
++Add this to your `Cargo.toml`:
++
++```toml
++[dependencies]
++getopts = "0.2"
++```
++
++## Contributing
++
++The `getopts` library is used by `rustc`, so we have to be careful about not changing its behavior.
+diff -ruN orig/getopts-parse-partial/src/lib.rs new/getopts-parse-partial/src/lib.rs
+--- orig/getopts-parse-partial/src/lib.rs	1970-01-01 01:00:00.000000000 +0100
++++ new/getopts-parse-partial/src/lib.rs	2026-06-06 22:41:38.431353014 +0200
+@@ -0,0 +1,1326 @@
++// Copyright 2012-2014 The Rust Project Developers. See the COPYRIGHT
++// file at the top-level directory of this distribution and at
++// http://rust-lang.org/COPYRIGHT.
++//
++// Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or
++// http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
++// <LICENSE-MIT or http://opensource.org/licenses/MIT>, at your
++// option. This file may not be copied, modified, or distributed
++// except according to those terms.
++//
++// ignore-lexer-test FIXME #15677
++
++//! Simple getopt alternative.
++//!
++//! Construct instance of `Options` and configure it by using  `reqopt()`,
++//! `optopt()` and other methods that add option configuration. Then call
++//! `parse()` method and pass into it a vector of actual arguments (not
++//! including `argv[0]`).
++//!
++//! You'll either get a failure code back, or a match. You'll have to verify
++//! whether the amount of 'free' arguments in the match is what you expect. Use
++//! `opt_*` accessors to get argument values out of the matches object.
++//!
++//! Single-character options are expected to appear on the command line with a
++//! single preceding dash; multiple-character options are expected to be
++//! proceeded by two dashes. Options that expect an argument accept their
++//! argument following either a space or an equals sign. Single-character
++//! options don't require the space. Everything after double-dash "--"  argument
++//! is considered to be a 'free' argument, even if it starts with dash.
++//!
++//! # Usage
++//!
++//! This crate is [on crates.io](https://crates.io/crates/getopts) and can be
++//! used by adding `getopts` to the dependencies in your project's `Cargo.toml`.
++//!
++//! ```toml
++//! [dependencies]
++//! getopts = "0.2"
++//! ```
++//!
++//! and this to your crate root:
++//!
++//! ```rust
++//! extern crate getopts;
++//! ```
++//!
++//! # Example
++//!
++//! The following example shows simple command line parsing for an application
++//! that requires an input file to be specified, accepts an optional output file
++//! name following `-o`, and accepts both `-h` and `--help` as optional flags.
++//!
++//! ```{.rust}
++//! extern crate getopts;
++//! use getopts::Options;
++//! use std::env;
++//!
++//! fn do_work(inp: &str, out: Option<String>) {
++//!     println!("{}", inp);
++//!     match out {
++//!         Some(x) => println!("{}", x),
++//!         None => println!("No Output"),
++//!     }
++//! }
++//!
++//! fn print_usage(program: &str, opts: Options) {
++//!     let brief = format!("Usage: {} FILE [options]", program);
++//!     print!("{}", opts.usage(&brief));
++//! }
++//!
++//! fn main() {
++//!     let args: Vec<String> = env::args().collect();
++//!     let program = args[0].clone();
++//!
++//!     let mut opts = Options::new();
++//!     opts.optopt("o", "", "set output file name", "NAME");
++//!     opts.optflag("h", "help", "print this help menu");
++//!     let matches = match opts.parse(&args[1..]) {
++//!         Ok(m) => { m }
++//!         Err(f) => { panic!(f.to_string()) }
++//!     };
++//!     if matches.opt_present("h") {
++//!         print_usage(&program, opts);
++//!         return;
++//!     }
++//!     let output = matches.opt_str("o");
++//!     let input = if !matches.free.is_empty() {
++//!         matches.free[0].clone()
++//!     } else {
++//!         print_usage(&program, opts);
++//!         return;
++//!     };
++//!     do_work(&input, output);
++//! }
++//! ```
++
++#![doc(
++    html_logo_url = "https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png",
++    html_favicon_url = "https://www.rust-lang.org/favicon.ico",
++    html_root_url = "https://docs.rs/getopts/0.2.20"
++)]
++#![deny(missing_docs)]
++#![cfg_attr(test, deny(warnings))]
++
++#[cfg(test)]
++#[macro_use]
++extern crate log;
++extern crate unicode_width;
++
++use self::Fail::*;
++use self::HasArg::*;
++use self::Name::*;
++use self::Occur::*;
++use self::Optval::*;
++
++use std::error::Error;
++use std::ffi::OsStr;
++use std::fmt;
++use std::iter::{repeat, IntoIterator};
++use std::result;
++use std::str::FromStr;
++
++use unicode_width::UnicodeWidthStr;
++
++#[cfg(test)]
++mod tests;
++
++/// A description of the options that a program can handle.
++#[derive(Debug, Clone, PartialEq, Eq)]
++pub struct Options {
++    grps: Vec<OptGroup>,
++    parsing_style: ParsingStyle,
++    long_only: bool,
++}
++
++impl Default for Options {
++    fn default() -> Self {
++        Self::new()
++    }
++}
++
++impl Options {
++    /// Create a blank set of options.
++    pub fn new() -> Options {
++        Options {
++            grps: Vec::new(),
++            parsing_style: ParsingStyle::FloatingFrees,
++            long_only: false,
++        }
++    }
++
++    /// Set the parsing style.
++    pub fn parsing_style(&mut self, style: ParsingStyle) -> &mut Options {
++        self.parsing_style = style;
++        self
++    }
++
++    /// Set or clear "long options only" mode.
++    ///
++    /// In "long options only" mode, short options cannot be clustered
++    /// together, and long options can be given with either a single
++    /// "-" or the customary "--".  This mode also changes the meaning
++    /// of "-a=b"; in the ordinary mode this will parse a short option
++    /// "-a" with argument "=b"; whereas in long-options-only mode the
++    /// argument will be simply "b".
++    pub fn long_only(&mut self, long_only: bool) -> &mut Options {
++        self.long_only = long_only;
++        self
++    }
++
++    /// Create a generic option group, stating all parameters explicitly.
++    pub fn opt(
++        &mut self,
++        short_name: &str,
++        long_name: &str,
++        desc: &str,
++        hint: &str,
++        hasarg: HasArg,
++        occur: Occur,
++    ) -> &mut Options {
++        validate_names(short_name, long_name);
++        self.grps.push(OptGroup {
++            short_name: short_name.to_string(),
++            long_name: long_name.to_string(),
++            hint: hint.to_string(),
++            desc: desc.to_string(),
++            hasarg,
++            occur,
++        });
++        self
++    }
++
++    /// Create a long option that is optional and does not take an argument.
++    ///
++    /// * `short_name` - e.g. `"h"` for a `-h` option, or `""` for none
++    /// * `long_name` - e.g. `"help"` for a `--help` option, or `""` for none
++    /// * `desc` - Description for usage help
++    ///
++    /// # Example
++    ///
++    /// ```
++    /// # use getopts::Options;
++    /// let mut opts = Options::new();
++    /// opts.optflag("h", "help", "help flag");
++    ///
++    /// let matches = opts.parse(&["-h"]).unwrap();
++    /// assert!(matches.opt_present("h"));
++    /// ```
++    pub fn optflag(&mut self, short_name: &str, long_name: &str, desc: &str) -> &mut Options {
++        validate_names(short_name, long_name);
++        self.grps.push(OptGroup {
++            short_name: short_name.to_string(),
++            long_name: long_name.to_string(),
++            hint: "".to_string(),
++            desc: desc.to_string(),
++            hasarg: No,
++            occur: Optional,
++        });
++        self
++    }
++
++    /// Create a long option that can occur more than once and does not
++    /// take an argument.
++    ///
++    /// * `short_name` - e.g. `"h"` for a `-h` option, or `""` for none
++    /// * `long_name` - e.g. `"help"` for a `--help` option, or `""` for none
++    /// * `desc` - Description for usage help
++    ///
++    /// # Example
++    ///
++    /// ```
++    /// # use getopts::Options;
++    /// let mut opts = Options::new();
++    /// opts.optflagmulti("v", "verbose", "verbosity flag");
++    ///
++    /// let matches = opts.parse(&["-v", "--verbose"]).unwrap();
++    /// assert_eq!(2, matches.opt_count("v"));
++    /// ```
++    pub fn optflagmulti(&mut self, short_name: &str, long_name: &str, desc: &str) -> &mut Options {
++        validate_names(short_name, long_name);
++        self.grps.push(OptGroup {
++            short_name: short_name.to_string(),
++            long_name: long_name.to_string(),
++            hint: "".to_string(),
++            desc: desc.to_string(),
++            hasarg: No,
++            occur: Multi,
++        });
++        self
++    }
++
++    /// Create a long option that is optional and takes an optional argument.
++    ///
++    /// * `short_name` - e.g. `"h"` for a `-h` option, or `""` for none
++    /// * `long_name` - e.g. `"help"` for a `--help` option, or `""` for none
++    /// * `desc` - Description for usage help
++    /// * `hint` - Hint that is used in place of the argument in the usage help,
++    ///   e.g. `"FILE"` for a `-o FILE` option
++    ///
++    /// # Example
++    ///
++    /// ```
++    /// # use getopts::Options;
++    /// let mut opts = Options::new();
++    /// opts.optflagopt("t", "text", "flag with optional argument", "TEXT");
++    ///
++    /// let matches = opts.parse(&["--text"]).unwrap();
++    /// assert_eq!(None, matches.opt_str("text"));
++    ///
++    /// let matches = opts.parse(&["--text=foo"]).unwrap();
++    /// assert_eq!(Some("foo".to_owned()), matches.opt_str("text"));
++    /// ```
++    pub fn optflagopt(
++        &mut self,
++        short_name: &str,
++        long_name: &str,
++        desc: &str,
++        hint: &str,
++    ) -> &mut Options {
++        validate_names(short_name, long_name);
++        self.grps.push(OptGroup {
++            short_name: short_name.to_string(),
++            long_name: long_name.to_string(),
++            hint: hint.to_string(),
++            desc: desc.to_string(),
++            hasarg: Maybe,
++            occur: Optional,
++        });
++        self
++    }
++
++    /// Create a long option that is optional, takes an argument, and may occur
++    /// multiple times.
++    ///
++    /// * `short_name` - e.g. `"h"` for a `-h` option, or `""` for none
++    /// * `long_name` - e.g. `"help"` for a `--help` option, or `""` for none
++    /// * `desc` - Description for usage help
++    /// * `hint` - Hint that is used in place of the argument in the usage help,
++    ///   e.g. `"FILE"` for a `-o FILE` option
++    ///
++    /// # Example
++    ///
++    /// ```
++    /// # use getopts::Options;
++    /// let mut opts = Options::new();
++    /// opts.optmulti("t", "text", "text option", "TEXT");
++    ///
++    /// let matches = opts.parse(&["-t", "foo", "--text=bar"]).unwrap();
++    ///
++    /// let values = matches.opt_strs("t");
++    /// assert_eq!(2, values.len());
++    /// assert_eq!("foo", values[0]);
++    /// assert_eq!("bar", values[1]);
++    /// ```
++    pub fn optmulti(
++        &mut self,
++        short_name: &str,
++        long_name: &str,
++        desc: &str,
++        hint: &str,
++    ) -> &mut Options {
++        validate_names(short_name, long_name);
++        self.grps.push(OptGroup {
++            short_name: short_name.to_string(),
++            long_name: long_name.to_string(),
++            hint: hint.to_string(),
++            desc: desc.to_string(),
++            hasarg: Yes,
++            occur: Multi,
++        });
++        self
++    }
++
++    /// Create a long option that is optional and takes an argument.
++    ///
++    /// * `short_name` - e.g. `"h"` for a `-h` option, or `""` for none
++    /// * `long_name` - e.g. `"help"` for a `--help` option, or `""` for none
++    /// * `desc` - Description for usage help
++    /// * `hint` - Hint that is used in place of the argument in the usage help,
++    ///   e.g. `"FILE"` for a `-o FILE` option
++    ///
++    /// # Example
++    ///
++    /// ```
++    /// # use getopts::Options;
++    /// # use getopts::Fail;
++    /// let mut opts = Options::new();
++    /// opts.optopt("o", "optional", "optional text option", "TEXT");
++    ///
++    /// let matches = opts.parse(&["arg1"]).unwrap();
++    /// assert_eq!(None, matches.opt_str("optional"));
++    ///
++    /// let matches = opts.parse(&["--optional", "foo", "arg1"]).unwrap();
++    /// assert_eq!(Some("foo".to_owned()), matches.opt_str("optional"));
++    /// ```
++    pub fn optopt(
++        &mut self,
++        short_name: &str,
++        long_name: &str,
++        desc: &str,
++        hint: &str,
++    ) -> &mut Options {
++        validate_names(short_name, long_name);
++        self.grps.push(OptGroup {
++            short_name: short_name.to_string(),
++            long_name: long_name.to_string(),
++            hint: hint.to_string(),
++            desc: desc.to_string(),
++            hasarg: Yes,
++            occur: Optional,
++        });
++        self
++    }
++
++    /// Create a long option that is required and takes an argument.
++    ///
++    /// * `short_name` - e.g. `"h"` for a `-h` option, or `""` for none
++    /// * `long_name` - e.g. `"help"` for a `--help` option, or `""` for none
++    /// * `desc` - Description for usage help
++    /// * `hint` - Hint that is used in place of the argument in the usage help,
++    ///   e.g. `"FILE"` for a `-o FILE` option
++    ///
++    /// # Example
++    ///
++    /// ```
++    /// # use getopts::Options;
++    /// # use getopts::Fail;
++    /// let mut opts = Options::new();
++    /// opts.optopt("o", "optional", "optional text option", "TEXT");
++    /// opts.reqopt("m", "mandatory", "madatory text option", "TEXT");
++    ///
++    /// let result = opts.parse(&["--mandatory", "foo"]);
++    /// assert!(result.is_ok());
++    ///
++    /// let result = opts.parse(&["--optional", "foo"]);
++    /// assert!(result.is_err());
++    /// assert_eq!(Fail::OptionMissing("mandatory".to_owned()), result.unwrap_err());
++    /// ```
++    pub fn reqopt(
++        &mut self,
++        short_name: &str,
++        long_name: &str,
++        desc: &str,
++        hint: &str,
++    ) -> &mut Options {
++        validate_names(short_name, long_name);
++        self.grps.push(OptGroup {
++            short_name: short_name.to_string(),
++            long_name: long_name.to_string(),
++            hint: hint.to_string(),
++            desc: desc.to_string(),
++            hasarg: Yes,
++            occur: Req,
++        });
++        self
++    }
++
++    /// Parse command line arguments according to the provided options.
++    ///
++    /// On success returns `Ok(Matches)`. Use methods such as `opt_present`
++    /// `opt_str`, etc. to interrogate results.
++    /// # Panics
++    ///
++    /// Returns `Err(Fail)` on failure: use the `Debug` implementation of `Fail`
++    /// to display information about it.
++    pub fn parse<C: IntoIterator>(&self, args: C) -> result::Result<Matches, Fail>
++    where
++        C::Item: AsRef<OsStr>+Clone,
++    {
++        self.parse_partial(args).and_then(|(matches, unmatched)| {
++            match matches.free.len().cmp(&unmatched.len()) {
++                std::cmp::Ordering::Less => {
++                    let first_unrecognized = &unmatched[matches.free.len()];
++                    Err(Fail::UnrecognizedOption(format!("{:?}", first_unrecognized.as_ref())))
++                }
++                std::cmp::Ordering::Equal => Ok(matches),
++                std::cmp::Ordering::Greater => panic!("something is wrong with the accounting of unmatched args"),
++            }
++        })
++    }
++
++    /// Parse command line arguments according to the provided options.
++    ///
++    /// On success returns `Ok((Matches, unmatched))`. Use methods on `Matches`,
++    /// such as `opt_present`, `opt_str`, etc. to interrogate results.
++    /// `unmatched` contains arguments that were not matched.
++    ///
++    /// # Panics
++    ///
++    /// Returns `Err(Fail)` on failure: use the `Debug` implementation of `Fail`
++    /// to display information about it.
++    pub fn parse_partial<C: IntoIterator>(&self, args: C) -> result::Result<(Matches, Vec<C::Item>), Fail>
++    where
++        C::Item: AsRef<OsStr>+Clone,
++    {
++        let opts: Vec<Opt> = self.grps.iter().map(|x| x.long_to_short()).collect();
++        let mut unmatched: Vec<C::Item> = vec![];
++
++        let mut vals = (0..opts.len())
++            .map(|_| Vec::new())
++            .collect::<Vec<Vec<(usize, Optval)>>>();
++        let mut free: Vec<String> = Vec::new();
++        let mut args_end = None;
++
++        let args = args
++            .into_iter()
++            .map(|i| {
++                i.as_ref()
++                    .to_str()
++                    .ok_or_else(|| Fail::UnrecognizedOption(format!("{:?}", i.as_ref())))
++                    .map(|s| (i.clone(), s.to_owned()))
++            })
++            .collect::<::std::result::Result<Vec<_>, _>>()?;
++        let mut args = args.into_iter().peekable();
++        let mut arg_pos = 0;
++        while let Some((osstr, cur)) = args.next() {
++            if !is_arg(&cur) {
++                free.push(cur);
++                unmatched.push(osstr);
++                match self.parsing_style {
++                    ParsingStyle::FloatingFrees => {}
++                    ParsingStyle::StopAtFirstFree => {
++                        let remaining = args.collect::<Vec<_>>();
++                        unmatched.extend(remaining.iter().map(|(osstr, _)| osstr).cloned());
++                        free.extend(remaining.into_iter().map(|(_, c)| c));
++                        break;
++                    }
++                }
++            } else if cur == "--" {
++                args_end = Some(free.len());
++                let remaining = args.collect::<Vec<_>>();
++                unmatched.extend(remaining.iter().map(|(osstr, _)| osstr).cloned());
++                free.extend(remaining.into_iter().map(|(_, c)| c));
++                break;
++            } else {
++                let mut name = None;
++                let mut i_arg = None;
++                let mut was_long = true;
++                if cur.as_bytes()[1] == b'-' || self.long_only {
++                    let tail = if cur.as_bytes()[1] == b'-' {
++                        &cur[2..]
++                    } else {
++                        assert!(self.long_only);
++                        &cur[1..]
++                    };
++                    let mut parts = tail.splitn(2, '=');
++                    name = Some(Name::from_str(parts.next().unwrap()));
++                    if let Some(rest) = parts.next() {
++                        i_arg = Some(rest.to_string());
++                    }
++                } else {
++                    was_long = false;
++                    // rustc, for example, accepts a number of flags that don't
++                    // follow the usual convention of `-abc` being equivalent to
++                    // `-a`, `-b`, `-c`. For example, `-L<some-path>` passed to
++                    // rustc by cargo. The entire flag need to be treated as
++                    // unmatched rather than split, which would lead to
++                    // individual characters in `<some-path>` being parsed as
++                    // flags. This is needed to use `parse_partial` with rustc
++                    // invocations
++                    let first_matches = self
++                        .grps
++                        .iter()
++                        .any(|opt_group: &OptGroup| opt_group.short_name == cur[1..2]);
++                    if !first_matches {
++                        unmatched.push(osstr);
++                        continue;
++                    }
++                    for (j, ch) in cur.char_indices().skip(1) {
++                        let opt = Short(ch);
++
++                        let opt_id = find_opt(&opts, &opt);
++
++                        // In a series of potential options (eg. -aheJ), if we
++                        // see one which takes an argument, we assume all
++                        // subsequent characters make up the argument. This
++                        // allows options such as -L/usr/local/lib/foo to be
++                        // interpreted correctly
++                        let arg_follows = opt_id.map(|opt_id| match opts[opt_id].hasarg {
++                            Yes | Maybe => true,
++                            No => false,
++                        }).unwrap_or(false);
++
++                        if arg_follows {
++                            name = Some(opt);
++                            let next = j + ch.len_utf8();
++                            if next < cur.len() {
++                                i_arg = Some(cur[next..].to_string());
++                                break;
++                            }
++                        } else {
++                            if let Some(opt_id) = opt_id {
++                                vals[opt_id].push((arg_pos, Given));
++                            } else {
++                                unmatched.push(osstr.clone());
++                            }
++                        }
++                    }
++                }
++                if let Some(nm) = name {
++                    let opt_id = match find_opt(&opts, &nm) {
++                        Some(id) => id,
++                        None => {
++                            unmatched.push(osstr.clone());
++                            continue;
++                        },
++                    };
++                    match opts[opt_id].hasarg {
++                        No => {
++                            if i_arg.is_some() {
++                                return Err(UnexpectedArgument(nm.to_string()));
++                            }
++                            vals[opt_id].push((arg_pos, Given));
++                        }
++                        Maybe => {
++                            // Note that here we do not handle `--arg value`.
++                            // This matches GNU getopt behavior; but also
++                            // makes sense, because if this were accepted,
++                            // then users could only write a "Maybe" long
++                            // option at the end of the arguments when
++                            // FloatingFrees is in use.
++                            if let Some(i_arg) = i_arg.take() {
++                                vals[opt_id].push((arg_pos, Val(i_arg)));
++                            } else if was_long
++                                || args.peek().map_or(true, |(_, n)| is_arg(&n))
++                            {
++                                vals[opt_id].push((arg_pos, Given));
++                            } else {
++                                vals[opt_id].push((arg_pos, Val(args.next().map(|(_, c)| c).unwrap())));
++                            }
++                        }
++                        Yes => {
++                            if let Some(i_arg) = i_arg.take() {
++                                vals[opt_id].push((arg_pos, Val(i_arg)));
++                            } else if let Some((_, n)) = args.next() {
++                                vals[opt_id].push((arg_pos, Val(n)));
++                            } else {
++                                return Err(ArgumentMissing(nm.to_string()));
++                            }
++                        }
++                    }
++                }
++            }
++            arg_pos += 1;
++        }
++        debug_assert_eq!(vals.len(), opts.len());
++        for (vals, opt) in vals.iter().zip(opts.iter()) {
++            if opt.occur == Req && vals.is_empty() {
++                return Err(OptionMissing(opt.name.to_string()));
++            }
++            if opt.occur != Multi && vals.len() > 1 {
++                return Err(OptionDuplicated(opt.name.to_string()));
++            }
++        }
++
++        // Note that if "--" is last argument on command line, then index stored
++        // in option does not exist in `free` and must be replaced with `None`
++        args_end = args_end.filter(|pos| pos != &free.len());
++
++        Ok((Matches { opts, vals, free, args_end }, unmatched))
++    }
++
++    /// Derive a short one-line usage summary from a set of long options.
++    pub fn short_usage(&self, program_name: &str) -> String {
++        let mut line = format!("Usage: {} ", program_name);
++        line.push_str(
++            &self
++                .grps
++                .iter()
++                .map(format_option)
++                .collect::<Vec<String>>()
++                .join(" "),
++        );
++        line
++    }
++
++    /// Derive a formatted message from a set of options.
++    pub fn usage(&self, brief: &str) -> String {
++        self.usage_with_format(|opts| {
++            format!(
++                "{}\n\nOptions:\n{}\n",
++                brief,
++                opts.collect::<Vec<String>>().join("\n")
++            )
++        })
++    }
++
++    /// Derive a custom formatted message from a set of options. The formatted options provided to
++    /// a closure as an iterator.
++    pub fn usage_with_format<F: FnMut(&mut dyn Iterator<Item = String>) -> String>(
++        &self,
++        mut formatter: F,
++    ) -> String {
++        formatter(&mut self.usage_items())
++    }
++
++    /// Derive usage items from a set of options.
++    fn usage_items<'a>(&'a self) -> Box<dyn Iterator<Item = String> + 'a> {
++        let desc_sep = format!("\n{}", repeat(" ").take(24).collect::<String>());
++
++        let any_short = self.grps.iter().any(|optref| !optref.short_name.is_empty());
++
++        let rows = self.grps.iter().map(move |optref| {
++            let OptGroup {
++                short_name,
++                long_name,
++                hint,
++                desc,
++                hasarg,
++                ..
++            } = (*optref).clone();
++
++            let mut row = "    ".to_string();
++
++            // short option
++            match short_name.width() {
++                0 => {
++                    if any_short {
++                        row.push_str("    ");
++                    }
++                }
++                1 => {
++                    row.push('-');
++                    row.push_str(&short_name);
++                    if long_name.width() > 0 {
++                        row.push_str(", ");
++                    } else {
++                        // Only a single space here, so that any
++                        // argument is printed in the correct spot.
++                        row.push(' ');
++                    }
++                }
++                // FIXME: refer issue #7.
++                _ => panic!("the short name should only be 1 ascii char long"),
++            }
++
++            // long option
++            match long_name.width() {
++                0 => {}
++                _ => {
++                    row.push_str(if self.long_only { "-" } else { "--" });
++                    row.push_str(&long_name);
++                    row.push(' ');
++                }
++            }
++
++            // arg
++            match hasarg {
++                No => {}
++                Yes => row.push_str(&hint),
++                Maybe => {
++                    row.push('[');
++                    row.push_str(&hint);
++                    row.push(']');
++                }
++            }
++
++            let rowlen = row.width();
++            if rowlen < 24 {
++                for _ in 0..24 - rowlen {
++                    row.push(' ');
++                }
++            } else {
++                row.push_str(&desc_sep)
++            }
++
++            let desc_rows = each_split_within(&desc, 54);
++            row.push_str(&desc_rows.join(&desc_sep));
++
++            row
++        });
++
++        Box::new(rows)
++    }
++}
++
++fn validate_names(short_name: &str, long_name: &str) {
++    let len = short_name.len();
++    assert!(
++        len == 1 || len == 0,
++        "the short_name (first argument) should be a single character, \
++         or an empty string for none"
++    );
++    let len = long_name.len();
++    assert!(
++        len == 0 || len > 1,
++        "the long_name (second argument) should be longer than a single \
++         character, or an empty string for none"
++    );
++}
++
++/// What parsing style to use when parsing arguments.
++#[derive(Debug, Clone, Copy, PartialEq, Eq)]
++pub enum ParsingStyle {
++    /// Flags and "free" arguments can be freely inter-mixed.
++    FloatingFrees,
++    /// As soon as a "free" argument (i.e. non-flag) is encountered, stop
++    /// considering any remaining arguments as flags.
++    StopAtFirstFree,
++}
++
++/// Name of an option. Either a string or a single char.
++#[derive(Clone, Debug, PartialEq, Eq)]
++enum Name {
++    /// A string representing the long name of an option.
++    /// For example: "help"
++    Long(String),
++    /// A char representing the short name of an option.
++    /// For example: 'h'
++    Short(char),
++}
++
++/// Describes whether an option has an argument.
++#[derive(Clone, Debug, Copy, PartialEq, Eq)]
++pub enum HasArg {
++    /// The option requires an argument.
++    Yes,
++    /// The option takes no argument.
++    No,
++    /// The option argument is optional.
++    Maybe,
++}
++
++/// Describes how often an option may occur.
++#[derive(Clone, Debug, Copy, PartialEq, Eq)]
++pub enum Occur {
++    /// The option occurs once.
++    Req,
++    /// The option occurs at most once.
++    Optional,
++    /// The option occurs zero or more times.
++    Multi,
++}
++
++/// A description of a possible option.
++#[derive(Clone, Debug, PartialEq, Eq)]
++struct Opt {
++    /// Name of the option
++    name: Name,
++    /// Whether it has an argument
++    hasarg: HasArg,
++    /// How often it can occur
++    occur: Occur,
++    /// Which options it aliases
++    aliases: Vec<Opt>,
++}
++
++/// One group of options, e.g., both `-h` and `--help`, along with
++/// their shared description and properties.
++#[derive(Debug, Clone, PartialEq, Eq)]
++struct OptGroup {
++    /// Short name of the option, e.g. `h` for a `-h` option
++    short_name: String,
++    /// Long name of the option, e.g. `help` for a `--help` option
++    long_name: String,
++    /// Hint for argument, e.g. `FILE` for a `-o FILE` option
++    hint: String,
++    /// Description for usage help text
++    desc: String,
++    /// Whether option has an argument
++    hasarg: HasArg,
++    /// How often it can occur
++    occur: Occur,
++}
++
++/// Describes whether an option is given at all or has a value.
++#[derive(Clone, Debug, PartialEq, Eq)]
++enum Optval {
++    Val(String),
++    Given,
++}
++
++/// The result of checking command line arguments. Contains a vector
++/// of matches and a vector of free strings.
++#[derive(Clone, Debug, PartialEq, Eq)]
++pub struct Matches {
++    /// Options that matched
++    opts: Vec<Opt>,
++    /// Values of the Options that matched and their positions
++    vals: Vec<Vec<(usize, Optval)>>,
++
++    /// Free string fragments
++    pub free: Vec<String>,
++
++    /// Index of first free fragment after "--" separator
++    args_end: Option<usize>,
++}
++
++/// The type returned when the command line does not conform to the
++/// expected format. Use the `Debug` implementation to output detailed
++/// information.
++#[derive(Clone, Debug, PartialEq, Eq)]
++pub enum Fail {
++    /// The option requires an argument but none was passed.
++    ArgumentMissing(String),
++    /// The passed option is not declared among the possible options.
++    UnrecognizedOption(String),
++    /// A required option is not present.
++    OptionMissing(String),
++    /// A single occurrence option is being used multiple times.
++    OptionDuplicated(String),
++    /// There's an argument being passed to a non-argument option.
++    UnexpectedArgument(String),
++}
++
++impl Error for Fail {}
++
++impl Name {
++    fn from_str(nm: &str) -> Name {
++        if nm.len() == 1 {
++            Short(nm.as_bytes()[0] as char)
++        } else {
++            Long(nm.to_string())
++        }
++    }
++
++    fn to_string(&self) -> String {
++        match *self {
++            Short(ch) => ch.to_string(),
++            Long(ref s) => s.to_string(),
++        }
++    }
++}
++
++impl OptGroup {
++    /// Translate OptGroup into Opt.
++    /// (Both short and long names correspond to different Opts).
++    fn long_to_short(&self) -> Opt {
++        let OptGroup {
++            short_name,
++            long_name,
++            hasarg,
++            occur,
++            ..
++        } = (*self).clone();
++
++        match (short_name.len(), long_name.len()) {
++            (0, 0) => panic!("this long-format option was given no name"),
++            (0, _) => Opt {
++                name: Long(long_name),
++                hasarg,
++                occur,
++                aliases: Vec::new(),
++            },
++            (1, 0) => Opt {
++                name: Short(short_name.as_bytes()[0] as char),
++                hasarg,
++                occur,
++                aliases: Vec::new(),
++            },
++            (1, _) => Opt {
++                name: Long(long_name),
++                hasarg,
++                occur,
++                aliases: vec![Opt {
++                    name: Short(short_name.as_bytes()[0] as char),
++                    hasarg: hasarg,
++                    occur: occur,
++                    aliases: Vec::new(),
++                }],
++            },
++            (_, _) => panic!("something is wrong with the long-form opt"),
++        }
++    }
++}
++
++impl Matches {
++    fn opt_vals(&self, nm: &str) -> Vec<(usize, Optval)> {
++        match find_opt(&self.opts, &Name::from_str(nm)) {
++            Some(id) => self.vals[id].clone(),
++            None => panic!("No option '{}' defined", nm),
++        }
++    }
++
++    fn opt_val(&self, nm: &str) -> Option<Optval> {
++        self.opt_vals(nm).into_iter().map(|(_, o)| o).next()
++    }
++    /// Returns true if an option was defined
++    pub fn opt_defined(&self, name: &str) -> bool {
++        find_opt(&self.opts, &Name::from_str(name)).is_some()
++    }
++
++    /// Returns true if an option was matched.
++    ///
++    /// # Panics
++    ///
++    /// This function will panic if the option name is not defined.
++    pub fn opt_present(&self, name: &str) -> bool {
++        !self.opt_vals(name).is_empty()
++    }
++
++    /// Returns the number of times an option was matched.
++    ///
++    /// # Panics
++    ///
++    /// This function will panic if the option name is not defined.
++    pub fn opt_count(&self, name: &str) -> usize {
++        self.opt_vals(name).len()
++    }
++
++    /// Returns a vector of all the positions in which an option was matched.
++    ///
++    /// # Panics
++    ///
++    /// This function will panic if the option name is not defined.
++    pub fn opt_positions(&self, name: &str) -> Vec<usize> {
++        self.opt_vals(name).into_iter().map(|(pos, _)| pos).collect()
++    }
++
++    /// Returns true if any of several options were matched.
++    pub fn opts_present(&self, names: &[String]) -> bool {
++        names
++            .iter()
++            .any(|nm| match find_opt(&self.opts, &Name::from_str(&nm)) {
++                Some(id) if !self.vals[id].is_empty() => true,
++                _ => false,
++            })
++    }
++
++    /// Returns true if any of several options were matched.
++    ///
++    /// Similar to `opts_present` but accepts any argument that can be converted
++    /// into an iterator over string references.
++    ///
++    /// # Panics
++    ///
++    /// This function might panic if some option name is not defined.
++    ///
++    /// # Example
++    ///
++    /// ```
++    /// # use getopts::Options;
++    /// let mut opts = Options::new();
++    /// opts.optopt("a", "alpha", "first option", "STR");
++    /// opts.optopt("b", "beta", "second option", "STR");
++    ///
++    /// let args = vec!["-a", "foo"];
++    /// let matches = &match opts.parse(&args) {
++    ///     Ok(m) => m,
++    ///     _ => panic!(),
++    /// };
++    ///
++    /// assert!(matches.opts_present_any(&["alpha"]));
++    /// assert!(!matches.opts_present_any(&["beta"]));
++    /// ```
++    pub fn opts_present_any<C: IntoIterator>(&self, names: C) -> bool
++    where
++        C::Item: AsRef<str>,
++    {
++        names
++            .into_iter()
++            .any(|nm| !self.opt_vals(nm.as_ref()).is_empty())
++    }
++
++    /// Returns the string argument supplied to one of several matching options or `None`.
++    pub fn opts_str(&self, names: &[String]) -> Option<String> {
++        names
++            .iter()
++            .filter_map(|nm| match self.opt_val(&nm) {
++                Some(Val(s)) => Some(s),
++                _ => None,
++            })
++            .next()
++    }
++
++    /// Returns the string argument supplied to the first matching option of
++    /// several options or `None`.
++    ///
++    /// Similar to `opts_str` but accepts any argument that can be converted
++    /// into an iterator over string references.
++    ///
++    /// # Panics
++    ///
++    /// This function might panic if some option name is not defined.
++    ///
++    /// # Example
++    ///
++    /// ```
++    /// # use getopts::Options;
++    /// let mut opts = Options::new();
++    /// opts.optopt("a", "alpha", "first option", "STR");
++    /// opts.optopt("b", "beta", "second option", "STR");
++    ///
++    /// let args = vec!["-a", "foo", "--beta", "bar"];
++    /// let matches = &match opts.parse(&args) {
++    ///     Ok(m) => m,
++    ///     _ => panic!(),
++    /// };
++    ///
++    /// assert_eq!(Some("foo".to_string()), matches.opts_str_first(&["alpha", "beta"]));
++    /// assert_eq!(Some("bar".to_string()), matches.opts_str_first(&["beta", "alpha"]));
++    /// ```
++    pub fn opts_str_first<C: IntoIterator>(&self, names: C) -> Option<String>
++    where
++        C::Item: AsRef<str>,
++    {
++        names
++            .into_iter()
++            .filter_map(|nm| match self.opt_val(nm.as_ref()) {
++                Some(Val(s)) => Some(s),
++                _ => None,
++            })
++            .next()
++    }
++
++    /// Returns a vector of the arguments provided to all matches of the given
++    /// option.
++    ///
++    /// Used when an option accepts multiple values.
++    ///
++    /// # Panics
++    ///
++    /// This function will panic if the option name is not defined.
++    pub fn opt_strs(&self, name: &str) -> Vec<String> {
++        self.opt_vals(name)
++            .into_iter()
++            .filter_map(|(_, v)| match v {
++                Val(s) => Some(s),
++                _ => None,
++            })
++            .collect()
++    }
++
++    /// Returns a vector of the arguments provided to all matches of the given
++    /// option, together with their positions.
++    ///
++    /// Used when an option accepts multiple values.
++    ///
++    /// # Panics
++    ///
++    /// This function will panic if the option name is not defined.
++    pub fn opt_strs_pos(&self, name: &str) -> Vec<(usize, String)> {
++        self.opt_vals(name)
++            .into_iter()
++            .filter_map(|(p, v)| match v {
++                Val(s) => Some((p, s)),
++                _ => None,
++            })
++            .collect()
++    }
++
++    /// Returns the string argument supplied to a matching option or `None`.
++    ///
++    /// # Panics
++    ///
++    /// This function will panic if the option name is not defined.
++    pub fn opt_str(&self, name: &str) -> Option<String> {
++        match self.opt_val(name) {
++            Some(Val(s)) => Some(s),
++            _ => None,
++        }
++    }
++
++    /// Returns the matching string, a default, or `None`.
++    ///
++    /// Returns `None` if the option was not present, `def` if the option was
++    /// present but no argument was provided, and the argument if the option was
++    /// present and an argument was provided.
++    ///
++    /// # Panics
++    ///
++    /// This function will panic if the option name is not defined.
++    pub fn opt_default(&self, name: &str, def: &str) -> Option<String> {
++        match self.opt_val(name) {
++            Some(Val(s)) => Some(s),
++            Some(_) => Some(def.to_string()),
++            None => None,
++        }
++    }
++
++    /// Returns some matching value or `None`.
++    ///
++    /// Similar to opt_str, also converts matching argument using FromStr.
++    ///
++    /// # Panics
++    ///
++    /// This function will panic if the option name is not defined.
++    pub fn opt_get<T>(&self, name: &str) -> result::Result<Option<T>, T::Err>
++    where
++        T: FromStr,
++    {
++        match self.opt_val(name) {
++            Some(Val(s)) => Ok(Some(s.parse()?)),
++            Some(Given) => Ok(None),
++            None => Ok(None),
++        }
++    }
++
++    /// Returns a matching value or default.
++    ///
++    /// Similar to opt_default, except the two differences.
++    /// Instead of returning None when argument was not present, return `def`.
++    /// Instead of returning &str return type T, parsed using str::parse().
++    ///
++    /// # Panics
++    ///
++    /// This function will panic if the option name is not defined.
++    pub fn opt_get_default<T>(&self, name: &str, def: T) -> result::Result<T, T::Err>
++    where
++        T: FromStr,
++    {
++        match self.opt_val(name) {
++            Some(Val(s)) => s.parse(),
++            Some(Given) => Ok(def),
++            None => Ok(def),
++        }
++    }
++
++    /// Returns index of first free argument after "--".
++    ///
++    /// If double-dash separator is present and there are some args after it in
++    /// the argument list then the method returns index into `free` vector
++    /// indicating first argument after it.
++    /// behind it.
++    ///
++    /// # Examples
++    ///
++    /// ```
++    /// # use getopts::Options;
++    /// let mut opts = Options::new();
++    ///
++    /// let matches = opts.parse(&vec!["arg1", "--", "arg2"]).unwrap();
++    /// let end_pos = matches.free_trailing_start().unwrap();
++    /// assert_eq!(end_pos, 1);
++    /// assert_eq!(matches.free[end_pos], "arg2".to_owned());
++    /// ```
++    ///
++    /// If the double-dash is missing from argument list or if there are no
++    /// arguments after it:
++    ///
++    /// ```
++    /// # use getopts::Options;
++    /// let mut opts = Options::new();
++    ///
++    /// let matches = opts.parse(&vec!["arg1", "--"]).unwrap();
++    /// assert_eq!(matches.free_trailing_start(), None);
++    ///
++    /// let matches = opts.parse(&vec!["arg1", "arg2"]).unwrap();
++    /// assert_eq!(matches.free_trailing_start(), None);
++    /// ```
++    ///
++    pub fn free_trailing_start(&self) -> Option<usize> {
++        self.args_end
++    }
++}
++
++fn is_arg(arg: &str) -> bool {
++    arg.as_bytes().get(0) == Some(&b'-') && arg.len() > 1
++}
++
++fn find_opt(opts: &[Opt], nm: &Name) -> Option<usize> {
++    // Search main options.
++    let pos = opts.iter().position(|opt| &opt.name == nm);
++    if pos.is_some() {
++        return pos;
++    }
++
++    // Search in aliases.
++    for candidate in opts.iter() {
++        if candidate.aliases.iter().any(|opt| &opt.name == nm) {
++            return opts.iter().position(|opt| opt.name == candidate.name);
++        }
++    }
++
++    None
++}
++
++impl fmt::Display for Fail {
++    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
++        match *self {
++            ArgumentMissing(ref nm) => write!(f, "Argument to option '{}' missing", *nm),
++            UnrecognizedOption(ref nm) => write!(f, "Unrecognized option: '{}'", *nm),
++            OptionMissing(ref nm) => write!(f, "Required option '{}' missing", *nm),
++            OptionDuplicated(ref nm) => write!(f, "Option '{}' given more than once", *nm),
++            UnexpectedArgument(ref nm) => write!(f, "Option '{}' does not take an argument", *nm),
++        }
++    }
++}
++
++fn format_option(opt: &OptGroup) -> String {
++    let mut line = String::new();
++
++    if opt.occur != Req {
++        line.push('[');
++    }
++
++    // Use short_name if possible, but fall back to long_name.
++    if !opt.short_name.is_empty() {
++        line.push('-');
++        line.push_str(&opt.short_name);
++    } else {
++        line.push_str("--");
++        line.push_str(&opt.long_name);
++    }
++
++    if opt.hasarg != No {
++        line.push(' ');
++        if opt.hasarg == Maybe {
++            line.push('[');
++        }
++        line.push_str(&opt.hint);
++        if opt.hasarg == Maybe {
++            line.push(']');
++        }
++    }
++
++    if opt.occur != Req {
++        line.push(']');
++    }
++    if opt.occur == Multi {
++        line.push_str("..");
++    }
++
++    line
++}
++
++/// Splits a string into substrings with possibly internal whitespace,
++/// each of them at most `lim` bytes long, if possible. The substrings
++/// have leading and trailing whitespace removed, and are only cut at
++/// whitespace boundaries.
++fn each_split_within(desc: &str, lim: usize) -> Vec<String> {
++    let mut rows = Vec::new();
++    for line in desc.trim().lines() {
++        let line_chars = line.chars().chain(Some(' '));
++        let words = line_chars
++            .fold((Vec::new(), 0, 0), |(mut words, a, z), c| {
++                let idx = z + c.len_utf8(); // Get the current byte offset
++
++                // If the char is whitespace, advance the word start and maybe push a word
++                if c.is_whitespace() {
++                    if a != z {
++                        words.push(&line[a..z]);
++                    }
++                    (words, idx, idx)
++                }
++                // If the char is not whitespace, continue, retaining the current
++                else {
++                    (words, a, idx)
++                }
++            })
++            .0;
++
++        let mut row = String::new();
++        for word in words.iter() {
++            let sep = if !row.is_empty() { Some(" ") } else { None };
++            let width = row.width() + word.width() + sep.map(UnicodeWidthStr::width).unwrap_or(0);
++
++            if width <= lim {
++                if let Some(sep) = sep {
++                    row.push_str(sep)
++                }
++                row.push_str(word);
++                continue;
++            }
++            if !row.is_empty() {
++                rows.push(row.clone());
++                row.clear();
++            }
++            row.push_str(word);
++        }
++        if !row.is_empty() {
++            rows.push(row);
++        }
++    }
++    rows
++}
+diff -ruN orig/getopts-parse-partial/src/tests/mod.rs new/getopts-parse-partial/src/tests/mod.rs
+--- orig/getopts-parse-partial/src/tests/mod.rs	1970-01-01 01:00:00.000000000 +0100
++++ new/getopts-parse-partial/src/tests/mod.rs	2026-06-06 22:41:38.431353014 +0200
+@@ -0,0 +1,1350 @@
++use super::each_split_within;
++use super::Fail::*;
++use super::{HasArg, Name, Occur, Opt, Options, ParsingStyle};
++
++#[test]
++fn test_split_within() {
++    fn t(s: &str, i: usize, u: &[String]) {
++        let v = each_split_within(&(s.to_string()), i);
++        assert!(v.iter().zip(u.iter()).all(|(a, b)| a == b));
++    }
++    t("", 0, &[]);
++    t("", 15, &[]);
++    t("hello", 15, &["hello".to_string()]);
++    t(
++        "\nMary had a little lamb\nLittle lamb\n",
++        15,
++        &[
++            "Mary had a".to_string(),
++            "little lamb".to_string(),
++            "Little lamb".to_string(),
++        ],
++    );
++    t(
++        "\nMary had a little lamb\nLittle lamb\n",
++        ::std::usize::MAX,
++        &[
++            "Mary had a little lamb".to_string(),
++            "Little lamb".to_string(),
++        ],
++    );
++}
++
++// Tests for reqopt
++#[test]
++fn test_reqopt() {
++    let long_args = vec!["--test=20".to_string()];
++    let mut opts = Options::new();
++    opts.reqopt("t", "test", "testing", "TEST");
++    match opts.parse(&long_args) {
++        Ok(ref m) => {
++            assert!(m.opt_present("test"));
++            assert_eq!(m.opt_str("test").unwrap(), "20");
++            assert!(m.opt_present("t"));
++            assert_eq!(m.opt_str("t").unwrap(), "20");
++        }
++        _ => {
++            panic!("test_reqopt failed (long arg)");
++        }
++    }
++    let short_args = vec!["-t".to_string(), "20".to_string()];
++    match opts.parse(&short_args) {
++        Ok(ref m) => {
++            assert!((m.opt_present("test")));
++            assert_eq!(m.opt_str("test").unwrap(), "20");
++            assert!((m.opt_present("t")));
++            assert_eq!(m.opt_str("t").unwrap(), "20");
++        }
++        _ => {
++            panic!("test_reqopt failed (short arg)");
++        }
++    }
++}
++
++#[test]
++fn test_reqopt_missing() {
++    let args = vec!["blah".to_string()];
++    match Options::new()
++        .reqopt("t", "test", "testing", "TEST")
++        .parse(&args)
++    {
++        Err(OptionMissing(_)) => {}
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_reqopt_no_arg() {
++    let long_args = vec!["--test".to_string()];
++    let mut opts = Options::new();
++    opts.reqopt("t", "test", "testing", "TEST");
++    match opts.parse(&long_args) {
++        Err(ArgumentMissing(_)) => {}
++        _ => panic!(),
++    }
++    let short_args = vec!["-t".to_string()];
++    match opts.parse(&short_args) {
++        Err(ArgumentMissing(_)) => {}
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_reqopt_multi() {
++    let args = vec!["--test=20".to_string(), "-t".to_string(), "30".to_string()];
++    match Options::new()
++        .reqopt("t", "test", "testing", "TEST")
++        .parse(&args)
++    {
++        Err(OptionDuplicated(_)) => {}
++        _ => panic!(),
++    }
++}
++
++// Tests for optopt
++#[test]
++fn test_optopt() {
++    let long_args = vec!["--test=20".to_string()];
++    let mut opts = Options::new();
++    opts.optopt("t", "test", "testing", "TEST");
++    match opts.parse(&long_args) {
++        Ok(ref m) => {
++            assert!(m.opt_present("test"));
++            assert_eq!(m.opt_str("test").unwrap(), "20");
++            assert!((m.opt_present("t")));
++            assert_eq!(m.opt_str("t").unwrap(), "20");
++        }
++        _ => panic!(),
++    }
++    let short_args = vec!["-t".to_string(), "20".to_string()];
++    match opts.parse(&short_args) {
++        Ok(ref m) => {
++            assert!((m.opt_present("test")));
++            assert_eq!(m.opt_str("test").unwrap(), "20");
++            assert!((m.opt_present("t")));
++            assert_eq!(m.opt_str("t").unwrap(), "20");
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optopt_missing() {
++    let args = vec!["blah".to_string()];
++    match Options::new()
++        .optopt("t", "test", "testing", "TEST")
++        .parse(&args)
++    {
++        Ok(ref m) => {
++            assert!(!m.opt_present("test"));
++            assert!(!m.opt_present("t"));
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optopt_no_arg() {
++    let long_args = vec!["--test".to_string()];
++    let mut opts = Options::new();
++    opts.optopt("t", "test", "testing", "TEST");
++    match opts.parse(&long_args) {
++        Err(ArgumentMissing(_)) => {}
++        _ => panic!(),
++    }
++    let short_args = vec!["-t".to_string()];
++    match opts.parse(&short_args) {
++        Err(ArgumentMissing(_)) => {}
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optopt_multi() {
++    let args = vec!["--test=20".to_string(), "-t".to_string(), "30".to_string()];
++    match Options::new()
++        .optopt("t", "test", "testing", "TEST")
++        .parse(&args)
++    {
++        Err(OptionDuplicated(_)) => {}
++        _ => panic!(),
++    }
++}
++
++// Tests for optflag
++#[test]
++fn test_optflag() {
++    let long_args = vec!["--test".to_string()];
++    let mut opts = Options::new();
++    opts.optflag("t", "test", "testing");
++    match opts.parse(&long_args) {
++        Ok(ref m) => {
++            assert!(m.opt_present("test"));
++            assert!(m.opt_present("t"));
++        }
++        _ => panic!(),
++    }
++    let short_args = vec!["-t".to_string()];
++    match opts.parse(&short_args) {
++        Ok(ref m) => {
++            assert!(m.opt_present("test"));
++            assert!(m.opt_present("t"));
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optflag_missing() {
++    let args = vec!["blah".to_string()];
++    match Options::new().optflag("t", "test", "testing").parse(&args) {
++        Ok(ref m) => {
++            assert!(!m.opt_present("test"));
++            assert!(!m.opt_present("t"));
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_free_trailing_missing() {
++    let args = vec![] as Vec<String>;
++    match Options::new().parse(&args) {
++        Ok(ref m) => {
++            assert_eq!(m.free_trailing_start(), None);
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_free_trailing() {
++    let args = vec!["--".to_owned(), "-t".to_owned()];
++    match Options::new().optflag("t", "test", "testing").parse(&args) {
++        Ok(ref m) => {
++            assert!(!m.opt_present("test"));
++            assert!(!m.opt_present("t"));
++            assert_eq!(m.free_trailing_start(), Some(0));
++            assert_eq!(m.free.len(), 1);
++            assert_eq!(m.free[0], "-t");
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_free_trailing_only() {
++    let args = vec!["--".to_owned()];
++    match Options::new().optflag("t", "test", "testing").parse(&args) {
++        Ok(ref m) => {
++            assert!(!m.opt_present("test"));
++            assert!(!m.opt_present("t"));
++            assert_eq!(m.free_trailing_start(), None);
++            assert_eq!(m.free.len(), 0);
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_free_trailing_args() {
++    let args = vec!["pre".to_owned(), "--".to_owned(), "post".to_owned() ];
++    match Options::new().parse(&args) {
++        Ok(ref m) => {
++            assert_eq!(m.free_trailing_start(), Some(1));
++            assert_eq!(m.free.len(), 2);
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optflag_long_arg() {
++    let args = vec!["--test=20".to_string()];
++    match Options::new().optflag("t", "test", "testing").parse(&args) {
++        Err(UnexpectedArgument(_)) => {}
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optflag_multi() {
++    let args = vec!["--test".to_string(), "-t".to_string()];
++    match Options::new().optflag("t", "test", "testing").parse(&args) {
++        Err(OptionDuplicated(_)) => {}
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optflag_short_arg() {
++    let args = vec!["-t".to_string(), "20".to_string()];
++    match Options::new().optflag("t", "test", "testing").parse(&args) {
++        Ok(ref m) => {
++            // The next variable after the flag is just a free argument
++
++            assert!(m.free[0] == "20");
++        }
++        _ => panic!(),
++    }
++}
++
++// Tests for optflagmulti
++#[test]
++fn test_optflagmulti_short1() {
++    let args = vec!["-v".to_string()];
++    match Options::new()
++        .optflagmulti("v", "verbose", "verbosity")
++        .parse(&args)
++    {
++        Ok(ref m) => {
++            assert_eq!(m.opt_count("v"), 1);
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optflagmulti_short2a() {
++    let args = vec!["-v".to_string(), "-v".to_string()];
++    match Options::new()
++        .optflagmulti("v", "verbose", "verbosity")
++        .parse(&args)
++    {
++        Ok(ref m) => {
++            assert_eq!(m.opt_count("v"), 2);
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optflagmulti_short2b() {
++    let args = vec!["-vv".to_string()];
++    match Options::new()
++        .optflagmulti("v", "verbose", "verbosity")
++        .parse(&args)
++    {
++        Ok(ref m) => {
++            assert_eq!(m.opt_count("v"), 2);
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optflagmulti_long1() {
++    let args = vec!["--verbose".to_string()];
++    match Options::new()
++        .optflagmulti("v", "verbose", "verbosity")
++        .parse(&args)
++    {
++        Ok(ref m) => {
++            assert_eq!(m.opt_count("verbose"), 1);
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optflagmulti_long2() {
++    let args = vec!["--verbose".to_string(), "--verbose".to_string()];
++    match Options::new()
++        .optflagmulti("v", "verbose", "verbosity")
++        .parse(&args)
++    {
++        Ok(ref m) => {
++            assert_eq!(m.opt_count("verbose"), 2);
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optflagmulti_mix() {
++    let args = vec![
++        "--verbose".to_string(),
++        "-v".to_string(),
++        "-vv".to_string(),
++        "verbose".to_string(),
++    ];
++    match Options::new()
++        .optflagmulti("v", "verbose", "verbosity")
++        .parse(&args)
++    {
++        Ok(ref m) => {
++            assert_eq!(m.opt_count("verbose"), 4);
++            assert_eq!(m.opt_count("v"), 4);
++        }
++        _ => panic!(),
++    }
++}
++
++// Tests for optflagopt
++#[test]
++fn test_optflagopt() {
++    let long_args = vec!["--test".to_string()];
++    let mut opts = Options::new();
++    opts.optflagopt("t", "test", "testing", "ARG");
++    match opts.parse(&long_args) {
++        Ok(ref m) => {
++            assert!(m.opt_present("test"));
++            assert!(m.opt_present("t"));
++        }
++        _ => panic!(),
++    }
++    let short_args = vec!["-t".to_string()];
++    match opts.parse(&short_args) {
++        Ok(ref m) => {
++            assert!(m.opt_present("test"));
++            assert!(m.opt_present("t"));
++        }
++        _ => panic!(),
++    }
++    let short_args = vec!["-t".to_string(), "x".to_string()];
++    match opts.parse(&short_args) {
++        Ok(ref m) => {
++            assert_eq!(m.opt_str("t").unwrap(), "x");
++            assert_eq!(m.opt_str("test").unwrap(), "x");
++        }
++        _ => panic!(),
++    }
++    let long_args = vec!["--test=x".to_string()];
++    match opts.parse(&long_args) {
++        Ok(ref m) => {
++            assert_eq!(m.opt_str("t").unwrap(), "x");
++            assert_eq!(m.opt_str("test").unwrap(), "x");
++        }
++        _ => panic!(),
++    }
++    let long_args = vec!["--test".to_string(), "x".to_string()];
++    match opts.parse(&long_args) {
++        Ok(ref m) => {
++            assert_eq!(m.opt_str("t"), None);
++            assert_eq!(m.opt_str("test"), None);
++        }
++        _ => panic!(),
++    }
++    let no_args: Vec<String> = vec![];
++    match opts.parse(&no_args) {
++        Ok(ref m) => {
++            assert!(!m.opt_present("test"));
++            assert!(!m.opt_present("t"));
++        }
++        _ => panic!(),
++    }
++}
++
++// Tests for optmulti
++#[test]
++fn test_optmulti() {
++    let long_args = vec!["--test=20".to_string()];
++    let mut opts = Options::new();
++    opts.optmulti("t", "test", "testing", "TEST");
++    match opts.parse(&long_args) {
++        Ok(ref m) => {
++            assert!((m.opt_present("test")));
++            assert_eq!(m.opt_str("test").unwrap(), "20");
++            assert!((m.opt_present("t")));
++            assert_eq!(m.opt_str("t").unwrap(), "20");
++        }
++        _ => panic!(),
++    }
++    let short_args = vec!["-t".to_string(), "20".to_string()];
++    match opts.parse(&short_args) {
++        Ok(ref m) => {
++            assert!((m.opt_present("test")));
++            assert_eq!(m.opt_str("test").unwrap(), "20");
++            assert!((m.opt_present("t")));
++            assert_eq!(m.opt_str("t").unwrap(), "20");
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optmulti_missing() {
++    let args = vec!["blah".to_string()];
++    match Options::new()
++        .optmulti("t", "test", "testing", "TEST")
++        .parse(&args)
++    {
++        Ok(ref m) => {
++            assert!(!m.opt_present("test"));
++            assert!(!m.opt_present("t"));
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optmulti_no_arg() {
++    let long_args = vec!["--test".to_string()];
++    let mut opts = Options::new();
++    opts.optmulti("t", "test", "testing", "TEST");
++    match opts.parse(&long_args) {
++        Err(ArgumentMissing(_)) => {}
++        _ => panic!(),
++    }
++    let short_args = vec!["-t".to_string()];
++    match opts.parse(&short_args) {
++        Err(ArgumentMissing(_)) => {}
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_optmulti_multi() {
++    let args = vec!["--test=20".to_string(), "-t".to_string(), "30".to_string()];
++    match Options::new()
++        .optmulti("t", "test", "testing", "TEST")
++        .parse(&args)
++    {
++        Ok(ref m) => {
++            assert!(m.opt_present("test"));
++            assert_eq!(m.opt_str("test").unwrap(), "20");
++            assert!(m.opt_present("t"));
++            assert_eq!(m.opt_str("t").unwrap(), "20");
++            let pair = m.opt_strs("test");
++            assert!(pair[0] == "20");
++            assert!(pair[1] == "30");
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_free_argument_is_hyphen() {
++    let args = vec!["-".to_string()];
++    match Options::new().parse(&args) {
++        Ok(ref m) => {
++            assert_eq!(m.free.len(), 1);
++            assert_eq!(m.free[0], "-");
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_unrecognized_option() {
++    let long_args = vec!["--untest".to_string()];
++    let mut opts = Options::new();
++    opts.optmulti("t", "test", "testing", "TEST");
++    match opts.parse(&long_args) {
++        Err(UnrecognizedOption(_)) => {}
++        _ => panic!(),
++    }
++    match opts.parse_partial(&long_args) {
++        Ok((_, unmatched)) => {
++            assert_eq!(unmatched.len(), 1);
++            assert_eq!(unmatched[0], "--untest");
++        },
++        _ => panic!(),
++    }
++    let short_args = vec!["-u".to_string()];
++    match opts.parse(&short_args) {
++        Err(UnrecognizedOption(_)) => {}
++        _ => panic!(),
++    }
++    match opts.parse_partial(&short_args) {
++        Ok((_, unmatched)) => {
++            assert_eq!(unmatched.len(), 1);
++            assert_eq!(unmatched[0], "-u");
++        },
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_combined() {
++    let args = vec![
++        "prog".to_string(),
++        "free1".to_string(),
++        "-s".to_string(),
++        "20".to_string(),
++        "free2".to_string(),
++        "--flag".to_string(),
++        "--long=30".to_string(),
++        "-f".to_string(),
++        "-m".to_string(),
++        "40".to_string(),
++        "-m".to_string(),
++        "50".to_string(),
++        "-n".to_string(),
++        "-A B".to_string(),
++        "-n".to_string(),
++        "-60 70".to_string(),
++    ];
++    match Options::new()
++        .optopt("s", "something", "something", "SOMETHING")
++        .optflag("", "flag", "a flag")
++        .reqopt("", "long", "hi", "LONG")
++        .optflag("f", "", "another flag")
++        .optmulti("m", "", "mmmmmm", "YUM")
++        .optmulti("n", "", "nothing", "NOTHING")
++        .optopt("", "notpresent", "nothing to see here", "NOPE")
++        .parse(&args)
++    {
++        Ok(ref m) => {
++            assert!(m.free[0] == "prog");
++            assert!(m.free[1] == "free1");
++            assert_eq!(m.opt_str("s").unwrap(), "20");
++            assert!(m.free[2] == "free2");
++            assert!((m.opt_present("flag")));
++            assert_eq!(m.opt_str("long").unwrap(), "30");
++            assert!((m.opt_present("f")));
++            let pair = m.opt_strs("m");
++            assert!(pair[0] == "40");
++            assert!(pair[1] == "50");
++            let pair = m.opt_strs("n");
++            assert!(pair[0] == "-A B");
++            assert!(pair[1] == "-60 70");
++            assert!((!m.opt_present("notpresent")));
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_mixed_stop() {
++    let args = vec![
++        "-a".to_string(),
++        "b".to_string(),
++        "-c".to_string(),
++        "d".to_string(),
++    ];
++    match Options::new()
++        .parsing_style(ParsingStyle::StopAtFirstFree)
++        .optflag("a", "", "")
++        .optopt("c", "", "", "")
++        .parse(&args)
++    {
++        Ok(ref m) => {
++            println!("{}", m.opt_present("c"));
++            assert!(m.opt_present("a"));
++            assert!(!m.opt_present("c"));
++            assert_eq!(m.free.len(), 3);
++            assert_eq!(m.free[0], "b");
++            assert_eq!(m.free[1], "-c");
++            assert_eq!(m.free[2], "d");
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_mixed_stop_hyphen() {
++    let args = vec![
++        "-a".to_string(),
++        "-".to_string(),
++        "-c".to_string(),
++        "d".to_string(),
++    ];
++    match Options::new()
++        .parsing_style(ParsingStyle::StopAtFirstFree)
++        .optflag("a", "", "")
++        .optopt("c", "", "", "")
++        .parse(&args)
++    {
++        Ok(ref m) => {
++            println!("{}", m.opt_present("c"));
++            assert!(m.opt_present("a"));
++            assert!(!m.opt_present("c"));
++            assert_eq!(m.free.len(), 3);
++            assert_eq!(m.free[0], "-");
++            assert_eq!(m.free[1], "-c");
++            assert_eq!(m.free[2], "d");
++        }
++        _ => panic!(),
++    }
++}
++
++#[test]
++fn test_multi() {
++    let mut opts = Options::new();
++    opts.optopt("e", "", "encrypt", "ENCRYPT");
++    opts.optopt("", "encrypt", "encrypt", "ENCRYPT");
++    opts.optopt("f", "", "flag", "FLAG");
++    let no_opts: &[&str] = &[];
++
++    let args_single = vec!["-e".to_string(), "foo".to_string()];
++    let matches_single = &match opts.parse(&args_single) {
++        Ok(m) => m,
++        _ => panic!(),
++    };
++    assert!(matches_single.opts_present(&["e".to_string()]));
++    assert!(matches_single.opts_present(&["encrypt".to_string(), "e".to_string()]));
++    assert!(matches_single.opts_present(&["e".to_string(), "encrypt".to_string()]));
++    assert!(!matches_single.opts_present(&["encrypt".to_string()]));
++    assert!(!matches_single.opts_present(&["thing".to_string()]));
++    assert!(!matches_single.opts_present(&[]));
++
++    assert!(matches_single.opts_present_any(&["e"]));
++    assert!(matches_single.opts_present_any(&["encrypt", "e"]));
++    assert!(matches_single.opts_present_any(&["e", "encrypt"]));
++    assert!(!matches_single.opts_present_any(&["encrypt"]));
++    assert!(!matches_single.opts_present_any(no_opts));
++
++    assert_eq!(matches_single.opts_str(&["e".to_string()]).unwrap(), "foo");
++    assert_eq!(
++        matches_single
++            .opts_str(&["e".to_string(), "encrypt".to_string()])
++            .unwrap(),
++        "foo"
++    );
++    assert_eq!(
++        matches_single
++            .opts_str(&["encrypt".to_string(), "e".to_string()])
++            .unwrap(),
++        "foo"
++    );
++
++    assert_eq!(matches_single.opts_str_first(&["e"]).unwrap(), "foo");
++    assert_eq!(
++        matches_single.opts_str_first(&["e", "encrypt"]).unwrap(),
++        "foo"
++    );
++    assert_eq!(
++        matches_single.opts_str_first(&["encrypt", "e"]).unwrap(),
++        "foo"
++    );
++    assert_eq!(matches_single.opts_str_first(&["encrypt"]), None);
++    assert_eq!(matches_single.opts_str_first(no_opts), None);
++
++    let args_both = vec![
++        "-e".to_string(),
++        "foo".to_string(),
++        "--encrypt".to_string(),
++        "bar".to_string(),
++    ];
++    let matches_both = &match opts.parse(&args_both) {
++        Ok(m) => m,
++        _ => panic!(),
++    };
++    assert!(matches_both.opts_present(&["e".to_string()]));
++    assert!(matches_both.opts_present(&["encrypt".to_string()]));
++    assert!(matches_both.opts_present(&["encrypt".to_string(), "e".to_string()]));
++    assert!(matches_both.opts_present(&["e".to_string(), "encrypt".to_string()]));
++    assert!(!matches_both.opts_present(&["f".to_string()]));
++    assert!(!matches_both.opts_present(&["thing".to_string()]));
++    assert!(!matches_both.opts_present(&[]));
++
++    assert!(matches_both.opts_present_any(&["e"]));
++    assert!(matches_both.opts_present_any(&["encrypt"]));
++    assert!(matches_both.opts_present_any(&["encrypt", "e"]));
++    assert!(matches_both.opts_present_any(&["e", "encrypt"]));
++    assert!(!matches_both.opts_present_any(&["f"]));
++    assert!(!matches_both.opts_present_any(no_opts));
++
++    assert_eq!(matches_both.opts_str(&["e".to_string()]).unwrap(), "foo");
++    assert_eq!(
++        matches_both.opts_str(&["encrypt".to_string()]).unwrap(),
++        "bar"
++    );
++    assert_eq!(
++        matches_both
++            .opts_str(&["e".to_string(), "encrypt".to_string()])
++            .unwrap(),
++        "foo"
++    );
++    assert_eq!(
++        matches_both
++            .opts_str(&["encrypt".to_string(), "e".to_string()])
++            .unwrap(),
++        "bar"
++    );
++
++    assert_eq!(matches_both.opts_str_first(&["e"]).unwrap(), "foo");
++    assert_eq!(
++        matches_both.opts_str_first(&["encrypt"]).unwrap(),
++        "bar"
++    );
++    assert_eq!(
++        matches_both.opts_str_first(&["e", "encrypt"]).unwrap(),
++        "foo"
++    );
++    assert_eq!(
++        matches_both.opts_str_first(&["encrypt", "e"]).unwrap(),
++        "bar"
++    );
++    assert_eq!(matches_both.opts_str_first(&["f"]), None);
++    assert_eq!(matches_both.opts_str_first(no_opts), None);
++}
++
++#[test]
++fn test_nospace() {
++    let args = vec!["-Lfoo".to_string(), "-M.".to_string()];
++    let matches = &match Options::new()
++        .optmulti("L", "", "library directory", "LIB")
++        .optmulti("M", "", "something", "MMMM")
++        .parse(&args)
++    {
++        Ok(m) => m,
++        _ => panic!(),
++    };
++    assert!(matches.opts_present(&["L".to_string()]));
++    assert_eq!(matches.opts_str(&["L".to_string()]).unwrap(), "foo");
++    assert!(matches.opts_present(&["M".to_string()]));
++    assert_eq!(matches.opts_str(&["M".to_string()]).unwrap(), ".");
++}
++
++#[test]
++fn test_nospace_conflict() {
++    let args = vec!["-vvLverbose".to_string(), "-v".to_string()];
++    let matches = &match Options::new()
++        .optmulti("L", "", "library directory", "LIB")
++        .optflagmulti("v", "verbose", "Verbose")
++        .parse(&args)
++    {
++        Ok(m) => m,
++        Err(e) => panic!("{}", e),
++    };
++    assert!(matches.opts_present(&["L".to_string()]));
++    assert_eq!(matches.opts_str(&["L".to_string()]).unwrap(), "verbose");
++    assert!(matches.opts_present(&["v".to_string()]));
++    assert_eq!(3, matches.opt_count("v"));
++}
++
++#[test]
++fn test_long_to_short() {
++    let mut short = Opt {
++        name: Name::Long("banana".to_string()),
++        hasarg: HasArg::Yes,
++        occur: Occur::Req,
++        aliases: Vec::new(),
++    };
++    short.aliases = vec![Opt {
++        name: Name::Short('b'),
++        hasarg: HasArg::Yes,
++        occur: Occur::Req,
++        aliases: Vec::new(),
++    }];
++    let mut opts = Options::new();
++    opts.reqopt("b", "banana", "some bananas", "VAL");
++    let verbose = &opts.grps[0];
++    assert!(verbose.long_to_short() == short);
++}
++
++#[test]
++fn test_aliases_long_and_short() {
++    let args = vec!["-a".to_string(), "--apple".to_string(), "-a".to_string()];
++
++    let matches = Options::new()
++        .optflagmulti("a", "apple", "Desc")
++        .parse(&args)
++        .unwrap();
++    assert_eq!(3, matches.opt_count("a"));
++    assert_eq!(3, matches.opt_count("apple"));
++}
++
++#[test]
++fn test_usage() {
++    let mut opts = Options::new();
++    opts.reqopt("b", "banana", "Desc", "VAL");
++    opts.optopt("a", "012345678901234567890123456789", "Desc", "VAL");
++    opts.optflag("k", "kiwi", "Desc");
++    opts.optflagopt("p", "", "Desc", "VAL");
++    opts.optmulti("l", "", "Desc", "VAL");
++    opts.optflag("", "starfruit", "Starfruit");
++
++    let expected = "Usage: fruits
++
++Options:
++    -b, --banana VAL    Desc
++    -a, --012345678901234567890123456789 VAL
++                        Desc
++    -k, --kiwi          Desc
++    -p [VAL]            Desc
++    -l VAL              Desc
++        --starfruit     Starfruit
++";
++
++    let generated_usage = opts.usage("Usage: fruits");
++
++    debug!("expected: <<{}>>", expected);
++    debug!("generated: <<{}>>", generated_usage);
++    assert_eq!(generated_usage, expected);
++}
++
++#[test]
++fn test_usage_description_wrapping() {
++    // indentation should be 24 spaces
++    // lines wrap after 78: or rather descriptions wrap after 54
++
++    let mut opts = Options::new();
++    opts.optflag(
++        "k",
++        "kiwi",
++        "This is a long description which won't be wrapped..+..",
++    ); // 54
++    opts.optflag(
++        "a",
++        "apple",
++        "This is a long description which _will_ be wrapped..+..",
++    );
++    opts.optflag(
++        "b",
++        "banana",
++        "HereWeNeedOneSingleWordThatIsLongerThanTheWrappingLengthAndThisIsIt",
++    );
++
++    let expected = "Usage: fruits
++
++Options:
++    -k, --kiwi          This is a long description which won't be wrapped..+..
++    -a, --apple         This is a long description which _will_ be
++                        wrapped..+..
++    -b, --banana        HereWeNeedOneSingleWordThatIsLongerThanTheWrappingLengthAndThisIsIt
++";
++
++    let usage = opts.usage("Usage: fruits");
++
++    debug!("expected: <<{}>>", expected);
++    debug!("generated: <<{}>>", usage);
++    assert!(usage == expected)
++}
++
++#[test]
++fn test_usage_description_multibyte_handling() {
++    let mut opts = Options::new();
++    opts.optflag(
++        "k",
++        "k\u{2013}w\u{2013}",
++        "The word kiwi is normally spelled with two i's",
++    );
++    opts.optflag(
++        "a",
++        "apple",
++        "This \u{201C}description\u{201D} has some characters that could \
++         confuse the line wrapping; an apple costs 0.51€ in some parts of Europe.",
++    );
++
++    let expected = "Usage: fruits
++
++Options:
++    -k, --k–w–          The word kiwi is normally spelled with two i's
++    -a, --apple         This “description” has some characters that could
++                        confuse the line wrapping; an apple costs 0.51€ in
++                        some parts of Europe.
++";
++
++    let usage = opts.usage("Usage: fruits");
++
++    debug!("expected: <<{}>>", expected);
++    debug!("generated: <<{}>>", usage);
++    assert!(usage == expected)
++}
++
++#[test]
++fn test_usage_description_newline_handling() {
++    let mut opts = Options::new();
++    opts.optflag(
++        "k",
++        "k\u{2013}w\u{2013}",
++        "The word kiwi is normally spelled with two i's",
++    );
++    opts.optflag(
++        "a",
++        "apple",
++        "This description forces a new line.\n Here is a premature\n\
++         newline",
++    );
++
++    let expected = "Usage: fruits
++
++Options:
++    -k, --k–w–          The word kiwi is normally spelled with two i's
++    -a, --apple         This description forces a new line.
++                        Here is a premature
++                        newline
++";
++
++    let usage = opts.usage("Usage: fruits");
++
++    debug!("expected: <<{}>>", expected);
++    debug!("generated: <<{}>>", usage);
++    assert!(usage == expected)
++}
++
++#[test]
++fn test_usage_multiwidth() {
++    let mut opts = Options::new();
++    opts.optflag("a", "apple", "apple description");
++    opts.optflag("b", "banana\u{00AB}", "banana description");
++    opts.optflag("c", "brûlée", "brûlée quite long description");
++    opts.optflag("k", "kiwi\u{20AC}", "kiwi description");
++    opts.optflag("o", "orange\u{2039}", "orange description");
++    opts.optflag(
++        "r",
++        "raspberry-but-making-this-option-way-too-long",
++        "raspberry description is also quite long indeed longer than \
++         every other piece of text we might encounter here and thus will \
++         be automatically broken up",
++    );
++
++    let expected = "Usage: fruits
++
++Options:
++    -a, --apple         apple description
++    -b, --banana«       banana description
++    -c, --brûlée        brûlée quite long description
++    -k, --kiwi€         kiwi description
++    -o, --orange‹       orange description
++    -r, --raspberry-but-making-this-option-way-too-long\u{0020}
++                        raspberry description is also quite long indeed longer
++                        than every other piece of text we might encounter here
++                        and thus will be automatically broken up
++";
++
++    let usage = opts.usage("Usage: fruits");
++
++    debug!("expected: <<{}>>", expected);
++    debug!("generated: <<{}>>", usage);
++    assert!(usage == expected)
++}
++
++#[test]
++fn test_usage_short_only() {
++    let mut opts = Options::new();
++    opts.optopt("k", "", "Kiwi", "VAL");
++    opts.optflag("s", "", "Starfruit");
++    opts.optflagopt("a", "", "Apple", "TYPE");
++
++    let expected = "Usage: fruits
++
++Options:
++    -k VAL              Kiwi
++    -s                  Starfruit
++    -a [TYPE]           Apple
++";
++
++    let usage = opts.usage("Usage: fruits");
++    debug!("expected: <<{}>>", expected);
++    debug!("generated: <<{}>>", usage);
++    assert!(usage == expected)
++}
++
++#[test]
++fn test_usage_long_only() {
++    let mut opts = Options::new();
++    opts.optopt("", "kiwi", "Kiwi", "VAL");
++    opts.optflag("", "starfruit", "Starfruit");
++    opts.optflagopt("", "apple", "Apple", "TYPE");
++
++    let expected = "Usage: fruits
++
++Options:
++    --kiwi VAL          Kiwi
++    --starfruit         Starfruit
++    --apple [TYPE]      Apple
++";
++
++    let usage = opts.usage("Usage: fruits");
++    debug!("expected: <<{}>>", expected);
++    debug!("generated: <<{}>>", usage);
++    assert!(usage == expected)
++}
++
++#[test]
++fn test_short_usage() {
++    let mut opts = Options::new();
++    opts.reqopt("b", "banana", "Desc", "VAL");
++    opts.optopt("a", "012345678901234567890123456789", "Desc", "VAL");
++    opts.optflag("k", "kiwi", "Desc");
++    opts.optflagopt("p", "", "Desc", "VAL");
++    opts.optmulti("l", "", "Desc", "VAL");
++
++    let expected = "Usage: fruits -b VAL [-a VAL] [-k] [-p [VAL]] [-l VAL]..".to_string();
++    let generated_usage = opts.short_usage("fruits");
++
++    debug!("expected: <<{}>>", expected);
++    debug!("generated: <<{}>>", generated_usage);
++    assert_eq!(generated_usage, expected);
++}
++#[test]
++fn test_nonexistant_opt() {
++    let mut opts = Options::new();
++    opts.optflag("b", "bar", "Desc");
++    let args: Vec<String> = Vec::new();
++    let matches = opts.parse(&args).unwrap();
++    assert_eq!(matches.opt_defined("foo"), false);
++    assert_eq!(matches.opt_defined("bar"), true);
++}
++#[test]
++fn test_args_with_equals() {
++    let mut opts = Options::new();
++    opts.optopt("o", "one", "One", "INFO");
++    opts.optopt("t", "two", "Two", "INFO");
++
++    let args = vec![
++        "--one".to_string(),
++        "A=B".to_string(),
++        "--two=C=D".to_string(),
++    ];
++    let matches = &match opts.parse(&args) {
++        Ok(m) => m,
++        Err(e) => panic!("{}", e),
++    };
++    assert_eq!(matches.opts_str(&["o".to_string()]).unwrap(), "A=B");
++    assert_eq!(matches.opts_str(&["t".to_string()]).unwrap(), "C=D");
++}
++
++#[test]
++fn test_long_only_usage() {
++    let mut opts = Options::new();
++    opts.long_only(true);
++    opts.optflag("k", "kiwi", "Description");
++    opts.optflag("a", "apple", "Description");
++
++    let expected = "Usage: fruits
++
++Options:
++    -k, -kiwi           Description
++    -a, -apple          Description
++";
++
++    let usage = opts.usage("Usage: fruits");
++
++    debug!("expected: <<{}>>", expected);
++    debug!("generated: <<{}>>", usage);
++    assert!(usage == expected)
++}
++
++#[test]
++fn test_long_only_mode() {
++    let mut opts = Options::new();
++    opts.long_only(true);
++    opts.optopt("a", "apple", "Description", "X");
++    opts.optopt("b", "banana", "Description", "X");
++    opts.optopt("c", "currant", "Description", "X");
++    opts.optopt("", "durian", "Description", "X");
++    opts.optopt("e", "", "Description", "X");
++    opts.optopt("", "fruit", "Description", "X");
++
++    let args = vec![
++        "-a",
++        "A",
++        "-b=B",
++        "--c=C",
++        "-durian",
++        "D",
++        "--e",
++        "E",
++        "-fruit=any",
++    ];
++    let matches = &match opts.parse(&args) {
++        Ok(m) => m,
++        Err(e) => panic!("{}", e),
++    };
++    assert_eq!(matches.opts_str(&["a".to_string()]).unwrap(), "A");
++    assert_eq!(matches.opts_str(&["b".to_string()]).unwrap(), "B");
++    assert_eq!(matches.opts_str(&["c".to_string()]).unwrap(), "C");
++    assert_eq!(matches.opts_str(&["durian".to_string()]).unwrap(), "D");
++    assert_eq!(matches.opts_str(&["e".to_string()]).unwrap(), "E");
++    assert_eq!(matches.opts_str(&["fruit".to_string()]).unwrap(), "any");
++}
++
++#[test]
++fn test_long_only_mode_no_short_parse() {
++    let mut opts = Options::new();
++    opts.long_only(true);
++    opts.optflag("h", "help", "Description");
++    opts.optflag("i", "ignore", "Description");
++    opts.optflag("", "hi", "Description");
++
++    let args = vec!["-hi"];
++    let matches = &match opts.parse(&args) {
++        Ok(m) => m,
++        Err(e) => panic!("{}", e),
++    };
++    assert!(matches.opt_present("hi"));
++    assert!(!matches.opt_present("h"));
++    assert!(!matches.opt_present("i"));
++}
++
++#[test]
++fn test_normal_mode_no_long_parse() {
++    // Like test_long_only_mode_no_short_parse, but we make sure
++    // that long_only can be disabled, and the right thing
++    // happens.
++    let mut opts = Options::new();
++    opts.long_only(true);
++    opts.optflag("h", "help", "Description");
++    opts.optflag("i", "ignore", "Description");
++    opts.optflag("", "hi", "Description");
++    opts.long_only(false);
++
++    let args = vec!["-hi"];
++    let matches = &match opts.parse(&args) {
++        Ok(m) => m,
++        Err(e) => panic!("{}", e),
++    };
++    assert!(!matches.opt_present("hi"));
++    assert!(matches.opt_present("h"));
++    assert!(matches.opt_present("i"));
++}
++
++#[test]
++#[should_panic]
++fn test_long_name_too_short() {
++    let mut opts = Options::new();
++    opts.optflag("", "a", "Oops, long option too short");
++}
++
++#[test]
++#[should_panic]
++fn test_undefined_opt_present() {
++    let mut opts = Options::new();
++    opts.optflag("h", "help", "Description");
++    let args = vec!["-h"];
++    match opts.parse(args) {
++        Ok(matches) => assert!(!matches.opt_present("undefined")),
++        Err(e) => panic!("{}", e),
++    }
++}
++
++#[test]
++fn test_opt_default() {
++    let mut opts = Options::new();
++    opts.optflag("h", "help", "Description");
++    opts.optflag("i", "ignore", "Description");
++    opts.optflag("r", "run", "Description");
++    opts.long_only(false);
++
++    let args: Vec<String> = ["-i", "-r", "10"].iter().map(|x| x.to_string()).collect();
++    let matches = &match opts.parse(&args) {
++        Ok(m) => m,
++        Err(e) => panic!("{}", e),
++    };
++    assert_eq!(matches.opt_default("help", ""), None);
++    assert_eq!(matches.opt_default("i", "def"), Some("def".to_string()));
++}
++
++#[test]
++fn test_opt_get() {
++    let mut opts = Options::new();
++    opts.optflag("h", "help", "Description");
++    opts.optflagopt("i", "ignore", "Description", "true | false");
++    opts.optflagopt("r", "run", "Description", "0 .. 10");
++    opts.optflagopt("p", "percent", "Description", "0.0 .. 10.0");
++    opts.long_only(false);
++
++    let args: Vec<String> = ["-i", "true", "-p", "1.1"]
++        .iter()
++        .map(|x| x.to_string())
++        .collect();
++    let matches = &match opts.parse(&args) {
++        Ok(m) => m,
++        Err(e) => panic!("{}", e),
++    };
++    let h_arg = matches.opt_get::<i32>("help");
++    assert_eq!(h_arg, Ok(None));
++    let i_arg = matches.opt_get("i");
++    assert_eq!(i_arg, Ok(Some(true)));
++    let p_arg = matches.opt_get("p");
++    assert_eq!(p_arg, Ok(Some(1.1)));
++}
++
++#[test]
++fn test_opt_get_default() {
++    let mut opts = Options::new();
++    opts.optflag("h", "help", "Description");
++    opts.optflagopt("i", "ignore", "Description", "true | false");
++    opts.optflagopt("r", "run", "Description", "0 .. 10");
++    opts.optflagopt("p", "percent", "Description", "0.0 .. 10.0");
++    opts.long_only(false);
++
++    let args: Vec<String> = ["-i", "true", "-p", "1.1"]
++        .iter()
++        .map(|x| x.to_string())
++        .collect();
++    let matches = &match opts.parse(&args) {
++        Ok(m) => m,
++        Err(e) => panic!("{}", e),
++    };
++    let h_arg = matches.opt_get_default("help", 10);
++    assert_eq!(h_arg, Ok(10));
++    let i_arg = matches.opt_get_default("i", false);
++    assert_eq!(i_arg, Ok(true));
++    let p_arg = matches.opt_get_default("p", 10.2);
++    assert_eq!(p_arg, Ok(1.1));
++}
++
++#[test]
++fn test_opt_positions() {
++    let mut opts = Options::new();
++    opts.optflagmulti("a", "act", "Description");
++    opts.optflagmulti("e", "enact", "Description");
++    opts.optflagmulti("r", "react", "Description");
++
++    let args: Vec<String> = ["-a", "-a", "-r", "-a", "-r", "-r"]
++        .iter()
++        .map(|x| x.to_string())
++        .collect();
++
++    let matches = &match opts.parse(&args) {
++        Ok(m) => m,
++        Err(e) => panic!("{}", e),
++    };
++
++    let a_pos = matches.opt_positions("a");
++    assert_eq!(a_pos, vec![0, 1, 3]);
++    let e_pos = matches.opt_positions("e");
++    assert_eq!(e_pos, vec![]);
++    let r_pos = matches.opt_positions("r");
++    assert_eq!(r_pos, vec![2, 4, 5]);
++}
++
++#[test]
++fn test_opt_strs_pos() {
++    let mut opts = Options::new();
++    opts.optmulti("a", "act", "Description", "NUM");
++    opts.optmulti("e", "enact", "Description", "NUM");
++    opts.optmulti("r", "react", "Description", "NUM");
++
++    let args: Vec<String> = ["-a1", "-a2", "-r3", "-a4", "-r5", "-r6"]
++        .iter()
++        .map(|x| x.to_string())
++        .collect();
++
++    let matches = &match opts.parse(&args) {
++        Ok(m) => m,
++        Err(e) => panic!("{}", e),
++    };
++
++    let a_pos = matches.opt_strs_pos("a");
++    assert_eq!(
++        a_pos,
++        vec![
++            (0, "1".to_string()),
++            (1, "2".to_string()),
++            (3, "4".to_string())
++        ]
++    );
++    let e_pos = matches.opt_strs_pos("e");
++    assert_eq!(e_pos, vec![]);
++    let r_pos = matches.opt_strs_pos("r");
++    assert_eq!(
++        r_pos,
++        vec![
++            (2, "3".to_string()),
++            (4, "5".to_string()),
++            (5, "6".to_string())
++        ]
++    );
++}
++
++#[test]
++fn test_unmatched_short_opts() {
++    let args: Vec<&str> = vec!["-Lhh"];
++    let mut opts = Options::new();
++    opts.optflag("h", "help", "print this help menu");
++    // This should not report an error about `help` being passed twice.
++    match opts.parse_partial(&args) {
++        Ok((_, unmatched)) => {
++            assert_eq!(unmatched.len(), 1);
++            assert_eq!(*unmatched[0], "-Lhh");
++        }
++        Err(e) => panic!("{}", e),
++    }
++}
+diff -ruN orig/getopts-parse-partial/tests/smoke.rs new/getopts-parse-partial/tests/smoke.rs
+--- orig/getopts-parse-partial/tests/smoke.rs	1970-01-01 01:00:00.000000000 +0100
++++ new/getopts-parse-partial/tests/smoke.rs	2026-06-06 22:41:38.431353014 +0200
+@@ -0,0 +1,8 @@
++extern crate getopts;
++
++use std::env;
++
++#[test]
++fn main() {
++    getopts::Options::new().parse(env::args()).unwrap();
++}
+diff -ruN orig/getopts-parse-partial/triagebot.toml new/getopts-parse-partial/triagebot.toml
+--- orig/getopts-parse-partial/triagebot.toml	1970-01-01 01:00:00.000000000 +0100
++++ new/getopts-parse-partial/triagebot.toml	2026-06-06 22:41:38.431353014 +0200
+@@ -0,0 +1 @@
++[assign]

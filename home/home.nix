@@ -228,6 +228,7 @@
       gcalcli
       khal
       vdirsyncer
+      zulip-term
       glab
 
       # NOTE: might be relevant later

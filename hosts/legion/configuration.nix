@@ -22,7 +22,7 @@
     # ./users.nix
     ../common
     ../common/desktop.nix
-    # ../common/texlive.nix
+    ../common/texlive.nix
     ../common/zrepl.nix
 
     # Import your generated (nixos-generate-config) hardware configuration

@@ -47,6 +47,10 @@
     decibels # new audio player
   ]);
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -75,6 +79,7 @@
     cron
     libnotify
     drawio
+    zulip
   ] ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
     slack
     spotify

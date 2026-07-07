@@ -228,6 +228,7 @@
       gcalcli
       khal
       vdirsyncer
+      glab
 
       # NOTE: might be relevant later
       # taskwarrior3

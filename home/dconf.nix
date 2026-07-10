@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }:
+{
   home.packages = with pkgs; [
     dconf
   ];
@@ -8,8 +9,8 @@
     };
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Ctrl>q" ];
-      switch-applications = [];
-      switch-applications-backward = [];
+      switch-applications = [ ];
+      switch-applications-backward = [ ];
       switch-windows = [ "<Super>Tab" ];
       switch-windows-backward = [ "<Super><Shift>Tab" ];
     };
@@ -18,6 +19,16 @@
         "terminate:ctrl_alt_bksp"
         "lv3:rwin_switch"
         "compose:ralt"
+      ];
+      sources = [
+        (lib.gvariant.mkTuple [
+          "xkb"
+          "us"
+        ])
+        (lib.gvariant.mkTuple [
+          "xkb"
+          "de"
+        ])
       ];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {

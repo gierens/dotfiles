@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
@@ -25,27 +26,30 @@
   #   pulse.enable = true;
   # };
 
-  environment.gnome.excludePackages = (with pkgs; [
-    atomix # puzzle game
-    cheese # webcam tool
-    epiphany # web browser
-    evince # document viewer
-    geary # email reader
-    gedit # text editor
-    gnome-characters
-    gnome-music
-    gnome-photos
-    gnome-terminal
-    gnome-tour
-    gnome-maps
-    gnome-calculator
-    hitori # sudoku game
-    iagno # go game
-    tali # poker game
-    totem # video player
-    showtime # new video player
-    decibels # new audio player
-  ]);
+  environment.gnome.excludePackages = (
+    with pkgs;
+    [
+      atomix # puzzle game
+      cheese # webcam tool
+      epiphany # web browser
+      evince # document viewer
+      geary # email reader
+      gedit # text editor
+      gnome-characters
+      gnome-music
+      gnome-photos
+      gnome-terminal
+      gnome-tour
+      gnome-maps
+      gnome-calculator
+      hitori # sudoku game
+      iagno # go game
+      tali # poker game
+      totem # video player
+      showtime # new video player
+      decibels # new audio player
+    ]
+  );
 
   nixpkgs.config.permittedInsecurePackages = [
     "electron-39.8.10"
@@ -53,39 +57,42 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    unstable.alacritty-graphics
-    kitty
-    ghostty
-    networkmanagerapplet
-    gdm
-    gnome-tweaks
-    keymapp
-    (chromium.override { enableWideVine = true; })
-    tor-browser
-    mpv
-    dconf-editor
-    # TODO: there are cli clients as well
-    signal-desktop
-    spotifyd
-    qbittorrent
-    libreoffice
-    evince
-    xclip
-    wl-clipboard # required for pass
-    inkscape
-    gnomeExtensions.night-theme-switcher
-    # TODO: is there an extension to control volume per application or for the current application
-    cron
-    libnotify
-    drawio
-    zulip
-  ] ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
-    slack
-    spotify
-    zoom-us
-    discord
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      unstable.alacritty-graphics
+      kitty
+      ghostty
+      networkmanagerapplet
+      gdm
+      gnome-tweaks
+      keymapp
+      (chromium.override { enableWideVine = true; })
+      tor-browser
+      mpv
+      dconf-editor
+      # TODO: there are cli clients as well
+      signal-desktop
+      spotifyd
+      qbittorrent
+      libreoffice
+      evince
+      xclip
+      wl-clipboard # required for pass
+      inkscape
+      gnomeExtensions.night-theme-switcher
+      # TODO: is there an extension to control volume per application or for the current application
+      cron
+      libnotify
+      drawio
+      zulip
+    ]
+    ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
+      slack
+      spotify
+      zoom-us
+      discord
+    ];
 
   programs.browserpass.enable = true;
 
@@ -98,17 +105,20 @@
   # TODO: also add crontab jobs
   services.cron.enable = true;
 
-  fonts.packages = with pkgs; [
-    roboto
-    noto-fonts
-    fira
-    font-awesome
-    source-sans
-    source-sans-pro
-    hanken-grotesk
-    corefonts
-    vista-fonts
-  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages =
+    with pkgs;
+    [
+      roboto
+      noto-fonts
+      fira
+      font-awesome
+      source-sans
+      source-sans-pro
+      hanken-grotesk
+      corefonts
+      vista-fonts
+    ]
+    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
   fonts.fontconfig.enable = true;
 
   xdg.mime = {

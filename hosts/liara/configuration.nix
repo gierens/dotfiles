@@ -5,9 +5,10 @@
   outputs,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other NixOS modules here
-  imports = [ 
+  imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
 
@@ -57,23 +58,23 @@
   };
 
   nix =
-    # let flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs; in 
-  {
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Opinionated: disable global registry
-      # flake-registry = "";
-      # Workaround for https://github.com/NixOS/nix/issues/9574
-      # nix-path = config.nix.nixPath;
-    };
-    # Opinionated: disable channels
-    # channel.enable = false;
+    # let flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs; in
+    {
+      settings = {
+        # Enable flakes and new 'nix' command
+        experimental-features = "nix-command flakes";
+        # Opinionated: disable global registry
+        # flake-registry = "";
+        # Workaround for https://github.com/NixOS/nix/issues/9574
+        # nix-path = config.nix.nixPath;
+      };
+      # Opinionated: disable channels
+      # channel.enable = false;
 
-    # Opinionated: make flake registry and nix path match flake inputs
-    # registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    # nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-  };
+      # Opinionated: make flake registry and nix path match flake inputs
+      # registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+      # nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+    };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -104,7 +105,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
-  users.groups.plugdev = {};
+  users.groups.plugdev = { };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.defaultUserShell = pkgs.zsh;
@@ -136,7 +137,7 @@
   ];
 
   environment.variables = {
-    PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig";
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -172,7 +173,6 @@
     settings.General.EnableNetworkConfiguration = true;
   };
 
-
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
@@ -205,4 +205,3 @@
     };
   };
 }
-

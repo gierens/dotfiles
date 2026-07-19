@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   networking.extraHosts = ''
     127.0.0.1  zr1.${config.networking.domain}  zr1
   '';

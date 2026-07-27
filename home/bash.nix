@@ -117,6 +117,7 @@
       m = "aerc";
       z = "zig";
       o = "open_project";
+      p = "python";
       x = "exit";
       hg = "history | grep";
       # TODO: remove this when not needed anymore

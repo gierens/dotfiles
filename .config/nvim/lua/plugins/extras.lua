@@ -7,7 +7,7 @@ return {
   { import = "lazyvim.plugins.extras.lang.tex" },
   { import = "lazyvim.plugins.extras.lang.markdown" },
   -- { import = "lazyvim.plugins.extras.coding.nvim-cmp" },
-  { import = "lazyvim.plugins.extras.editor.leap" },
+  -- { import = "lazyvim.plugins.extras.editor.leap" },
   { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
   -- { import = "lazyvim.plugins.extras.ai.copilot" },
   { import = "lazyvim.plugins.extras.coding.luasnip" },

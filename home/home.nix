@@ -230,6 +230,7 @@
       vdirsyncer
       zulip-term
       glab
+      zola
 
       # NOTE: might be relevant later
       # taskwarrior3

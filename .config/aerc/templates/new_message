@@ -1,0 +1,39 @@
+X-Mailer: aerc {{version}}
+
+
+{{ if eq .Account "tum" -}}
+
+--
+Viele Grüße / Kind regards,
+
+Sandro-Alessio Gierens
+
+Resilient Operating Systems
+Systems Research Group
+School of Computation, Information and Technology
+Technical University of Munich
+Web: https://dos.cit.tum.de/
+{{- end}}
+{{ if eq .Account "schollheim" -}}
+
+--
+Viele Grüße / Kind regards,
+
+Sandro-Alessio Gierens
+
+Netzwerk- und Server-Administration
+Studentenwohnheim Geschwister Scholl e.V.
+Web: https://schollheim.net
+{{- end}}
+{{ if eq .Account "gierens" -}}
+
+--
+Viele Grüße / Kind regards,
+
+Sandro-Alessio Gierens
+Web: https://gierens.de
+{{- end}}
+{{- with .Signature }}
+
+{{.}}
+{{- end }}

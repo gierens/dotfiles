@@ -1,0 +1,45 @@
+X-Mailer: aerc {{version}}
+
+On {{dateFormat (.OriginalDate | toLocal) "Mon Jan 2, 2006 at 3:04 PM MST"}}, {{.OriginalFrom | names | join ", "}} wrote:
+{{ if eq .OriginalMIMEType "text/html" -}}
+{{- exec `html` .OriginalText | trimSignature | quote -}}
+{{- else -}}
+{{- trimSignature .OriginalText | quote -}}
+{{- end}}
+
+{{ if eq .Account "tum" -}}
+
+--
+Viele Grüße / Kind regards,
+
+Sandro-Alessio Gierens
+
+Resilient Operating Systems
+Systems Research Group
+School of Computation, Information and Technology
+Technical University of Munich
+Web: https://dos.cit.tum.de/
+{{- end}}
+{{ if eq .Account "schollheim" -}}
+
+--
+Viele Grüße / Kind regards,
+
+Sandro-Alessio Gierens
+
+Netzwerk- und Server-Administration
+Studentenwohnheim Geschwister Scholl e.V.
+Web: https://schollheim.net
+{{- end}}
+{{ if eq .Account "gierens" -}}
+
+--
+Viele Grüße / Kind regards,
+
+Sandro-Alessio Gierens
+Web: https://gierens.de
+{{- end}}
+{{- with .Signature }}
+
+{{.}}
+{{- end }}

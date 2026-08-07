@@ -231,6 +231,7 @@
       zulip-term
       glab
       zola
+      age
 
       # NOTE: might be relevant later
       # taskwarrior3

@@ -7,4 +7,5 @@ pkgs: rec {
   vargo = pkgs.callPackage ./vargo.nix { };
   verus = pkgs.callPackage ./verus { inherit vargo z3_4_12_5; };
   verus-analyzer = pkgs.callPackage ./verus-analyzer.nix { };
+  zola = pkgs.callPackage ./zola.nix { };
 }

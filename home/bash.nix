@@ -131,6 +131,9 @@
       chkmd5 = "md5sum --quiet -c checksums.md5";
       yubipi = "curl -k https://yubipi.gierens.de -H \"X-Auth-Token: $(pass yubipi)\" 2>/dev/null | jq -r .otp | xclip";
       sshm = "ssh_multi";
+      # TODO: only apply this to legion, and in general allow host specific home manager configs
+      vpnon = "sudo ip link set enp99s0u2u1u2 down && sudo wg-quick up wg0";
+      vpnoff = "sudo wg-quick down wg0 && sudo ip link set enp99s0u2u1u2 up";
     };
   };
 }

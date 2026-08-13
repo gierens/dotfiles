@@ -232,6 +232,7 @@
       glab
       zola
       age
+      unstable.harper
 
       # NOTE: might be relevant later
       # taskwarrior3

@@ -233,6 +233,7 @@
       zola
       age
       unstable.harper
+      pv
 
       # NOTE: might be relevant later
       # taskwarrior3

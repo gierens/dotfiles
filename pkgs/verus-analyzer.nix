@@ -8,8 +8,8 @@
 
 let
   version = "2026-04-29";
-  sha256 = "sha256-l0Mw+0d9auaw1GQotzA1DYglGs2XLZos2pM1H39RnM4=";
-  cargoHash = "sha256-RA3bgK/I6QGCcLci3CEvpojWIZ0HEE3rls+XOAplZ44=";
+  sha256 = "sha256-A0OPsJbcE0SuWlKLMqqpid+UPueN5LyPQbdt4Evhxto=";
+  cargoHash = "sha256-hdDNSWf/zk/AIcnGSfvhI3ugUSJ/betDWMxhMdFIwmI=";
   fenix = callPackage (fetchFromGitHub {
     owner = "nix-community";
     repo = "fenix";

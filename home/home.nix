@@ -23,6 +23,7 @@
     ./dconf.nix
     ./git.nix
     ./tmux.nix
+    ./chromium.nix
     ./starship.nix
   ];
 
@@ -281,21 +282,6 @@
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/aerc/stylesets";
   home.file."${config.home.homeDirectory}/.config/aerc/templates".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/aerc/templates";
-
-  programs.chromium = {
-    enable = true;
-    package = (pkgs.chromium.override { enableWideVine = true; });
-    extensions = [
-      { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium
-      # { id = "naepdomgkenhinolocfifgehidddafch"; } # browserpass: installed in hosts/common/desktop
-      # { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin: not supported anymore
-      { id = "lgblnfidahcdcjddiepkckcfdhpknnjh"; } # stands adblocker
-      { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
-      { id = "inlikjemeeknofckkjolnjbpehgadgge"; } # distill
-      { id = "laankejkbhbdhmipfmgcngdelahlfoji"; } # stayfocusd
-      { id = "kbdngfhhepjodhilpfmnfbfiogachdkp"; } # no content warning youtube
-    ];
-  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

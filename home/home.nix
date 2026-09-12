@@ -23,6 +23,7 @@
     ./dconf.nix
     ./git.nix
     ./tmux.nix
+    ./starship.nix
   ];
 
   nixpkgs = {
@@ -267,18 +268,6 @@
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  # starship - an customizable prompt for any shell
-  programs.starship = {
-    enable = true;
-    # custom settings
-    settings = {
-      add_newline = false;
-      aws.disabled = true;
-      gcloud.disabled = true;
-      line_break.disabled = true;
-    };
-  };
 
   home.file."${config.home.homeDirectory}/.config/nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/projects/dotfiles/.config/nvim";

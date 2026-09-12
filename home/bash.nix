@@ -105,6 +105,8 @@
           done
           tmux set-window-option -t :"$target"  synchronize-panes on > /dev/null
       }
+
+      export MAKEFLAGS="-j $(nproc)"
     '';
 
     # set some aliases, feel free to add more or remove some

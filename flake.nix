@@ -122,6 +122,13 @@
               ./home/server.nix
             ];
           };
+          cluster = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+            extraSpecialArgs = { inherit inputs outputs; };
+            modules = [
+              ./home/cluster.nix
+            ];
+          };
         in
         {
           "sandro@reaper" = desktop;
@@ -135,6 +142,7 @@
               ./home/desktop.nix
             ];
           };
+          "gierens@ian" = cluster;
         };
     };
 }

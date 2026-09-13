@@ -285,12 +285,4 @@
       persistencedSha256 = lib.fakeSha256;
     };
   };
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
-    users = {
-      # Import your home-manager configuration
-      sandro = import ../../home/home.nix;
-    };
-  };
 }

@@ -1,4 +1,6 @@
 {
+  inputs,
+  outputs,
   pkgs,
   ...
 }:
@@ -39,4 +41,12 @@
   };
 
   services.resolved.enable = true;
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      # Import your home-manager configuration
+      sandro = import ../../home/server.nix;
+    };
+  };
 }

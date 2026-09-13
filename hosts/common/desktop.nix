@@ -1,4 +1,6 @@
 {
+  inputs,
+  outputs,
   lib,
   pkgs,
   ...
@@ -147,6 +149,14 @@
       "application/xhtml+xml" = "chromium-browser.desktop";
       "application/x-extension-xhtml" = "chromium-browser.desktop";
       "application/x-extension-xht" = "chromium-browser.desktop";
+    };
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      # Import your home-manager configuration
+      sandro = import ../../home/desktop.nix;
     };
   };
 }

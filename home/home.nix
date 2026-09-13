@@ -53,7 +53,7 @@
   };
   home = {
     username = "sandro";
-    homeDirectory = "/home/sandro";
+    homeDirectory = "/home/${config.home.username}";
   };
 
   # Add stuff for your user as you see fit:

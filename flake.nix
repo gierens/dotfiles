@@ -142,7 +142,7 @@
               ./home/desktop.nix
             ];
           };
-          "gierens@ian" = cluster;
+          "gierens@cluster" = cluster;
         };
     };
 }

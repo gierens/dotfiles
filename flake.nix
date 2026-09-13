@@ -106,42 +106,35 @@
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        "sandro@reaper" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/desktop.nix
-          ];
+      homeConfigurations =
+        let
+          desktop = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+            extraSpecialArgs = { inherit inputs outputs; };
+            modules = [
+              ./home/desktop.nix
+            ];
+          };
+          server = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+            extraSpecialArgs = { inherit inputs outputs; };
+            modules = [
+              ./home/server.nix
+            ];
+          };
+        in
+        {
+          "sandro@reaper" = desktop;
+          "sandro@legion" = desktop;
+          "sandro@garrus" = desktop;
+          "sandro@n7" = server;
+          "sandro@liara" = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.aarch64-linux; # Home-manager requires 'pkgs' instance
+            extraSpecialArgs = { inherit inputs outputs; };
+            modules = [
+              ./home/desktop.nix
+            ];
+          };
         };
-        "sandro@legion" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/desktop.nix
-          ];
-        };
-        "sandro@garrus" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/desktop.nix
-          ];
-        };
-        "sandro@n7" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/server.nix
-          ];
-        };
-        "sandro@liara" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.aarch64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/desktop.nix
-          ];
-        };
-      };
     };
 }

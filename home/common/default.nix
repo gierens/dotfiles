@@ -50,7 +50,7 @@
     };
   };
   home = {
-    username = "sandro";
+    username = lib.mkDefault "sandro";
     homeDirectory = "/home/${config.home.username}";
   };
 

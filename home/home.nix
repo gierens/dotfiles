@@ -18,13 +18,13 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    ./alacritty.nix
-    ./bash.nix
-    ./dconf.nix
-    ./git.nix
-    ./tmux.nix
-    ./chromium.nix
-    ./starship.nix
+    ./common/alacritty.nix
+    ./common/bash.nix
+    ./common/dconf.nix
+    ./common/git.nix
+    ./common/tmux.nix
+    ./common/chromium.nix
+    ./common/starship.nix
   ];
 
   nixpkgs = {

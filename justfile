@@ -19,11 +19,11 @@ setup:
     cp -r .leetcode ~/
 
 theme-dark:
-    sed -i "s/gruvbox_light/gruvbox_dark/g" ./home/alacritty.nix
+    sed -i "s/gruvbox_light/gruvbox_dark/g" ./home/common/alacritty.nix
     sed -i "s/gruvbox-light/gruvbox-dark/g" ./.config/aerc/aerc.conf
-    sed -i "s/light = true/dark = true/g" ./home/git.nix
+    sed -i "s/light = true/dark = true/g" ./home/common/git.nix
 
 theme-light:
-    sed -i "s/gruvbox_dark/gruvbox_light/g" ./home/alacritty.nix
+    sed -i "s/gruvbox_dark/gruvbox_light/g" ./home/common/alacritty.nix
     sed -i "s/gruvbox-dark/gruvbox-light/g" ./.config/aerc/aerc.conf
-    sed -i "s/dark = true/light = true/g" ./home/git.nix
+    sed -i "s/dark = true/light = true/g" ./home/common/git.nix

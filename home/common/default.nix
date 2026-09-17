@@ -235,6 +235,7 @@
       age
       unstable.harper
       pv
+      acpica-tools
 
       # NOTE: might be relevant later
       # taskwarrior3

@@ -236,6 +236,9 @@
       unstable.harper
       pv
       acpica-tools
+      poppler-utils
+      pdftk
+      imagemagick
 
       # NOTE: might be relevant later
       # taskwarrior3

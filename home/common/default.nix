@@ -239,6 +239,7 @@
       poppler-utils
       pdftk
       imagemagick
+      lean4
 
       # NOTE: might be relevant later
       # taskwarrior3

@@ -6,6 +6,7 @@ return {
   { import = "lazyvim.plugins.extras.lang.python" },
   { import = "lazyvim.plugins.extras.lang.tex" },
   { import = "lazyvim.plugins.extras.lang.markdown" },
+  { import = "lazyvim.plugins.extras.lang.lean" },
   -- { import = "lazyvim.plugins.extras.editor.leap" },
   { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
   -- { import = "lazyvim.plugins.extras.ai.copilot" },

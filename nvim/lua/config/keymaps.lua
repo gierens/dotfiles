@@ -14,5 +14,5 @@ map("n", "<leader>gg", "<cmd>Git commit -sS<cr>", { desc = "Commit staged change
 map("n", "<leader>gp", "<cmd>Git push<cr>", { desc = "Push to remote" })
 map("n", "<leader>gP", "<cmd>Git pull<cr>", { desc = "Pull from remote" })
 
--- remap diagraph insertion (blink.cmp takes over <C-k>)
+-- remap digraph insertion (blink.cmp takes over <C-k>)
 map("i", "<C-l>", "<C-k>", { noremap = true })

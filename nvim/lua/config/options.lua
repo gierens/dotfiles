@@ -9,3 +9,5 @@ vim.o.shiftwidth = 4
 -- NOTE: this causes ui glitches in the file tree
 -- vim.o.wrap = true
 vim.o.spell = true
+
+vim.g.maplocalleader = ","

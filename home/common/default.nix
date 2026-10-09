@@ -240,6 +240,7 @@
       pdftk
       imagemagick
       lean4
+      minicom
 
       # NOTE: might be relevant later
       # taskwarrior3
